@@ -15,8 +15,8 @@ public class testDecorateur {
         BilleDP b = new BilleDP();
         System.out.println("Acceleration avant : "+b.getAcceleration());
         new Pesenteur(b,acceleration);
-        System.out.println("Acceleration après : "+b.getAcceleration());
+        System.out.println("Acceleration apres : "+b.getAcceleration());
         new Pesenteur(b,new Vecteur(5,5));
-        System.out.println("Acceleration encore après : "+b.getAcceleration());
+        System.out.println("Acceleration encore apres : "+b.getAcceleration());
     }
 }
