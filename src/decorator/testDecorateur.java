@@ -83,19 +83,26 @@ public class testDecorateur {
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
-      /*  BilleDynamique b1 = new BilleDynamique(p0,rayon,v0,Color.RED);
-        new Pesenteur(b1, new Vecteur(10,10));
-        new Couleur(b1, Color.GRAY);
-        new Vitesse(b1,new Vecteur(20,20));*/
+        //Bille chelou
+        DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0005),Color.RED),Color.black);
 
-       // System.out.println(b2.toString());
-        DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0001),Color.RED),Color.BLACK);
+        //Bille passe-muraille
+        DecorateurBille b2 = new CollisionPasseMuraille(new Couleur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0005),Color.RED),Color.yellow));
+
+        //Bille rebondissante
+        DecorateurBille b3 = new CollisionRebond(new Couleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0005),Color.RED),Color.blue));
+
+        //Bille pesenteur rebond
+        DecorateurBille b4 = new CollisionRebond(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0005),Color.RED),Color.red));
 
 
-      //  BilleDynamique b2 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0001),Color.RED);
-          //  Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Color couleur) {
+        billes.add(b1);
+        billes.add(b2);
+        billes.add(b3);
+        billes.add(b4);
 
-            billes.add(b1);
+
+
         /*
         billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
         billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
