@@ -1,11 +1,11 @@
-configuration des fichiers audios é utiliser pour la bille hurlante. Un fichier audio au format wav par ligne. 
+configuration des fichiers audios e utiliser pour la bille hurlante. Un fichier audio au format wav par ligne.
 4 informations sur une ligne : 
-nom du fichier (sans l'extention .wav) début de l'extrait (en centiémes de secondes) fin de l'extrait (en centiémes de secondes) effectif (nombre de morceaux composant l'extrait)
-séparateur : espace. exemple :  sabrelaser 0 150 15  
-Important ===> On doit toujours avoir : effectif^2 >= (finExtrait - débutExtrait) / BilleHurlante.DELAI_MIN
-Important ===> On doit toujours avoir : (finExtrait - débutExtrait) / effectif >= SonJavax.TAILLE_BUFFER_LIGNE
-Les fichiers audio doivent étre dans le méme répertoire que ce fichier
-Les 8 premiéres lignes du fichier sont ignorées
+nom du fichier (sans l'extention .wav) debut de l'extrait (en centiemes de secondes) fin de l'extrait (en centiemes de secondes) effectif (nombre de morceaux composant l'extrait)
+separateur : espace. exemple :  sabrelaser 0 150 15
+Important ===> On doit toujours avoir : effectif^2 >= (finExtrait - debutExtrait) / BilleHurlante.DELAI_MIN
+Important ===> On doit toujours avoir : (finExtrait - debutExtrait) / effectif >= SonJavax.TAILLE_BUFFER_LIGNE
+Les fichiers audio doivent etre dans le meme repertoire que ce fichier
+Les 8 premieres lignes du fichier sont ignorees
 huey2 3000 3100 10
 spitfire 1100 1700 30
 sabrelaser 0 150 15

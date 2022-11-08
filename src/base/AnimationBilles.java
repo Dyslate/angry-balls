@@ -6,10 +6,10 @@ import modele.Bille;
 import vues.VueBillard;
 
 /**
- * responsable de l'animation des billes, c-é-d responsable du mouvement de la
- * liste des billes. met perpétuellement é jour les billes. gére le délai entre
- * 2 mises é jour (deltaT) et prévient la vue responsable du dessin des billes
- * qu'il faut mettre é jour la scéne
+ * responsable de l'animation des billes, c-e-d responsable du mouvement de la
+ * liste des billes. met perpetuellement e jour les billes. gere le delai entre
+ * 2 mises e jour (deltaT) et previent la vue responsable du dessin des billes
+ * qu'il faut mettre e jour la scene
  * 
  * ICI : IL N'Y A RIEN A CHANGER
  */
@@ -17,7 +17,7 @@ public class AnimationBilles implements Runnable {
 
 	Vector<Bille> billes; // la liste de toutes les billes en mouvement
 	VueBillard vueBillard; // la vue responsable du dessin des billes
-	private Thread thread; // pour lancer et arréter les billes
+	private Thread thread; // pour lancer et arreter les billes
 
 	private static final double COEFF = 0.5;
 
@@ -34,26 +34,26 @@ public class AnimationBilles implements Runnable {
 	@Override
 	public void run() {
 		try {
-			double deltaT; // délai entre 2 mises é jour de la liste des billes
+			double deltaT; // delai entre 2 mises e jour de la liste des billes
 			Bille billeCourante;
 
-			double minRayons = AnimationBilles.minRayons(billes); // nécessaire au calcul de deltaT
-			double minRayons2 = minRayons * minRayons; // nécessaire au calcul de deltaT
+			double minRayons = AnimationBilles.minRayons(billes); // necessaire au calcul de deltaT
+			double minRayons2 = minRayons * minRayons; // necessaire au calcul de deltaT
 
 			while (!Thread.interrupted()) // gestion du mouvement
 			{
-				// deltaT = COEFF*minRayons2/(1+maxVitessesCarrées(billes)); // mise é jour
-				// deltaT. L'addition + 1 est une astuce pour éviter les divisions par zéro
+				// deltaT = COEFF*minRayons2/(1+maxVitessesCarrees(billes)); // mise e jour
+				// deltaT. L'addition + 1 est une astuce pour eviter les divisions par zero
 
 				// System.err.println("deltaT = " + deltaT);
 				deltaT = 10;
 
 				int i;
-				for (i = 0; i < billes.size(); ++i) // mise é jour de la liste des billes
+				for (i = 0; i < billes.size(); ++i) // mise e jour de la liste des billes
 				{
 					billeCourante = billes.get(i);
-					billeCourante.déplacer(deltaT); // mise é jour position et vitesse de cette bille
-					billeCourante.gestionAccélération(billes); // calcul de l'accélération subie par cette bille
+					billeCourante.deplacer(deltaT); // mise e jour position et vitesse de cette bille
+					billeCourante.gestionAcceleration(billes); // calcul de l'acceleration subie par cette bille
 					billeCourante.gestionCollisionBilleBille(billes);
 					billeCourante.collisionContour(0, 0, vueBillard.largeurBillard(), vueBillard.hauteurBillard()); // System.err.println("billes
 																													// =
@@ -62,25 +62,25 @@ public class AnimationBilles implements Runnable {
 																													// billes);
 				}
 
-				vueBillard.miseAJour(); // on prévient la vue qu'il faut redessiner les billes
+				vueBillard.miseAJour(); // on previent la vue qu'il faut redessiner les billes
 
-				Thread.sleep((int) deltaT); // deltaT peut étre considéré comme le délai entre 2 flashes d'un
-											// stroboscope qui éclairerait la scéne
+				Thread.sleep((int) deltaT); // deltaT peut etre considere comme le delai entre 2 flashes d'un
+											// stroboscope qui eclairerait la scene
 			}
 		}
 
 		catch (InterruptedException e) {
-			/* arrét normal, il n'y a rien é faire dans ce cas */
+			/* arret normal, il n'y a rien e faire dans ce cas */
 		}
 
 	}
 
 	/**
-	 * calcule le maximum de de la norme carrée (pour faire moins de calcul) des
+	 * calcule le maximum de de la norme carree (pour faire moins de calcul) des
 	 * vecteurs vitesse de la liste de billes
 	 * 
 	 */
-	static double maxVitessesCarrées(Vector<Bille> billes) {
+	static double maxVitessesCarrees(Vector<Bille> billes) {
 		double vitesse2Max = 0;
 
 		int i;
@@ -118,7 +118,7 @@ public class AnimationBilles implements Runnable {
 		}
 	}
 
-	public void arréterAnimation() {
+	public void arreterAnimation() {
 		if (thread != null) {
 			this.thread.interrupt();
 			this.thread = null;

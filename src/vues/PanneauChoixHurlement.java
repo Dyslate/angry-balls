@@ -8,7 +8,7 @@ import java.awt.Panel;
 import musique.SonLong;
 
 /**
- * Représente la ligne des cases é cocher pour le choix du son pour la bille hurlante.
+ * Represente la ligne des cases e cocher pour le choix du son pour la bille hurlante.
  * 
  * Ligne du bas du cadre contenant les billes
  * 
@@ -17,13 +17,13 @@ import musique.SonLong;
  * */
 public class PanneauChoixHurlement extends Panel
 {
-BoutonChoixHurlement boutons[];
+BoutonChoixHurlement[] boutons;
 CheckboxGroup checkboxGroup;
 
 /**
  * @param hurlements : tous les sons disponibles pour la bille hurlante
- * @param choixHurlementInitial : hurlement choisi par défaut é l'initialisation de l'application. 
- *                                  choixHurlementInitial doit représenter un indice valide du tableau hurlements
+ * @param choixHurlementInitial : hurlement choisi par defaut e l'initialisation de l'application. 
+ *                                  choixHurlementInitial doit representer un indice valide du tableau hurlements
  * */
 public PanneauChoixHurlement(SonLong [] hurlements, int choixHurlementInitial)
 {

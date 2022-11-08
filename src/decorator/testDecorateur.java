@@ -10,19 +10,14 @@ import base.EcouteurBoutonLancer;
 import base.OutilsConfigurationBilleHurlante;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
-import modele.BilleHurlanteMvtNewtonArret;
-import modele.BilleMvtNewtonFrottementRebond;
-import modele.BilleMvtPesanteurFrottementRebond;
-import modele.BilleMvtRUPasseMurailles;
-import modele.BilleMvtRURebond;
 import musique.SonLong;
 import vues.CadreAngryBalls;
 
 /**
  * Gestion d'une liste de billes en mouvement ayant toutes un comportement
- * différent
+ * different
  *
- * Idéal pour mettre en place le DP decorator
+ * Ideal pour mettre en place le DP decorator
  */
 public class testDecorateur {
 
@@ -30,29 +25,29 @@ public class testDecorateur {
      * @param args
      */
     public static void main(String[] args) {
-//---------------------- gestion des bruitages : paramétrage du chemin du dossier contenant les fichiers audio --------------------------
+//---------------------- gestion des bruitages : parametrage du chemin du dossier contenant les fichiers audio --------------------------
 
-        File file = new File(""); // lé oé la JVM est lancée : racine du projet
+        File file = new File(""); // le oe la JVM est lancee : racine du projet
 
-        File répertoireSon = new File(file.getAbsoluteFile(),
+        File repertoireSon = new File(file.getAbsoluteFile(),
                 "src" + File.separatorChar + "bruits");
-        System.out.println(répertoireSon);
+        System.out.println(repertoireSon);
 //-------------------- chargement des sons pour les hurlements --------------------------------------
 
-        Vector<SonLong> sonsLongs = OutilsConfigurationBilleHurlante.chargeSons(répertoireSon,
+        Vector<SonLong> sonsLongs = OutilsConfigurationBilleHurlante.chargeSons(repertoireSon,
                 "config_audio_bille_hurlante.txt");
 
-        SonLong hurlements[] = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
+        SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
 
-//------------------- création de la liste (pour l'instant vide) des billes -----------------------
+//------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
         Vector<Bille> billes = new Vector<Bille>();
 
-//---------------- création de la vue responsable du dessin des billes -------------------------
+//---------------- creation de la vue responsable du dessin des billes -------------------------
 
         int choixHurlementInitial = 0;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
-                "Animation de billes ayant des comportements différents. Situation idéale pour mettre en place le DP Decorator",
+                "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes, hurlements, choixHurlementInitial);
 
         cadre.montrer(); // on rend visible la vue
@@ -62,16 +57,16 @@ public class testDecorateur {
         double xMax, yMax;
         double vMax = 0.1;
         xMax = cadre.largeurBillard(); // abscisse maximal
-        yMax = cadre.hauteurBillard(); // ordonnée maximale
+        yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le méme rayon, mais
+        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
         Vecteur p0, p1, p2, p3, p4, v0, v1, v2, v3, v4; // les positions des centres des billes et les vecteurs vitesse
-        // au démarrage.
-        // Elles vont étre choisies aléatoirement
+        // au demarrage.
+        // Elles vont etre choisies aleatoirement
 
-//------------------- création des vecteurs position des billes ---------------------------------
+//------------------- creation des vecteurs position des billes ---------------------------------
 
         p0 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
@@ -79,7 +74,7 @@ public class testDecorateur {
         p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
-//------------------- création des vecteurs vitesse des billes ---------------------------------
+//------------------- creation des vecteurs vitesse des billes ---------------------------------
 
         v0 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, 0);
@@ -87,13 +82,20 @@ public class testDecorateur {
         v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
-//--------------- ici commence la partie é changer ---------------------------------
+//--------------- ici commence la partie à changer ---------------------------------
+      /*  BilleDynamique b1 = new BilleDynamique(p0,rayon,v0,Color.RED);
+        new Pesenteur(b1, new Vecteur(10,10));
+        new Couleur(b1, Color.GRAY);
+        new Vitesse(b1,new Vecteur(20,20));*/
+
+       // System.out.println(b2.toString());
+        DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0001),Color.RED),Color.BLACK);
 
 
-        BilleDynamique bd = new BilleDynamique(p0,rayon,v0,v0,Color.GRAY);
-        Pesenteur p = new Pesenteur(bd,new Vecteur(5,3));
-        Couleur c = new Couleur(p, Color.RED);
-        billes.add(c);
+      //  BilleDynamique b2 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0001),Color.RED);
+          //  Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Color couleur) {
+
+            billes.add(b1);
         /*
         billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
         billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
@@ -105,25 +107,25 @@ public class testDecorateur {
         billes.add(billeNoire = new BilleHurlanteMvtNewtonArret(p4, rayon, v4, Color.black,
                 hurlements[choixHurlementInitial], cadre));
 
-        cadre.addChoixHurlementListener(billeNoire); // é présent on peut changer le son de la bille qui hurle
+        cadre.addChoixHurlementListener(billeNoire); // e present on peut changer le son de la bille qui hurle
 */
-//---------------------- ici finit la partie é changer -------------------------------------------------------------
+//---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billes);
 
-//-------------------- création de l'objet responsable de l'animation (c'est un thread séparé) -----------------------
+//-------------------- creation de l'objet responsable de l'animation (c'est un thread separe) -----------------------
 
         AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
 
-//----------------------- mise en place des écouteurs de boutons qui permettent de contréler (un peu...) l'application -----------------
+//----------------------- mise en place des ecouteurs de boutons qui permettent de contreler (un peu...) l'application -----------------
 
-        EcouteurBoutonLancer écouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
-        EcouteurBoutonArreter écouteurBoutonArréter = new EcouteurBoutonArreter(animationBilles);
+        EcouteurBoutonLancer ecouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
+        EcouteurBoutonArreter ecouteurBoutonArreter = new EcouteurBoutonArreter(animationBilles);
 
-//------------------------- activation des écouteurs des boutons et éa tourne tout seul ------------------------------
+//------------------------- activation des ecouteurs des boutons et ea tourne tout seul ------------------------------
 
-        cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // pourrait étre remplacé par Observable - Observer
-        cadre.arréterBilles.addActionListener(écouteurBoutonArréter); // pourrait étre remplacé par Observable -
+        cadre.lancerBilles.addActionListener(ecouteurBoutonLancer); // pourrait etre remplace par Observable - Observer
+        cadre.arreterBilles.addActionListener(ecouteurBoutonArreter); // pourrait etre remplace par Observable -
         // Observer
 
     }

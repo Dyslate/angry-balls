@@ -17,7 +17,7 @@ import musique.SonLongFantome;
 import musique.javax.SonLongJavax;
 
 /**
- * sert é construire tous les sons qui seront proposés pour animer la bille hurlante
+ * sert e construire tous les sons qui seront proposes pour animer la bille hurlante
  * 
  *  ICI : IL N'Y A RIEN A CHANGER
  *  
@@ -26,63 +26,63 @@ public class OutilsConfigurationBilleHurlante
 {
 
 /**
- * La seule téche de cette méthode est d'ouvrir le fichier de configuration de SonLong de la bile hurlante
- * cf. méthode chargeSons1 juste aprés
+ * La seule teche de cette methode est d'ouvrir le fichier de configuration de SonLong de la bile hurlante
+ * cf. methode chargeSons1 juste apres
  * */
-public static Vector<SonLong>  chargeSons(File répertoireBruits, String nomFichierConfigAudio) //throws IOException
+public static Vector<SonLong>  chargeSons(File repertoireBruits, String nomFichierConfigAudio) //throws IOException
 {
-Vector<SonLong> résultat;
+Vector<SonLong> resultat;
 try
     {
-    File f = new File(répertoireBruits,nomFichierConfigAudio);
+    File f = new File(repertoireBruits,nomFichierConfigAudio);
     FileInputStream f1 = new FileInputStream(f);
     BufferedReader fichierConfigBilleHurlante = new BufferedReader(new InputStreamReader(f1));
     
-    résultat = OutilsConfigurationBilleHurlante.chargeSons1(répertoireBruits, fichierConfigBilleHurlante);
+    resultat = OutilsConfigurationBilleHurlante.chargeSons1(repertoireBruits, fichierConfigBilleHurlante);
     fichierConfigBilleHurlante.close();
     }
 
 catch (IOException e)
     {
-    résultat = new Vector<SonLong>();
-    résultat.add(new SonLongFantome());
+    resultat = new Vector<SonLong>();
+    resultat.add(new SonLongFantome());
     System.err.println("sons indisponibles pour les hurlements");
     }
-return résultat;
+return resultat;
 }
 
 /**
- * Téche : construit une liste de SonLong.
+ * Teche : construit une liste de SonLong.
  *  
- * @param répertoireBruits : construit une liste de SonLong é partir de fichiers audio placés sur le dossier défini par le chemin répertoireBruits
+ * @param repertoireBruits : construit une liste de SonLong e partir de fichiers audio places sur le dossier defini par le chemin repertoireBruits
  * @param fichierConfigBilleHurlante : indique comment construire les SonLong.
  * 
  * fichierConfigBilleHurlante respecte le format suivant :
- * sur les 8 premiéres lignes est détaillé le format du fichier lui-méme
+ * sur les 8 premieres lignes est detaille le format du fichier lui-meme
  * puis chaque ligne suivante permet de construire un SonLong. 
  * 
  * Exemple de fichierConfigBilleHurlante : 
  * 
-        configuration des fichiers audios é utiliser pour la bille hurlante. Un fichier audio au format wav par ligne. 
+        configuration des fichiers audios e utiliser pour la bille hurlante. Un fichier audio au format wav par ligne. 
         4 informations sur une ligne : 
-        nom du fichier (sans l'extention .wav) début de l'extrait (en centiémes de secondes) fin de l'extrait (en centiémes de secondes) effectif (nombre de morceaux composant l'extrait)
-        séparateur : espace. exemple :  sabrelaser 0 150 15  
-        Important ===> On doit toujours avoir : effectif^2 >= (finExtrait - débutExtrait) / BilleHurlante.DELAI_MIN
-        Important ===> On doit toujours avoir : (finExtrait - débutExtrait) / effectif >= SonJavax.TAILLE_BUFFER_LIGNE
-        Les fichiers audio doivent étre dans le méme répertoire que ce fichier
-        Les 8 premiéres lignes du fichier sont ignorées
+        nom du fichier (sans l'extention .wav) debut de l'extrait (en centiemes de secondes) fin de l'extrait (en centiemes de secondes) effectif (nombre de morceaux composant l'extrait)
+        separateur : espace. exemple :  sabrelaser 0 150 15  
+        Important ===> On doit toujours avoir : effectif^2 >= (finExtrait - debutExtrait) / BilleHurlante.DELAI_MIN
+        Important ===> On doit toujours avoir : (finExtrait - debutExtrait) / effectif >= SonJavax.TAILLE_BUFFER_LIGNE
+        Les fichiers audio doivent etre dans le meme repertoire que ce fichier
+        Les 8 premieres lignes du fichier sont ignorees
         huey2 1200 1300 10
         spitfire 1100 1700 30
         sabrelaser 0 150 15
         loups 0 600 40
         crapaud 20 120 10
  * 
- * A partir de la 9éme ligne, toute ligne contenant une erreur est ignorée
+ * A partir de la 9eme ligne, toute ligne contenant une erreur est ignoree
  * 
- * Si é partir du fichier, on est incapable de construire au moins un SonLong valide, la méthode renvoie un Vector contenant un unique SonLongFantome
- * pour que l'application puisse quand méme tourner. 
+ * Si e partir du fichier, on est incapable de construire au moins un SonLong valide, la methode renvoie un Vector contenant un unique SonLongFantome
+ * pour que l'application puisse quand meme tourner. 
  * */
-public static Vector<SonLong>  chargeSons1(File répertoireBruits, BufferedReader fichierConfigBilleHurlante)
+public static Vector<SonLong>  chargeSons1(File repertoireBruits, BufferedReader fichierConfigBilleHurlante)
 {
 Vector<SonLong> sons = new Vector<SonLong>();
 
@@ -91,33 +91,33 @@ String ligne = null;
 
 try
     {
-    for (i = 0; i < 8; ++i) ligne = fichierConfigBilleHurlante.readLine(); /* on ignore les 8 premiéres lignes du fichier qui contiennent le résumé */
+    for (i = 0; i < 8; ++i) ligne = fichierConfigBilleHurlante.readLine(); /* on ignore les 8 premieres lignes du fichier qui contiennent le resume */
     }
-catch (IOException e1)  /* l'entéte du fichier contient un probléme */
+catch (IOException e1)  /* l'entete du fichier contient un probleme */
     {
-    sons.add(new SonLongFantome());         /* on crée un son bidon pour que l'application puisse quand méme tourner sans la diffusion du son */
+    sons.add(new SonLongFantome());         /* on cree un son bidon pour que l'application puisse quand meme tourner sans la diffusion du son */
     return sons;
     }
 
-/* é présent on est sér que la lecture des 8 lignes d'entéte s'est bien passée. le pointeur de ligne de fichierConfigBilleHurlante pointe sur la 9éme ligne */
+/* e present on est ser que la lecture des 8 lignes d'entete s'est bien passee. le pointeur de ligne de fichierConfigBilleHurlante pointe sur la 9eme ligne */
 
-for ( /* rien é faire ici*/; ligne != null; ++i)
+for ( /* rien e faire ici*/; ligne != null; ++i)
     {
     try
       {
-      ligne = fichierConfigBilleHurlante.readLine();        /*ligne est supposée respecter le format suivant : "spitfire 1100 1700 30" */
+      ligne = fichierConfigBilleHurlante.readLine();        /*ligne est supposee respecter le format suivant : "spitfire 1100 1700 30" */
       
-      if (ligne != null) sons.add(SonLongJavax.crée(répertoireBruits, ligne) );
+      if (ligne != null) sons.add(SonLongJavax.crée(repertoireBruits, ligne) );
       }
     catch (Exception e)
       {
-      /* on ignore la ligne générant une erreur et on passe au prochain son sur la ligne suivante */
-      System.err.println("Dans OutilsConfigurationBilleHurlante.chargeSons1() : ligne né " + i + " ignorée car contenant une erreur : " + e);            
+      /* on ignore la ligne generant une erreur et on passe au prochain son sur la ligne suivante */
+      System.err.println("Dans OutilsConfigurationBilleHurlante.chargeSons1() : ligne ne " + i + " ignoree car contenant une erreur : " + e);            
       }
     }       // for
 
 if (sons.isEmpty()) sons.add(new SonLongFantome());
 return sons;
 }
-//SonLongJavax( File répertoire, String nomFichier, int débutExtrait, int finExtrait, int effectif)
+//SonLongJavax( File repertoire, String nomFichier, int debutExtrait, int finExtrait, int effectif)
 }

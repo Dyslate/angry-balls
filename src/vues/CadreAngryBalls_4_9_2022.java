@@ -10,17 +10,17 @@ import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
 /**
- * Vue dessinant les billes et contenant les 3 boutons de contréle (arrét du
- * programme, lancer les billes, arréter les billes)
+ * Vue dessinant les billes et contenant les 3 boutons de contrele (arret du
+ * programme, lancer les billes, arreter les billes)
  * 
  * ICI : IL N'Y A RIEN A CHANGER
  * 
  * 
  */
 public class CadreAngryBalls_4_9_2022 extends Frame implements VueBillard {
-	TextField présentation;
+	TextField presentation;
 	Billard billard;
-	public Button lancerBilles, arréterBilles;
+	public Button lancerBilles, arreterBilles;
 	Panel haut, centre, bas;
 
 	EcouteurTerminaison ecouteurTerminaison;
@@ -41,17 +41,17 @@ public class CadreAngryBalls_4_9_2022 extends Frame implements VueBillard {
 		this.bas.setBackground(Color.LIGHT_GRAY);
 		this.add(this.bas, BorderLayout.SOUTH);
 
-		this.présentation = new TextField(message, 100);
-		this.présentation.setEditable(false);
-		this.haut.add(this.présentation);
+		this.presentation = new TextField(message, 100);
+		this.presentation.setEditable(false);
+		this.haut.add(this.presentation);
 
 		this.billard = new Billard(billes);
 		this.add(this.billard);
 
 		this.lancerBilles = new Button("lancer les billes");
 		this.bas.add(this.lancerBilles);
-		this.arréterBilles = new Button("arréter les billes");
-		this.bas.add(this.arréterBilles);
+		this.arreterBilles = new Button("arreter les billes");
+		this.bas.add(this.arreterBilles);
 
 	}
 

@@ -2,9 +2,9 @@ package vues;
 
 
 /**
- * contrat respecté par toute vue capable de dessiner la liste des billes
+ * contrat respecte par toute vue capable de dessiner la liste des billes
  * 
- * Comme éa si vous n'aimez pas mes composants awt vous pouvez les changer sans changer le reste de l'appli
+ * Comme ea si vous n'aimez pas mes composants awt vous pouvez les changer sans changer le reste de l'appli
  * 
  *  ICI : IL N'Y A RIEN A CHANGER 
  *  
@@ -13,11 +13,11 @@ package vues;
 public interface VueBillard
 {
 
-public double largeurBillard();
+double largeurBillard();
 
-public double hauteurBillard();
+double hauteurBillard();
 
-public void miseAJour();
+void miseAJour();
 
-public void montrer();
+void montrer();
 }

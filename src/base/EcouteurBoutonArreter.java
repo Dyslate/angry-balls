@@ -16,7 +16,7 @@ public class EcouteurBoutonArreter implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.animationBilles.arréterAnimation();
+		this.animationBilles.arreterAnimation();
 	}
 
 }

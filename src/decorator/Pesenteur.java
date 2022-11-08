@@ -1,13 +1,10 @@
 package decorator;
-
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
-
-
-
 public class Pesenteur extends DecorateurBille {
-    protected Pesenteur(Bille b, Vecteur accel) {
+    Vecteur acceleration;
+    protected Pesenteur(Bille b, Vecteur acceleration) {
         super(b);
-        b.accélération=accel;
+        this.acceleration=acceleration;
     }
 }

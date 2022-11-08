@@ -19,6 +19,6 @@ SON:
 > Gèrer dans TestAngryBalls ligne 33
 
 ```java
-File répertoireSon = new File(file.getAbsoluteFile(),"src" + File.separatorChar + "bruits");
+File repertoireSon = new File(file.getAbsoluteFile(),"src" + File.separatorChar + "bruits");
 ```
 Modifier ce path pour qu'il corresponde au dossier src>base>bruits
