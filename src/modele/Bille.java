@@ -33,7 +33,7 @@ public abstract class Bille {
 	public Vecteur accélération;
 	public int clef; // identifiant unique de cette bille
 
-	private Color couleur; // référence awt : mauvais
+	public Color couleur; // référence awt : mauvais
 
 	private static int prochaineClef = 0;
 
@@ -64,6 +64,11 @@ public abstract class Bille {
 	public Bille(Vecteur position, double rayon, Vecteur vitesse, Color couleur) {
 		this(position, rayon, vitesse, new Vecteur(), couleur);
 	}
+
+	public Bille(Bille b) {
+		this(b.position, b.rayon, b.vitesse, new Vecteur(), b.couleur);
+	}
+
 
 	/**
 	 * @return the position
