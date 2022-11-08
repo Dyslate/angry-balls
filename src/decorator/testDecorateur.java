@@ -1,6 +1,7 @@
 package decorator;
 
 import java.awt.Color;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -59,7 +60,7 @@ public class testDecorateur {
         xMax = cadre.largeurBillard(); // abscisse maximal
         yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
+        double rayon = 0.15 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
         Vecteur p0, p1, p2, p3, p4, v0, v1, v2, v3, v4; // les positions des centres des billes et les vecteurs vitesse
@@ -83,23 +84,28 @@ public class testDecorateur {
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
-        //Bille chelou
-        DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0005),Color.RED),Color.black);
+        DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Color.RED),Color.black);
+        DecorateurBille b2 = new CollisionPasseMuraille(new Couleur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Color.RED),Color.yellow));
+        DecorateurBille b3 = new CollisionRebond(new Couleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Color.RED),Color.blue));
+        DecorateurBille b4 = new CollisionPesenteurRebond(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.GRAY),new Vecteur(0,0.00001));
+        DecorateurBille b5= new BilleHurlanteMvtNewtonArret(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.GRAY),hurlements[choixHurlementInitial], cadre);
 
-        //Bille passe-muraille
-        DecorateurBille b2 = new CollisionPasseMuraille(new Couleur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0005),Color.RED),Color.yellow));
-
-        //Bille rebondissante
-        DecorateurBille b3 = new CollisionRebond(new Couleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0005),Color.RED),Color.blue));
-
-        //Bille pesenteur rebond
-        DecorateurBille b4 = new CollisionRebond(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0005),Color.RED),Color.red));
-
-
+        //Une bille normale colorée
         billes.add(b1);
+
+        //Bille passe muraille
         billes.add(b2);
+
+        //Bille rebondissante de type fond d'écran windows
         billes.add(b3);
+
+        //Bille pesenteur avec rebond //TODO DEBUG L'ACCELERATION DECROISSANTE
         billes.add(b4);
+
+        //Bille Hurlante //TODO DEBUG L'ACCELERATION
+        cadre.addChoixHurlementListener((ItemListener) b5);
+        billes.add(b5);
+
 
 
 
