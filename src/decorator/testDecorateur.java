@@ -101,7 +101,7 @@ public class testDecorateur {
         billes.add(b1);
 
         //Bille passe muraille
-       // billes.add(b2);
+        billes.add(b2);
 
         //Bille rebondissante de type fond d'écran windows
       //  billes.add(b3);

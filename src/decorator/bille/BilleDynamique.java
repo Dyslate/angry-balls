@@ -3,25 +3,25 @@ import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.Couleur;
 import modele.OutilsBille;
 import java.awt.*;
 import java.util.Vector;
 public class BilleDynamique extends Bille {
-    double rayon;
-    Vecteur vitesse;
-    Vecteur position;
-
-
-
-    Color couleur;
-
-    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Color couleur) {
+    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Couleur couleur) {
         this.position=position;
         this.rayon=rayon;
         this.vitesse=vitesse;
         this.couleur=couleur;
     }
 
+    public BilleDynamique() {
+        this.position=new Vecteur(0,0);
+        this.rayon=25;
+        this.vitesse=new Vecteur(0,0);
+        this.couleur= new Couleur(100,100,100,255);
+        this.acceleration=new Vecteur(0,0);
+    }
 
     public BilleDynamique(Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur) {
         this.position = centre;
@@ -74,7 +74,7 @@ public class BilleDynamique extends Bille {
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
         return OutilsBille.gestionCollisionBilleBille(this, billes);
     }
-    public Color getCouleur() {
+    public Couleur getCouleur() {
         return couleur;
     }
     @Override

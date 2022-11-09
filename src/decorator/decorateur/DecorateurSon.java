@@ -23,7 +23,6 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
         this.sonLong=sonLong;
         this.vueBillard=vueBillard;
     }
-
     @Override
     public void deplacer(double deltaT){
         super.deplacer(deltaT);
@@ -45,25 +44,7 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
             double coeffPitch = 1;
             this.sonLong.joue(i++,volume,balance,coeffPitch);
             this.dernierInstant = instant;
-
         }
-    }
-
-
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes){
-
-        //TODO DEBUG L ACCELERATION
-       // super.gestionAcceleration(billes);
-       // this.getAcceleration().ajoute(OutilsBille.gestionAccelerationNewton(this,billes));
-    }
-
-
-    @Override
-    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur){
-        Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(),this.getRayon(),this.getVitesse(),abscisseCoinHautGauche,hauteur);
-        Collisions.collisionBilleContourAvecArretVertical(this.getPosition(),this.getRayon(),this.getVitesse(),abscisseCoinHautGauche,hauteur);
-
     }
     @Override
     public void itemStateChanged(ItemEvent itemEvent) {
