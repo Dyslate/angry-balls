@@ -10,12 +10,18 @@ public class BilleDynamique extends Bille {
     double rayon;
     Vecteur vitesse;
     Vecteur position;
+
+
+
+    Color couleur;
+
     public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Color couleur) {
         this.position=position;
         this.rayon=rayon;
         this.vitesse=vitesse;
         this.couleur=couleur;
     }
+
 
     protected BilleDynamique(Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Color couleur) {
         this.position = centre;
@@ -71,7 +77,6 @@ public class BilleDynamique extends Bille {
     public Color getCouleur() {
         return couleur;
     }
-    Color couleur;
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
         Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(), this.getRayon(), this.getVitesse(),

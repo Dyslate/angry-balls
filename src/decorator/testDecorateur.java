@@ -86,25 +86,26 @@ public class testDecorateur {
 //--------------- ici commence la partie à changer ---------------------------------
         DecorateurBille b1 = new Couleur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Color.RED),Color.black);
         DecorateurBille b2 = new CollisionPasseMuraille(new Couleur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Color.RED),Color.yellow));
-        DecorateurBille b3 = new CollisionRebond(new Couleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Color.RED),Color.blue));
-        DecorateurBille b4 = new CollisionPesenteurRebond(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.GRAY),new Vecteur(0,0.00001));
-        DecorateurBille b5= new BilleHurlanteMvtNewtonArret(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.GRAY),hurlements[choixHurlementInitial], cadre);
+        DecorateurBille b3 = new CollisionRebond(new Couleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Color.RED),Color.green));
+        DecorateurBille b4 = new CollisionPesenteurRebond(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.yellow),new Vecteur(0,0.00001));
+        DecorateurBille b5= new BilleHurlanteMvtNewtonArret(new Couleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Color.RED),Color.lightGray),hurlements[choixHurlementInitial], cadre);
 
         //Une bille normale colorée
         billes.add(b1);
 
         //Bille passe muraille
-        billes.add(b2);
+       // billes.add(b2);
 
         //Bille rebondissante de type fond d'écran windows
-        billes.add(b3);
+      //  billes.add(b3);
 
         //Bille pesenteur avec rebond //TODO DEBUG L'ACCELERATION DECROISSANTE
-        billes.add(b4);
+      //  billes.add(b4);
+       // System.out.println(b4);
 
         //Bille Hurlante //TODO DEBUG L'ACCELERATION
-        cadre.addChoixHurlementListener((ItemListener) b5);
-        billes.add(b5);
+       // cadre.addChoixHurlementListener((ItemListener) b5);
+     //   billes.add(b5);
 
 
 

@@ -23,8 +23,6 @@ public abstract class DecorateurBille extends Bille {
     @Override
     public Vecteur getVitesse(){return this.bille.getVitesse();}
 
-
-
     @Override
     public double getRayon(){return this.bille.getRayon();}
 
