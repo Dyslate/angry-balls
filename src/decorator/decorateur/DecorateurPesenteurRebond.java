@@ -1,5 +1,6 @@
-package decorator;
+package decorator.decorateur;
 
+import decorator.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import mesmaths.mecanique.MecaniquePoint;
@@ -7,9 +8,9 @@ import modele.Bille;
 
 import java.util.Vector;
 
-public class CollisionPesenteurRebond extends DecorateurBille {
-    Vecteur acceleration;
-    protected CollisionPesenteurRebond(Bille b, Vecteur acceleration) {
+public class DecorateurPesenteurRebond extends DecorateurBille {
+    public Vecteur acceleration;
+    public DecorateurPesenteurRebond(Bille b, Vecteur acceleration) {
         super(b);
         this.acceleration=acceleration;
     }

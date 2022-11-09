@@ -1,18 +1,16 @@
-package decorator;
+package decorator.decorateur;
 
-import mesmaths.cinematique.Collisions;
+import decorator.DecorateurBille;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
-import modele.OutilsBille;
 import musique.SonLong;
 import vues.BoutonChoixHurlement;
 import vues.VueBillard;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Vector;
 
-public class BilleHurlanteMvtNewtonArret extends DecorateurBille implements ItemListener {
+public class DecorateurSon extends DecorateurBille implements ItemListener {
     private static final int DELAI_MIN=10;
     public static final int DELAI_MAX=150;
     public SonLong sonLong;
@@ -20,10 +18,7 @@ public class BilleHurlanteMvtNewtonArret extends DecorateurBille implements Item
     long dernierInstant;
     VueBillard vueBillard;
     private static final double COEFF_VOLUME = 6;
-
-
-
-    public BilleHurlanteMvtNewtonArret(Bille b, SonLong sonLong, VueBillard vueBillard) {
+    public DecorateurSon(Bille b, SonLong sonLong, VueBillard vueBillard) {
         super(b);
         this.sonLong=sonLong;
         this.vueBillard=vueBillard;

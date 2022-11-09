@@ -3,9 +3,6 @@ package modele;
 import java.awt.*;
 import java.util.Vector;
 
-import mesmaths.cinematique.Cinematique;
-import mesmaths.cinematique.Collisions;
-import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 
 /**
@@ -31,7 +28,7 @@ public abstract class Bille {
 	public Vecteur vitesse;
 	public Vecteur acceleration;
 	public int clef; // identifiant unique de cette bille
-	public Color couleur; // reference awt : mauvais
+	public Couleur couleur;
 	private static final int prochaineClef = 0;
 	public static double ro = 1; // masse volumique
 	public abstract Vecteur getPosition();

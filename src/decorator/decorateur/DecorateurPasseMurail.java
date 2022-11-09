@@ -1,9 +1,12 @@
-package decorator;
+package decorator.decorateur;
 
+import decorator.DecorateurBille;
 import mesmaths.cinematique.Collisions;
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
-public class CollisionPasseMuraille extends DecorateurBille {
-    protected CollisionPasseMuraille(Bille b) {
+public class DecorateurPasseMurail extends DecorateurBille {
+    public Vecteur acceleration;
+    public DecorateurPasseMurail(Bille b) {
         super(b);
     }
     @Override

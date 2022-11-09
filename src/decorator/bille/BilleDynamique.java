@@ -1,4 +1,4 @@
-package decorator;
+package decorator.bille;
 import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
@@ -23,7 +23,7 @@ public class BilleDynamique extends Bille {
     }
 
 
-    protected BilleDynamique(Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Color couleur) {
+    public BilleDynamique(Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur) {
         this.position = centre;
         this.rayon = rayon;
         this.acceleration = acceleration;
@@ -92,7 +92,7 @@ public class BilleDynamique extends Bille {
     		xMin = (int) Math.round(getPosition().x - getRayon());
     		yMin = (int) Math.round(getPosition().y - getRayon());
     		width = height = 2 * (int) Math.round(getRayon());
-    		g.setColor(couleur);
+    		g.setColor(couleur.transformeAWT());
     		g.fillOval(xMin, yMin, width, height);
     		g.setColor(Color.CYAN);
     		g.drawOval(xMin,yMin,width,height);
