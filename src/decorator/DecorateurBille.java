@@ -66,9 +66,8 @@ public abstract class DecorateurBille extends Bille {
 
         xMin = (int) Math.round(getPosition().x - getRayon());
         yMin = (int) Math.round(getPosition().y - getRayon());
-
         width = height = 2 * (int) Math.round(getRayon());
-        g.setColor(this.couleur.transformeAWT());            // ICI à modifier, actuellement il récupère la classe Couleur mais il veut un Color qui vient d'AWT, il faut donc transformer notre couleur en AWT et la balancer ici
+        g.setColor(bille.couleur.transformeAWT());            // ICI à modifier, actuellement il récupère la classe Couleur mais il veut un Color qui vient d'AWT, il faut donc transformer notre couleur en AWT et la balancer ici
         g.fillOval(xMin, yMin, width, height);
         g.drawOval(xMin,yMin,width,height);
     }

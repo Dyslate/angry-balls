@@ -7,6 +7,6 @@ import java.awt.*;
 public class DecorateurCouleur extends DecorateurBille {
     public DecorateurCouleur(Bille b, Couleur couleur) {
         super(b);
-        this.couleur = couleur;
+        bille.couleur = couleur;
     }
 }

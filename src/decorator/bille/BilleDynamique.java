@@ -19,7 +19,7 @@ public class BilleDynamique extends Bille {
         this.position=new Vecteur(0,0);
         this.rayon=25;
         this.vitesse=new Vecteur(0,0);
-        this.couleur= new Couleur(100,100,100,255);
+        this.couleur= new Couleur(100,100,100,100);
         this.acceleration=new Vecteur(0,0);
     }
 

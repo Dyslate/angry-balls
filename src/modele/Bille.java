@@ -25,6 +25,9 @@ public abstract class Bille {
 //----------------- classe Bille-------------------------------------
 	public Vecteur position; // centre de la bille
 	public double rayon; // rayon > 0
+	public Vecteur vitesse;
+	public Vecteur acceleration;
+
 	public int clef; // identifiant unique de cette bille
 	public Couleur couleur;
 	private static final int prochaineClef = 0;

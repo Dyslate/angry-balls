@@ -10,10 +10,7 @@ import base.EcouteurBoutonLancer;
 import base.OutilsConfigurationBilleHurlante;
 import decorator.bille.BilleDVD;
 import decorator.bille.BilleDynamique;
-import decorator.decorateur.DecorateurCouleur;
-import decorator.decorateur.DecorateurPasseMurail;
-import decorator.decorateur.DecorateurPesenteurRebond;
-import decorator.decorateur.DecorateurSon;
+import decorator.decorateur.*;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
@@ -91,17 +88,17 @@ public class testDecorateur {
 
 //--------------- ici commence la partie à changer ---------------------------------
         BilleDynamique b1 = new BilleDynamique();
-        System.out.println(b1);
-        DecorateurBille b2 = new DecorateurPasseMurail(new DecorateurCouleur(new BilleDynamique(),Couleur.jaune));
+     //   System.out.println(b1);
+        DecorateurBille b2 = new DecorateurCouleur(new BilleDynamique(),Couleur.bleu);
         DecorateurBille b3 = new BilleDVD(new DecorateurCouleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge),Couleur.vert));
         DecorateurBille b4 = new DecorateurPesenteurRebond(new DecorateurCouleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.rouge),Couleur.jaune),new Vecteur(0,0.00001));
         DecorateurBille b5= new DecorateurSon(new DecorateurCouleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.rouge),Couleur.jaune),hurlements[choixHurlementInitial], cadre);
 
         //Une bille normale colorée
-        billes.add(b1);
+        billes.add(b2);
 
         //Bille passe muraille
-        billes.add(b2);
+     //   billes.add(b2);
 
         //Bille rebondissante de type fond d'écran windows
       //  billes.add(b3);
