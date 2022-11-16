@@ -1,10 +1,10 @@
-package decorator.bille;
+package decorator.decorateur;
 
 import decorator.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import modele.Bille;
-public class BilleDVD extends DecorateurBille {
-    public BilleDVD(Bille b) {
+public class DecorateurBilleDVD extends DecorateurBille {
+    public DecorateurBilleDVD(Bille b) {
         super(b);
     }
     @Override

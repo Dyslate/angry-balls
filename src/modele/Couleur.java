@@ -21,6 +21,7 @@ public class Couleur {
     public static Couleur mauve = new Couleur(190,0,255,255);
     public static Couleur grisUltraStylé = new Couleur(51,51,51,100);
     public static Couleur couleurDuSex = new Couleur(69,69,69,69);
+    public static Couleur couleurDuWeed = new Couleur(42,04,20,42); // 0 BLAZE IT
 
 
 
