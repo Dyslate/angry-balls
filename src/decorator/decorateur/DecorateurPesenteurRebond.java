@@ -33,5 +33,3 @@ public class DecorateurPesenteurRebond extends DecorateurBille {
         }
     }
 
-
-
