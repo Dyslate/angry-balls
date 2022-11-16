@@ -18,6 +18,11 @@ public class Couleur {
     public static Couleur bleu = new Couleur(0,0,255,255);
     public static Couleur rouge = new Couleur(255,0,0,255);
     public static Couleur jaune = new Couleur(255,255,0,255);
+    public static Couleur mauve = new Couleur(190,0,255,255);
+    public static Couleur grisUltraStylé = new Couleur(51,51,51,100);
+    public static Couleur couleurDuSex = new Couleur(69,69,69,69);
+
+
 
     public long couleur;
 

@@ -9,10 +9,9 @@ import modele.Bille;
 import java.util.Vector;
 
 public class DecorateurPesenteurRebond extends DecorateurBille {
-    public Vecteur acceleration;
     public DecorateurPesenteurRebond(Bille b, Vecteur acceleration) {
         super(b);
-        this.acceleration=acceleration;
+        bille.acceleration=acceleration;
     }
 
 
@@ -22,7 +21,7 @@ public class DecorateurPesenteurRebond extends DecorateurBille {
         System.out.println(this.getAcceleration());
         //gestionAcceleration();
         //TODO DEBUG LACCELERATION DECROISSANTE DE CETTE BILLE
-        this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(),this.getVitesse()));
+       // this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(),this.getVitesse()));
        // super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
       //  this.getAcceleration().ajoute(this.getAcceleration());          // contribution du champ de pesanteur (par exemple)
        // this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution de l'accélération due au frottement dans l'air
