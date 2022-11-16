@@ -22,7 +22,7 @@ public class DecorateurPesenteurRebond extends DecorateurBille {
     public Vecteur gestionAcceleration(Vector<Bille> billes)
     {
         super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-        //this.getAcceleration().ajoute(this.acceleration);          // contribution du champ de pesanteur (par exemple)
+      //  this.getAcceleration().ajoute(this.acceleration);          // contribution du champ de pesanteur (par exemple)
         this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution de l'accélération due au frottement dans l'air
         return this.getAcceleration();
     }

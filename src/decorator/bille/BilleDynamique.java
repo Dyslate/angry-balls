@@ -80,7 +80,7 @@ public class BilleDynamique extends Bille {
 
     @Override
     public Vecteur gestionAcceleration(Vector<Bille> billes) {
-        this.getAcceleration().set(Vecteur.VECTEURNUL);
+        acceleration.set(Vecteur.VECTEURNUL);
         return this.getAcceleration();
     }
 
