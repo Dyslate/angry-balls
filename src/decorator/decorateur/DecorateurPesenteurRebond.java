@@ -9,27 +9,32 @@ import modele.Bille;
 import java.util.Vector;
 
 public class DecorateurPesenteurRebond extends DecorateurBille {
+    Vecteur acceleration;
+
     public DecorateurPesenteurRebond(Bille b, Vecteur acceleration) {
         super(b);
-        bille.acceleration=acceleration;
+        this.acceleration=acceleration;
     }
 
 
+
     @Override
-    public void gestionAcceleration(Vector<Bille> billes)
+    public Vecteur gestionAcceleration(Vector<Bille> billes)
     {
-        System.out.println(this.getAcceleration());
-        //gestionAcceleration();
-        //TODO DEBUG LACCELERATION DECROISSANTE DE CETTE BILLE
-       // this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(),this.getVitesse()));
-       // super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-      //  this.getAcceleration().ajoute(this.getAcceleration());          // contribution du champ de pesanteur (par exemple)
-       // this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution de l'accélération due au frottement dans l'air
+        super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
+        //this.getAcceleration().ajoute(this.acceleration);          // contribution du champ de pesanteur (par exemple)
+        this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution de l'accélération due au frottement dans l'air
+        return this.getAcceleration();
     }
 
+
+
     @Override
-    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
-        Collisions.collisionBilleContourAvecRebond( this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-        }
+    public void collisionContour(double abscisseCoinHautGauche,
+                                 double ordonnéeCoinHautGauche, double largeur, double hauteur)
+    {
+        Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
+
+    }
     }
 

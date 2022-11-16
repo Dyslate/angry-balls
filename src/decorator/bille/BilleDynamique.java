@@ -8,6 +8,18 @@ import modele.OutilsBille;
 import java.awt.*;
 import java.util.Vector;
 public class BilleDynamique extends Bille {
+
+    public Vecteur position; // centre de la bille
+    public double rayon; // rayon > 0
+    public Vecteur vitesse;
+    public Vecteur acceleration;
+
+    public int clef; // identifiant unique de cette bille
+    public Couleur couleur;
+    private static final int prochaineClef = 0;
+    public static double ro = 1; // masse volumique
+
+
     public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Couleur couleur) {
         this.position=position;
         this.rayon=rayon;
@@ -34,6 +46,7 @@ public class BilleDynamique extends Bille {
     public Vecteur getPosition() {
         return position;
     }
+
 
     @Override
     public double getRayon() {
@@ -66,8 +79,9 @@ public class BilleDynamique extends Bille {
     }
 
     @Override
-    public void gestionAcceleration(Vector<Bille> billes) {
+    public Vecteur gestionAcceleration(Vector<Bille> billes) {
         this.getAcceleration().set(Vecteur.VECTEURNUL);
+        return this.getAcceleration();
     }
 
     @Override

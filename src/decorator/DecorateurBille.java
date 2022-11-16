@@ -5,6 +5,7 @@ import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.Couleur;
 import modele.OutilsBille;
 
 import java.awt.*;
@@ -24,6 +25,10 @@ public abstract class DecorateurBille extends Bille {
     public Vecteur getVitesse(){return this.bille.getVitesse();}
 
     @Override
+    public Couleur getCouleur(){
+        return this.bille.getCouleur();
+    }
+    @Override
     public double getRayon(){return this.bille.getRayon();}
 
     @Override
@@ -40,8 +45,8 @@ public abstract class DecorateurBille extends Bille {
     }
 
     @Override
-    public void gestionAcceleration(Vector<Bille> billes){
-        this.getAcceleration().set(Vecteur.VECTEURNUL);
+    public Vecteur gestionAcceleration(Vector<Bille> billes){
+        return bille.gestionAcceleration(billes);
     }
 
 
@@ -67,13 +72,18 @@ public abstract class DecorateurBille extends Bille {
         xMin = (int) Math.round(getPosition().x - getRayon());
         yMin = (int) Math.round(getPosition().y - getRayon());
         width = height = 2 * (int) Math.round(getRayon());
-        g.setColor(bille.couleur.transformeAWT());            // ICI à modifier, actuellement il récupère la classe Couleur mais il veut un Color qui vient d'AWT, il faut donc transformer notre couleur en AWT et la balancer ici
+        g.setColor(bille.getCouleur().transformeAWT());            // ICI à modifier, actuellement il récupère la classe Couleur mais il veut un Color qui vient d'AWT, il faut donc transformer notre couleur en AWT et la balancer ici
+    /*    System.out.println("g.getColor() "+g.getColor());
+        System.out.println("bille.couleur "+bille.couleur);
+        System.out.println("bille.couleur toString "+bille.couleur.toString());
+*/
+
         g.fillOval(xMin, yMin, width, height);
         g.drawOval(xMin,yMin,width,height);
     }
     @Override
     public String toString(){
         return "position = " + getPosition() + " rayon = " + getRayon() + " vitesse = " + getVitesse() + " acceleration = "
-                + getAcceleration() + " couleur = " + couleur + "clef = " + getClef();
+                + getAcceleration()  + "clef = " + getClef();
     }
 }

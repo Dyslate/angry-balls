@@ -5,7 +5,6 @@ import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 public class DecorateurPasseMurail extends DecorateurBille {
-    public Vecteur acceleration;
     public DecorateurPasseMurail(Bille b) {
         super(b);
     }

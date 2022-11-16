@@ -23,24 +23,19 @@ import mesmaths.geometrie.base.Vecteur;
  */
 public abstract class Bille {
 //----------------- classe Bille-------------------------------------
-	public Vecteur position; // centre de la bille
-	public double rayon; // rayon > 0
-	public Vecteur vitesse;
-	public Vecteur acceleration;
 
-	public int clef; // identifiant unique de cette bille
-	public Couleur couleur;
-	private static final int prochaineClef = 0;
-	public static double ro = 1; // masse volumique
 	public abstract Vecteur getPosition();
 	public abstract double getRayon();
+	public abstract Couleur getCouleur();
 	public abstract Vecteur getVitesse();
 	public abstract Vecteur getAcceleration();
 	public abstract int getClef();
 	public abstract double masse();
 	public abstract void deplacer(double deltaT);
-	public abstract void gestionAcceleration(Vector<Bille> billes);
-	public abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
+	public abstract Vecteur gestionAcceleration(Vector<Bille> billes);
+	public boolean gestionCollisionBilleBille(Vector<Bille> billes){
+		return OutilsBille.gestionCollisionBilleBille(this,billes);
+	}
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 			double hauteur);
 	public abstract void dessine(Graphics g);

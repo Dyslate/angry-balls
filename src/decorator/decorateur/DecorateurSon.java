@@ -1,6 +1,7 @@
 package decorator.decorateur;
 
 import decorator.DecorateurBille;
+import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import musique.SonLong;
@@ -22,6 +23,12 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
         super(b);
         this.sonLong=sonLong;
         this.vueBillard=vueBillard;
+    }
+
+
+    @Override
+    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
+        Collisions.collisionBilleContourPasseMuraille( bille.getPosition(), abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
     }
     @Override
     public void deplacer(double deltaT){

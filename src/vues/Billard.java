@@ -32,7 +32,7 @@ public class Billard extends Canvas {
 		for (i = 0; i < this.billes.size(); ++i)
 			this.billes.get(i).dessine(graphics);
 
-		// System.out.println("billes dans le billard = " + billes);
+		 System.out.println("billes dans le billard = " + billes);
 	}
 
 }

@@ -87,39 +87,28 @@ public class testDecorateur {
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
-        BilleDynamique b1 = new BilleDynamique();
-        //La bille bleu fonctionne
-        DecorateurBille b2 = new DecorateurCouleur(new BilleDynamique(), Couleur.rouge);
 
-        DecorateurBille b3 = new DecorateurPasseMurail(new DecorateurCouleur(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0525),Couleur.rouge),Couleur.noir));
+        DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0525),Couleur.rouge));
+        DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0525),Couleur.jaune));
+        DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
+        DecorateurBille b6 = new DecorateurPesenteurRebond(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
 
+        //Bille passe muraille
+     //   billes.add(b3);
 
-        DecorateurBille b4 = new DecorateurBilleDVD(new DecorateurCouleur(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0525),Couleur.rouge),Couleur.jaune));
-
-        DecorateurBille b5 = new DecorateurSon(new DecorateurCouleur(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.rouge),Couleur.rouge),hurlements[choixHurlementInitial], cadre);
-
-
-
-        DecorateurBille b6 = new DecorateurPesenteurRebond(new DecorateurCouleur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.rouge),Couleur.mauve),new Vecteur(0,0.0025));
-
-        //Une bille de base
-        //billes.add(b1);
-
-        //Bille coloré
-        //billes.add(b2);
-
-        //Bille rebondissante de type fond d'écran windows
-      //  billes.add(b3);
-
-        //Bille pesenteur avec rebond //TODO DEBUG L'ACCELERATION DECROISSANTE
+        //Bille DVD
       //  billes.add(b4);
-       // System.out.println(b4);
+        System.out.println(b4);
 
-        //Bille Hurlante //TODO DEBUG L'ACCELERATION
-       // cadre.addChoixHurlementListener((ItemListener) b5);
-     //   billes.add(b5);
+        //Bille Hurlante
+        // cadre.addChoixHurlementListener((ItemListener) b5);
+         //billes.add(b5);
+
+        //Bille rebondissante
+        billes.add(b6);
 
 
+        System.out.println(billes);
 
 
         /*
