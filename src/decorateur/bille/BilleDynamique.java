@@ -1,4 +1,4 @@
-package decorator.bille;
+package decorateur.bille;
 import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
@@ -78,10 +78,9 @@ public class BilleDynamique extends Bille {
         				deltaT);
     }
 
-    @Override
-    public Vecteur gestionAcceleration(Vector<Bille> billes) {
-        acceleration.set(Vecteur.VECTEURNUL); // Pour l'accélération ça embête, mais c'est nécessaire
-        return this.getAcceleration();
+
+    public void gestionAcceleration(Vector<Bille> billes) {
+        acceleration.set(Vecteur.VECTEURNUL);
     }
 
     @Override

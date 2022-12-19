@@ -2,6 +2,8 @@ package vues;
 
 import java.awt.*;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferStrategy;
+import java.nio.Buffer;
 import java.util.Vector;
 
 import modele.Bille;
@@ -85,7 +87,14 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	@Override
 	public void miseAJour() {
-		this.billard.repaint();
+		// BufferStrategy pour l'Active Rendering
+		BufferStrategy buffer = billard.getBufferStrategy();
+		Graphics graph = buffer.getDrawGraphics();
+		graph.clearRect(0,0,getWidth(),getHeight());
+		this.billard.paint(graph);
+		graph.dispose();
+		buffer.show();
+		// OLD : this.billard.repaint();
 	}
 
 	/*
@@ -96,6 +105,9 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	@Override
 	public void montrer() {
 		this.setVisible(true);
+		// Active Rendering
+		this.billard.createBufferStrategy(2);
+		this.billard.setIgnoreRepaint(true);
 	}
 
 	public void addChoixHurlementListener(ItemListener ecouteurChoixHurlant) {

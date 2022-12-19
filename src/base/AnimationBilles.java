@@ -6,10 +6,10 @@ import modele.Bille;
 import vues.VueBillard;
 
 /**
- * responsable de l'animation des billes, c-e-d responsable du mouvement de la
- * liste des billes. met perpetuellement e jour les billes. gere le delai entre
- * 2 mises e jour (deltaT) et previent la vue responsable du dessin des billes
- * qu'il faut mettre e jour la scene
+ * responsable de l'animation des billes, c-à-d responsable du mouvement de la
+ * liste des billes. met perpetuellement à jour les billes. gere le delai entre
+ * 2 mises à jour (deltaT) et previent la vue responsable du dessin des billes
+ * qu'il faut mettre à jour la scene
  * 
  * ICI : IL N'Y A RIEN A CHANGER
  */
@@ -42,7 +42,7 @@ public class AnimationBilles implements Runnable {
 
 			while (!Thread.interrupted()) // gestion du mouvement
 			{
-				// deltaT = COEFF*minRayons2/(1+maxVitessesCarrees(billes)); // mise e jour
+				//deltaT = COEFF*minRayons2/(1+maxVitessesCarrees(billes)); // mise e jour
 				// deltaT. L'addition + 1 est une astuce pour eviter les divisions par zero
 
 				// System.err.println("deltaT = " + deltaT);

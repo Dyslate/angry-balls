@@ -32,7 +32,7 @@ public abstract class Bille {
 	public abstract int getClef();
 	public abstract double masse();
 	public abstract void deplacer(double deltaT);
-	public abstract Vecteur gestionAcceleration(Vector<Bille> billes);
+	public abstract void gestionAcceleration(Vector<Bille> billes);
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes){
 		return OutilsBille.gestionCollisionBilleBille(this,billes);
 	}

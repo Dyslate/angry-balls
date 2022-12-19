@@ -1,8 +1,7 @@
-package decorator.decorateur;
+package decorateur.decorateur;
 
-import decorator.DecorateurBille;
+import decorateur.DecorateurBille;
 import mesmaths.cinematique.Collisions;
-import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 public class DecorateurPasseMurail extends DecorateurBille {
     public DecorateurPasseMurail(Bille b) {
