@@ -1,5 +1,6 @@
 package decorateur;
 
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -87,29 +88,27 @@ public class testDecorateur {
 
 //--------------- ici commence la partie à changer ---------------------------------
 
-        DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0525),Couleur.rouge));
-        DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0525),Couleur.jaune));
+        DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
+        DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
-        DecorateurBille b6 = new DecorateurPesenteurRebond(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
+        DecorateurBille b6 = new DecorateurPesenteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
 
         //Bille passe muraille
-        //billes.add(b3);
+        billes.add(b3);
 
         //Bille DVD
-        //billes.add(b4);
-       // System.out.println(b4);
+        billes.add(b4);
 
         //Bille Hurlante
-        // cadre.addChoixHurlementListener((ItemListener) b5);
-        // billes.add(b5);
+        //cadre.addChoixHurlementListener((ItemListener) b5);
+        //billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);
 
 
         System.out.println(billes);
-
-
+        cadre.createBufferStrategy(2);
         /*
         billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
         billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
