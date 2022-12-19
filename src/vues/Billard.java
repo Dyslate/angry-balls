@@ -40,6 +40,7 @@ public class Billard extends Canvas {
 		graph.clearRect(0, 0, getWidth(), getHeight());
 		for(i = 0; i < this.billes.size(); ++i)
 			this.billes.get(i).dessine(graph);
+			System.out.println("billes dans le billard = " + billes);
 	}
 
 }
