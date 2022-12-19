@@ -90,7 +90,8 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		// BufferStrategy pour l'Active Rendering
 		BufferStrategy buffer = billard.getBufferStrategy();
 		Graphics graph = buffer.getDrawGraphics();
-		billard.render(graph);
+		graph.clearRect(0,0,getWidth(),getHeight());
+		this.billard.paint(graph);
 		graph.dispose();
 		buffer.show();
 		// OLD : this.billard.repaint();

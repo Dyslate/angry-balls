@@ -100,8 +100,8 @@ public class testDecorateur {
         billes.add(b4);
 
         //Bille Hurlante
-        //cadre.addChoixHurlementListener((ItemListener) b5);
-        //billes.add(b5);
+        cadre.addChoixHurlementListener((ItemListener) b5);
+        billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);

@@ -35,12 +35,4 @@ public class Billard extends Canvas {
 		 System.out.println("billes dans le billard = " + billes);
 	}
 
-	public void render(Graphics graph) {		// en vue de supprimer la dépendance avec AWT
-		int i;
-		graph.clearRect(0, 0, getWidth(), getHeight());
-		for(i = 0; i < this.billes.size(); ++i)
-			this.billes.get(i).dessine(graph);
-			System.out.println("billes dans le billard = " + billes);
-	}
-
 }
