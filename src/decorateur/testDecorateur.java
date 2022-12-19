@@ -1,6 +1,5 @@
-package decorator;
+package decorateur;
 
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -8,9 +7,9 @@ import base.AnimationBilles;
 import base.EcouteurBoutonArreter;
 import base.EcouteurBoutonLancer;
 import base.OutilsConfigurationBilleHurlante;
-import decorator.decorateur.DecorateurBilleDVD;
-import decorator.bille.BilleDynamique;
-import decorator.decorateur.*;
+import decorateur.decorateur.DecorateurBilleDVD;
+import decorateur.bille.BilleDynamique;
+import decorateur.decorateur.*;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;

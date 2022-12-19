@@ -1,6 +1,6 @@
-package decorator.decorateur;
+package decorateur.decorateur;
 
-import decorator.DecorateurBille;
+import decorateur.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import modele.Bille;
 public class DecorateurBilleDVD extends DecorateurBille {
