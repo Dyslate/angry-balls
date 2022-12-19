@@ -94,15 +94,15 @@ public class testDecorateur {
         DecorateurBille b6 = new DecorateurPesenteurRebond(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
 
         //Bille passe muraille
-        billes.add(b3);
+        //billes.add(b3);
 
         //Bille DVD
-        billes.add(b4);
+        //billes.add(b4);
        // System.out.println(b4);
 
         //Bille Hurlante
         // cadre.addChoixHurlementListener((ItemListener) b5);
-         billes.add(b5);
+        // billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);
