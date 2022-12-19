@@ -78,10 +78,9 @@ public class BilleDynamique extends Bille {
         				deltaT);
     }
 
-    @Override
-    public Vecteur gestionAcceleration(Vector<Bille> billes) {
+
+    public void gestionAcceleration(Vector<Bille> billes) {
         acceleration.set(Vecteur.VECTEURNUL);
-        return this.getAcceleration();
     }
 
     @Override

@@ -45,7 +45,7 @@ public abstract class DecorateurBille extends Bille {
     }
 
     @Override
-    public Vecteur gestionAcceleration(Vector<Bille> billes){return this.bille.gestionAcceleration(billes);}
+    public void gestionAcceleration(Vector<Bille> billes){}
 
 
 

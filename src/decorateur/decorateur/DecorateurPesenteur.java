@@ -14,11 +14,10 @@ public class DecorateurPesenteur extends DecorateurBille {
     }
 
     @Override
-    public Vecteur gestionAcceleration(Vector<Bille> billes)
+    public void gestionAcceleration(Vector<Bille> billes)
     {
         bille.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
         getAcceleration().ajoute(this.acceleration);          // contribution du champ de pesanteur (par exemple)
-        return this.getAcceleration();
     }
 
     @Override

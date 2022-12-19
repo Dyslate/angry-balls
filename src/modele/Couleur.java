@@ -23,6 +23,7 @@ public class Couleur {
     public static Couleur couleurDuCringe = new Couleur(69,69,69,69);
     public static Couleur couleurSnoopDog = new Couleur(42,04,20,42); // 0 BLAZE IT
 
+    public static Couleur rose = new Couleur(255, 105, 180, 255);
 
 
     public long couleur;
