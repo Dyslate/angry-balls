@@ -1,6 +1,7 @@
 package decorateur.bille;
 import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
+import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
@@ -69,7 +70,7 @@ public class BilleDynamique extends Bille {
 
     @Override
     public double masse() {
-        return ro;
+        return ro * Geop.volumeSphère(rayon);
     }
 
     @Override
