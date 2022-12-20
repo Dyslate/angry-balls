@@ -94,7 +94,7 @@ public class testDecorateur {
         DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
         DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
-        DecorateurBille b7 = new DecorateurFrottement(new BilleDynamique(p0, rayon, v0, new Vecteur(0, 0.0025), Couleur.rose));
+        DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.rose),new Vecteur(0,0.0055)));
         BilleDynamique b8 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.025), Couleur.mauve);
 
         //Bille passe muraille
