@@ -63,10 +63,10 @@ public class testDecorateur {
         xMax = cadre.largeurBillard(); // abscisse maximal
         yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.15 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
+        double rayon = 0.1 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, v0, v1, v2, v3, v4; // les positions des centres des billes et les vecteurs vitesse
+        Vecteur p0, p1, p2, p3, p4, p5, v0, v1, v2, v3, v4, v5; // les positions des centres des billes et les vecteurs vitesse
         // au demarrage.
         // Elles vont etre choisies aleatoirement
 
@@ -77,38 +77,44 @@ public class testDecorateur {
         p2 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p5 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
 
         v0 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, 0);
+        v1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v2 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v5 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
 
         DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
         DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
-        DecorateurBille b6 = new DecorateurPesenteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
+        DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0,0.0025),Couleur.bleu),new Vecteur(0,0.0025));
         DecorateurBille b7 = new DecorateurFrottement(new BilleDynamique(p0, rayon, v0, new Vecteur(0, 0.0025), Couleur.rose));
+        BilleDynamique b8 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.025), Couleur.mauve);
 
         //Bille passe muraille
-        //billes.add(b3);
+        billes.add(b3);
 
         //Bille DVD
         billes.add(b4);
 
         //Bille Hurlante
-        cadre.addChoixHurlementListener((ItemListener) b5);
-        //billes.add(b5);
+        //cadre.addChoixHurlementListener((ItemListener) b5);
+        billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);
 
         // Bille frottement
         billes.add(b7);
+
+        // Bille dynamique basique
+        //billes.add(b8);
 
         System.out.println(billes);
         cadre.createBufferStrategy(2);

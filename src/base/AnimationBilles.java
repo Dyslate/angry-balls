@@ -42,7 +42,7 @@ public class AnimationBilles implements Runnable {
 
 			while (!Thread.interrupted()) // gestion du mouvement
 			{
-				//deltaT = COEFF*minRayons2/(1+maxVitessesCarrees(billes)); // mise e jour
+				deltaT = COEFF*minRayons2/(1+maxVitessesCarrees(billes)); // mise à jour
 				// deltaT. L'addition + 1 est une astuce pour eviter les divisions par zero
 
 				// System.err.println("deltaT = " + deltaT);

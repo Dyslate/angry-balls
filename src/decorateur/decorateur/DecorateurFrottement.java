@@ -1,6 +1,7 @@
 package decorateur.decorateur;
 
 import decorateur.DecorateurBille;
+import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import mesmaths.mecanique.MecaniquePoint;
 import modele.Bille;
@@ -14,7 +15,7 @@ public class DecorateurFrottement extends DecorateurBille {
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-        this.bille.gestionAcceleration(billes);
+        super.gestionAcceleration(billes);
         this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(masse(), getVitesse()));
     }
 
