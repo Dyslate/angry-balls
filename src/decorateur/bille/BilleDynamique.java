@@ -73,21 +73,11 @@ public class BilleDynamique extends Bille {
         return ro * Geop.volumeSphère(rayon);
     }
 
-    @Override
-    public void deplacer(double deltaT) {
-        Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAcceleration(),
-        				deltaT);
-    }
-
 
     public void gestionAcceleration(Vector<Bille> billes) {
-        acceleration.set(Vecteur.VECTEURNUL);
+        this.getAcceleration().set(Vecteur.VECTEURNUL);
     }
 
-    @Override
-    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-        return OutilsBille.gestionCollisionBilleBille(this, billes);
-    }
     public Couleur getCouleur() {
         return couleur;
     }

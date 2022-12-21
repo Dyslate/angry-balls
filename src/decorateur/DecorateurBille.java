@@ -40,7 +40,7 @@ public abstract class DecorateurBille extends Bille {
     public double masse(){return this.bille.masse();}
 
     public void gestionAcceleration(Vector<Bille> billes) {
-        this.bille.getAcceleration().set(Vecteur.VECTEURNUL);
+        this.bille.gestionAcceleration(billes);
     }
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {

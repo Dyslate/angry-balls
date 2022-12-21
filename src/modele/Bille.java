@@ -35,7 +35,7 @@ public abstract class Bille {
 	public void deplacer(double deltaT) {
 		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
 	}
-	public void gestionAcceleration(Vector<Bille> billes) {};
+	public abstract void gestionAcceleration(Vector<Bille> billes);
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes){
 		return OutilsBille.gestionCollisionBilleBille(this,billes);
 	}

@@ -8,21 +8,20 @@ import java.util.Vector;
 
 public class DecorateurPesanteur extends DecorateurBille {
     Vecteur acceleration;
-    public static Vecteur gravite = new Vecteur(0, 0.025);
+    public Vecteur gravite = new Vecteur(0, 0.01);
     public DecorateurPesanteur(Bille b) {
         super(b);
-        this.acceleration = gravite;
     }
-    public DecorateurPesanteur(Bille b, Vecteur acceleration) {
+    public DecorateurPesanteur(Bille b, Vecteur gravite) {
         super(b);
-        this.acceleration=acceleration;
+        this.gravite=gravite;
     }
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes)
     {
-        bille.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-        getAcceleration().ajoute(this.acceleration);          // contribution du champ de pesanteur (par exemple)
+        super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
+        this.bille.getAcceleration().ajoute(this.gravite);          // contribution du champ de pesanteur (par exemple)
     }
 
     @Override

@@ -12,10 +12,6 @@ public class DecorateurBilleDVD extends DecorateurBille {
         super(b);
     }
 
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes) {
-        getAcceleration().set(Vecteur.VECTEURNUL);
-    }
 
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
