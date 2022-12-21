@@ -50,11 +50,6 @@ public abstract class DecorateurBille extends Bille {
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
         this.bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-
-      //  Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(), this.getRayon(), this.getVitesse()
-      //          abscisseCoinHautGauche, largeur);
-      //  Collisions.collisionBilleContourAvecArretVertical(this.getPosition(), this.getRayon(), this.getVitesse(),
-      //          ordonneeCoinHautGauche, hauteur);
     }
 
     @Override

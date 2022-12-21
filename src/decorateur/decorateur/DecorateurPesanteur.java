@@ -7,7 +7,6 @@ import modele.Bille;
 import java.util.Vector;
 
 public class DecorateurPesanteur extends DecorateurBille {
-    Vecteur acceleration;
     public Vecteur gravite = new Vecteur(0, 0.01);
     public DecorateurPesanteur(Bille b) {
         super(b);

@@ -25,11 +25,6 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
         this.vueBillard=vueBillard;
     }
 
-
-    @Override
-    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
-        Collisions.collisionBilleContourPasseMuraille( bille.getPosition(), abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-    }
     @Override
     public void deplacer(double deltaT){
         super.deplacer(deltaT);
