@@ -38,28 +38,18 @@ public abstract class DecorateurBille extends Bille {
 
     @Override
     public double masse(){return this.bille.masse();}
-   @Override
-    public void deplacer(double deltaT){
-       Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAcceleration(),
-               deltaT);
+
+    public void gestionAcceleration(Vector<Bille> billes) {
+        this.bille.gestionAcceleration(billes);
     }
-
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes){}
-
-
-
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-        return OutilsBille.gestionCollisionBilleBille(this, billes);
+        return this.bille.gestionCollisionBilleBille(billes);
     }
 
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
-        Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(), this.getRayon(), this.getVitesse(),
-                abscisseCoinHautGauche, largeur);
-        Collisions.collisionBilleContourAvecArretVertical(this.getPosition(), this.getRayon(), this.getVitesse(),
-                ordonneeCoinHautGauche, hauteur);
+        this.bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
     }
 
     @Override
@@ -70,7 +60,7 @@ public abstract class DecorateurBille extends Bille {
         xMin = (int) Math.round(getPosition().x - getRayon());
         yMin = (int) Math.round(getPosition().y - getRayon());
         width = height = 2 * (int) Math.round(getRayon());
-        g.setColor(bille.getCouleur().transformeAWT());            // ICI à modifier, actuellement il récupère la classe Couleur mais il veut un Color qui vient d'AWT, il faut donc transformer notre couleur en AWT et la balancer ici
+        g.setColor(bille.getCouleur().transformeAWT());
     /*    System.out.println("g.getColor() "+g.getColor());
         System.out.println("bille.couleur "+bille.couleur);
         System.out.println("bille.couleur toString "+bille.couleur.toString());

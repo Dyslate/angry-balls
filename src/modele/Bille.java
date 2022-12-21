@@ -3,6 +3,7 @@ package modele;
 import java.awt.*;
 import java.util.Vector;
 
+import mesmaths.cinematique.Cinematique;
 import mesmaths.geometrie.base.Vecteur;
 
 /**
@@ -31,7 +32,9 @@ public abstract class Bille {
 	public abstract Vecteur getAcceleration();
 	public abstract int getClef();
 	public abstract double masse();
-	public abstract void deplacer(double deltaT);
+	public void deplacer(double deltaT) {
+		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
+	}
 	public abstract void gestionAcceleration(Vector<Bille> billes);
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes){
 		return OutilsBille.gestionCollisionBilleBille(this,billes);
