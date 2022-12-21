@@ -17,7 +17,7 @@ public class BilleDynamique extends Bille {
 
     public int clef; // identifiant unique de cette bille
     public Couleur couleur;
-    private static final int prochaineClef = 0;
+    private static int prochaineClef = 0;
     public static double ro = 1; // masse volumique
 
 
@@ -26,6 +26,7 @@ public class BilleDynamique extends Bille {
         this.rayon=rayon;
         this.vitesse=vitesse;
         this.couleur=couleur;
+        this.clef = prochaineClef++;
     }
 
     public BilleDynamique() {
@@ -34,6 +35,7 @@ public class BilleDynamique extends Bille {
         this.vitesse=new Vecteur(0,0);
         this.couleur= new Couleur(100,100,100,100);
         this.acceleration=new Vecteur(0,0);
+        this.clef = prochaineClef++;
     }
 
     public BilleDynamique(Vecteur centre, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur) {
@@ -42,6 +44,7 @@ public class BilleDynamique extends Bille {
         this.acceleration = acceleration;
         this.couleur = couleur;
         this.vitesse = vitesse;
+        this.clef = prochaineClef++;
     }
     @Override
     public Vecteur getPosition() {
@@ -76,6 +79,11 @@ public class BilleDynamique extends Bille {
 
     public void gestionAcceleration(Vector<Bille> billes) {
         this.getAcceleration().set(Vecteur.VECTEURNUL);
+    }
+
+    @Override
+    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+        return super.gestionCollisionBilleBille(billes);
     }
 
     public Couleur getCouleur() {
