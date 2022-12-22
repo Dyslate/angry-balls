@@ -69,10 +69,10 @@ public class testDecorateur {
         xMax = cadre.largeurBillard(); // abscisse maximal
         yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.1 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
+        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, p5, v0, v1, v2, v3, v4, v5; // les positions des centres des billes et les vecteurs vitesse
+        Vecteur p0, p1, p2, p3, p4, p5, p6,  v0, v1, v2, v3, v4, v5, v6; // les positions des centres des billes et les vecteurs vitesse
         // au demarrage.
         // Elles vont etre choisies aleatoirement
 
@@ -84,6 +84,7 @@ public class testDecorateur {
         p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p5 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p6 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
 
@@ -93,6 +94,7 @@ public class testDecorateur {
         v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v5 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v6 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
 
@@ -104,31 +106,28 @@ public class testDecorateur {
                 ,Couleur.rose),new Vecteur(0,0.025)));
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
 
-        DecorateurBille b9 = new DecorateurPilote((new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog)));
+        DecorateurBille b9 = new DecorateurPilote((new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
 
 
         //Bille passe muraille
-        billes.add(b3);
+        //billes.add(b3);
 
         //Bille DVD
-        billes.add(b4);
+        //billes.add(b4);
 
         //Bille Hurlante
         //cadre.addChoixHurlementListener((ItemListener) b5);
-        billes.add(b5);
+        //billes.add(b5);
 
         //Bille rebondissante
-        billes.add(b6);
+        //billes.add(b6);
 
         // Bille frottement
-        billes.add(b7);
+        //billes.add(b7);
 
         // Bille Newton avec arrêt
-     //   billes.add(b8);
+        //billes.add(b8);
 
-
-       // billes.add(b6);
-        //    billes.add(b8);
         //Test Bille piloté
         billes.add(b9);
        // System.out.println(billes);
