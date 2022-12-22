@@ -8,3 +8,5 @@ Transformer AWT (Color.RED) avec une classe RGB (0 a 255 x 4 (Red,Green,Blue,Tra
 Touch pour contrôler une bille spécifique (un decorateur drag and drop ou contrôle total selon la souris)
 Supprimer la dépendance AWT dans le billard
 Virer la dépendance AWT dans BILLE (dessine)
+
+Ajouter son choc bille via Audacity pour bien timestamp
