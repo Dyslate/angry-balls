@@ -27,6 +27,7 @@ public abstract class Bille {
 
 	public abstract Vecteur getPosition();
 	public abstract double getRayon();
+	public abstract void setRayon(double rayon);
 	public abstract Couleur getCouleur();
 	public abstract Vecteur getVitesse();
 	public abstract Vecteur getAcceleration();
@@ -43,4 +44,6 @@ public abstract class Bille {
 			double hauteur);
 	public abstract void dessine(Graphics g);
 	public abstract String toString();
+
+	public abstract boolean estPilotable();
 }

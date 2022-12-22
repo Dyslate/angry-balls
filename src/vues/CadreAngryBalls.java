@@ -3,7 +3,6 @@ package vues;
 import java.awt.*;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferStrategy;
-import java.nio.Buffer;
 import java.util.Vector;
 
 import modele.Bille;
@@ -23,7 +22,7 @@ import outilsvues.Outils;
  */
 public class CadreAngryBalls extends Frame implements VueBillard {
 	TextField presentation;
-	Billard billard;
+	public static Billard billard;
 	public Button lancerBilles, arreterBilles;
 	Panel haut, centre, bas, ligneBoutonsLancerArret;
 	PanneauChoixHurlement ligneBoutonsChoixHurlement;

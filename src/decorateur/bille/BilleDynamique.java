@@ -51,11 +51,18 @@ public class BilleDynamique extends Bille {
         return position;
     }
 
+    @Override
+    public boolean estPilotable(){
+        return false;
+    }
 
     @Override
     public double getRayon() {
         return rayon;
     }
+
+    @Override
+    public void setRayon(double rayon) {this.rayon = rayon;}
     @Override
     public Vecteur getVitesse() {
         return vitesse;

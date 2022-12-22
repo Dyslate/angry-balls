@@ -32,12 +32,19 @@ public abstract class DecorateurBille extends Bille {
     public double getRayon(){return this.bille.getRayon();}
 
     @Override
+    public void setRayon(double rayon) {this.bille.setRayon(rayon);}
+    @Override
     public Vecteur getAcceleration(){return this.bille.getAcceleration();}
     @Override
     public int getClef(){return this.bille.getClef();}
 
     @Override
     public double masse(){return this.bille.masse();}
+
+    @Override
+    public boolean estPilotable(){
+        return false;
+    }
 
     public void gestionAcceleration(Vector<Bille> billes) {
         this.bille.gestionAcceleration(billes);
