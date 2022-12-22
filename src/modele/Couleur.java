@@ -19,6 +19,8 @@ public class Couleur {
     public static Couleur rouge = new Couleur(255,0,0,255);
     public static Couleur jaune = new Couleur(255,255,0,255);
     public static Couleur mauve = new Couleur(190,0,255,255);
+
+    public static Couleur orange = new Couleur(255, 69, 0, 255);
     public static Couleur grisUltraStylé = new Couleur(51,51,51,100);
     public static Couleur couleurDuCringe = new Couleur(69,69,69,69);
     public static Couleur couleurSnoopDog = new Couleur(42,04,20,42); // 0 BLAZE IT

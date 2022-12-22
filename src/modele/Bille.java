@@ -27,6 +27,7 @@ public abstract class Bille {
 
 	public abstract Vecteur getPosition();
 	public abstract double getRayon();
+	public abstract void setRayon(double rayon);
 	public abstract Couleur getCouleur();
 	public abstract Vecteur getVitesse();
 	public abstract Vecteur getAcceleration();

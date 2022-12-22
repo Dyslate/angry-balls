@@ -3,7 +3,6 @@ package vues;
 import java.awt.*;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferStrategy;
-import java.nio.Buffer;
 import java.util.Vector;
 
 import modele.Bille;
