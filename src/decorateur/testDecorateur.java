@@ -1,5 +1,6 @@
 package decorateur;
 
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -48,7 +49,7 @@ public class testDecorateur {
 
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
-        int choixHurlementInitial = 3;
+        int choixHurlementInitial = 4;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes, hurlements, choixHurlementInitial);
@@ -91,13 +92,13 @@ public class testDecorateur {
 
 //--------------- ici commence la partie à changer ---------------------------------
 
-        DecorateurBille b9 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
+        DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
         DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
         DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu),new Vecteur(0,0.001));
         DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose),new Vecteur(0,0.025)));
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
-        DecorateurBille b3 = new DecorateurPoissonGlobe(new DecorateurPasseMurail(new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
+        DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPasseMurail(new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
 
         //Bille passe muraille
         billes.add(b3);
@@ -106,8 +107,8 @@ public class testDecorateur {
         billes.add(b4);
 
         //Bille Hurlante
-        //cadre.addChoixHurlementListener((ItemListener) b5);
-        //billes.add(b5);
+        cadre.addChoixHurlementListener((ItemListener) b5);
+        billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);
@@ -119,7 +120,7 @@ public class testDecorateur {
         billes.add(b8);
 
         // Bille Poisson Globe + Bille Passe Muraille
-        //billes.add(b9);
+        billes.add(b9);
 
         System.out.println(billes);
         cadre.createBufferStrategy(2);

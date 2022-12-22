@@ -26,7 +26,7 @@ public class DecorateurPoissonGlobe extends DecorateurBille {
             if (this.bille.getRayon() < 3*vraiRayon) {
                 if (!gonfle)
                     gonfle = true;
-                modifTaille(this.bille, 1.1);
+                modifTaille(this.bille, 1.3);
             } else
                 gonfle = false;
         } else {
