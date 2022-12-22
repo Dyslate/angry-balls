@@ -1,6 +1,5 @@
 package decorateur;
 
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -49,7 +48,7 @@ public class testDecorateur {
 
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
-        int choixHurlementInitial = 2;
+        int choixHurlementInitial = 3;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes, hurlements, choixHurlementInitial);
@@ -63,10 +62,10 @@ public class testDecorateur {
         xMax = cadre.largeurBillard(); // abscisse maximal
         yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.1 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
+        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, p5, v0, v1, v2, v3, v4, v5; // les positions des centres des billes et les vecteurs vitesse
+        Vecteur p0, p1, p2, p3, p4, p5, p6, v0, v1, v2, v3, v4, v5, v6; // les positions des centres des billes et les vecteurs vitesse
         // au demarrage.
         // Elles vont etre choisies aleatoirement
 
@@ -78,6 +77,7 @@ public class testDecorateur {
         p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p5 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p6 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
 
@@ -87,15 +87,17 @@ public class testDecorateur {
         v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v5 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v6 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
 
-        DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
+        DecorateurBille b9 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
         DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
         DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu),new Vecteur(0,0.001));
         DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose),new Vecteur(0,0.025)));
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
+        DecorateurBille b3 = new DecorateurPoissonGlobe(new DecorateurPasseMurail(new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
 
         //Bille passe muraille
         billes.add(b3);
@@ -105,7 +107,7 @@ public class testDecorateur {
 
         //Bille Hurlante
         //cadre.addChoixHurlementListener((ItemListener) b5);
-        billes.add(b5);
+        //billes.add(b5);
 
         //Bille rebondissante
         billes.add(b6);
@@ -115,6 +117,9 @@ public class testDecorateur {
 
         // Bille Newton avec arrêt
         billes.add(b8);
+
+        // Bille Poisson Globe + Bille Passe Muraille
+        //billes.add(b9);
 
         System.out.println(billes);
         cadre.createBufferStrategy(2);

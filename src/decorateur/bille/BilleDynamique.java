@@ -56,6 +56,9 @@ public class BilleDynamique extends Bille {
     public double getRayon() {
         return rayon;
     }
+
+    @Override
+    public void setRayon(double rayon) {this.rayon = rayon;}
     @Override
     public Vecteur getVitesse() {
         return vitesse;
