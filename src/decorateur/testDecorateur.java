@@ -1,6 +1,5 @@
 package decorateur;
 
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -11,6 +10,8 @@ import base.OutilsConfigurationBilleHurlante;
 import decorateur.decorateur.DecorateurBilleDVD;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
+import decorateur.decorateur.DecorateurPilote;
+import decorateur.decorateur.state.ControleurGeneral;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
@@ -54,6 +55,11 @@ public class testDecorateur {
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes, hurlements, choixHurlementInitial);
 
+        //Initialiser le controlleur générale, et je lui donne dans son constructeur le cadre.
+        ControleurGeneral controleurGeneral = new ControleurGeneral(cadre);
+
+
+
         cadre.montrer(); // on rend visible la vue
 
 //------------- remplissage de la liste avec 5 billes -------------------------------
@@ -91,11 +97,15 @@ public class testDecorateur {
 //--------------- ici commence la partie à changer ---------------------------------
 
         DecorateurBille b3 = new DecorateurPasseMurail(new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge));
-        DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
+        DecorateurBille b4 = new DecorateurPilote(new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune)));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
         DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu),new Vecteur(0,0.001));
-        DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose),new Vecteur(0,0.025)));
+        DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025)
+                ,Couleur.rose),new Vecteur(0,0.025)));
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
+
+        DecorateurBille b9 = new DecorateurPilote((new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog)));
+
 
         //Bille passe muraille
         billes.add(b3);
@@ -114,9 +124,14 @@ public class testDecorateur {
         billes.add(b7);
 
         // Bille Newton avec arrêt
-        billes.add(b8);
+     //   billes.add(b8);
 
-        System.out.println(billes);
+
+       // billes.add(b6);
+        //    billes.add(b8);
+        //Test Bille piloté
+        billes.add(b9);
+       // System.out.println(billes);
         cadre.createBufferStrategy(2);
         /*
         billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
@@ -148,6 +163,7 @@ public class testDecorateur {
 
         cadre.lancerBilles.addActionListener(ecouteurBoutonLancer); // pourrait etre remplace par Observable - Observer
         cadre.arreterBilles.addActionListener(ecouteurBoutonArreter); // pourrait etre remplace par Observable -
+
         // Observer
 
     }

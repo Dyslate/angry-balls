@@ -39,6 +39,11 @@ public abstract class DecorateurBille extends Bille {
     @Override
     public double masse(){return this.bille.masse();}
 
+    @Override
+    public boolean estPilotable(){
+        return false;
+    }
+
     public void gestionAcceleration(Vector<Bille> billes) {
         this.bille.gestionAcceleration(billes);
     }

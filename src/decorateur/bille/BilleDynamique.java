@@ -51,6 +51,10 @@ public class BilleDynamique extends Bille {
         return position;
     }
 
+    @Override
+    public boolean estPilotable(){
+        return false;
+    }
 
     @Override
     public double getRayon() {

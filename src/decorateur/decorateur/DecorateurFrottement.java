@@ -1,8 +1,6 @@
 package decorateur.decorateur;
 
 import decorateur.DecorateurBille;
-import mesmaths.cinematique.Collisions;
-import mesmaths.geometrie.base.Vecteur;
 import mesmaths.mecanique.MecaniquePoint;
 import modele.Bille;
 

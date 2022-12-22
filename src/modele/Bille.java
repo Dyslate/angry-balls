@@ -43,4 +43,6 @@ public abstract class Bille {
 			double hauteur);
 	public abstract void dessine(Graphics g);
 	public abstract String toString();
+
+	public abstract boolean estPilotable();
 }
