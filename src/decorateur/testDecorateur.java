@@ -63,7 +63,7 @@ public class testDecorateur {
         xMax = cadre.largeurBillard(); // abscisse maximal
         yMax = cadre.hauteurBillard(); // ordonnee maximale
 
-        double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
+        double rayon = 0.04 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
         Vecteur p0, p1, p2, p3, p4, p5, p6, v0, v1, v2, v3, v4, v5, v6; // les positions des centres des billes et les vecteurs vitesse
@@ -96,7 +96,7 @@ public class testDecorateur {
         DecorateurBille b4 = new DecorateurBilleDVD(new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune));
         DecorateurBille b5 = new DecorateurSon(new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir),hurlements[choixHurlementInitial], cadre);
         DecorateurBille b6 = new DecorateurPesanteur(new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu),new Vecteur(0,0.001));
-        DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose),new Vecteur(0,0.025)));
+        DecorateurBille b7 = new DecorateurFrottement(new DecorateurPesanteur(new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.001),Couleur.rose),new Vecteur(0,0.005)));
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
         DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPasseMurail(new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
 

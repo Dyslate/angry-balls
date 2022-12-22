@@ -1,7 +1,6 @@
 package observateur;
 
-import mesmaths.geometrie.base.Vecteur;
-
 public interface ObservateurMouvement {
-    void deplacement(Vecteur deplacement);
+    public void ajouterObserve(ObserveMouvement observate);
+    public void suppressionObsere(ObserveMouvement observe);
 }
