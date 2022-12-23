@@ -29,8 +29,10 @@ public class BilleAttrape extends ControleurEtat{
       //  System.out.println("rel: "+posSouris1X+"-"+posSouris1Y);
 
         for (int i = 0; i < CadreAngryBalls.billard.billes.size(); i++){
-            if (e.getX() > CadreAngryBalls.billard.billes.get(i).getPosition().x - CadreAngryBalls.billard.billes.get(i).getRayon() && e.getX() < CadreAngryBalls.billard.billes.get(i).getPosition().x + CadreAngryBalls.billard.billes.get(i).getRayon()) {
-                if (e.getY() > CadreAngryBalls.billard.billes.get(i).getPosition().y - CadreAngryBalls.billard.billes.get(i).getRayon() && e.getY() < CadreAngryBalls.billard.billes.get(i).getPosition().y + CadreAngryBalls.billard.billes.get(i).getRayon()) {
+            if (e.getX() > CadreAngryBalls.billard.billes.get(i).getPosition().x - CadreAngryBalls.billard.billes.get(i).getRayon()
+                    && e.getX() < CadreAngryBalls.billard.billes.get(i).getPosition().x + CadreAngryBalls.billard.billes.get(i).getRayon()) {
+                if (e.getY() > CadreAngryBalls.billard.billes.get(i).getPosition().y - CadreAngryBalls.billard.billes.get(i).getRayon()
+                        && e.getY() < CadreAngryBalls.billard.billes.get(i).getPosition().y + CadreAngryBalls.billard.billes.get(i).getRayon()) {
                     if (CadreAngryBalls.billard.billes.get(i).estPilotable()) {
                         billeCourante = i;
                         estPress = true;
@@ -41,10 +43,6 @@ public class BilleAttrape extends ControleurEtat{
         }
         this.controleurGeneral.setControleur(suivants[0]);
     }
-
-
-
-
 
 
         @Override
