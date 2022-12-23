@@ -1,6 +1,7 @@
 package modele;
 
 import java.awt.*;
+import java.util.Observable;
 import java.util.Vector;
 
 import mesmaths.cinematique.Cinematique;
