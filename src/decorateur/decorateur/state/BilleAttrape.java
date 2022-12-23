@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 public class BilleAttrape extends ControleurEtat{
 
     public static boolean estPress = false;
+    public static boolean estRelache = false;
+
     public static int billeCourante = 0;
     public static double posSouris1X = -1;
     public static double posSouris1Y = -1;
@@ -24,7 +26,9 @@ public class BilleAttrape extends ControleurEtat{
     public void mousePressed(MouseEvent e){
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
-        for (int i = 0; i < CadreAngryBalls.billard.billes.size(); ++i){
+      //  System.out.println("rel: "+posSouris1X+"-"+posSouris1Y);
+
+        for (int i = 0; i < CadreAngryBalls.billard.billes.size(); i++){
             if (e.getX() > CadreAngryBalls.billard.billes.get(i).getPosition().x - CadreAngryBalls.billard.billes.get(i).getRayon() && e.getX() < CadreAngryBalls.billard.billes.get(i).getPosition().x + CadreAngryBalls.billard.billes.get(i).getRayon()) {
                 if (e.getY() > CadreAngryBalls.billard.billes.get(i).getPosition().y - CadreAngryBalls.billard.billes.get(i).getRayon() && e.getY() < CadreAngryBalls.billard.billes.get(i).getPosition().y + CadreAngryBalls.billard.billes.get(i).getRayon()) {
                     if (CadreAngryBalls.billard.billes.get(i).estPilotable()) {
@@ -39,7 +43,11 @@ public class BilleAttrape extends ControleurEtat{
     }
 
 
-    @Override
+
+
+
+
+        @Override
     public void init() {
         super.init();
     }
