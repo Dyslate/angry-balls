@@ -1,18 +1,19 @@
 package decorateur.decorateur.state;
 
+import vues.Billard;
 import vues.CadreAngryBalls;
 
 import java.awt.event.*;
 
 
 public class ControleurGeneral implements MouseListener, MouseMotionListener {
+
+
     CadreAngryBalls cadre;
     public ControleurEtat billeAttrape, billeRelache, controleurCourant;
     public ControleurGeneral(CadreAngryBalls cadre) {
         installeControleurs();
         this.cadre = cadre;
-        CadreAngryBalls.billard.addMouseListener(this);
-        CadreAngryBalls.billard.addMouseMotionListener(this);
     }
     private void installeControleurs(){
         this.billeAttrape = new BilleAttrape(this,null,null);
@@ -25,22 +26,11 @@ public class ControleurGeneral implements MouseListener, MouseMotionListener {
 
     public void setControleur(ControleurEtat controleurEtat){
         this.controleurCourant = controleurEtat;
-        this.controleurCourant.init();}
-
-    @Override
-    public void mouseDragged(MouseEvent arg0) {
-        this.controleurCourant.mouseDragged(arg0);
+        this.controleurCourant.init();
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent arg0) {
-    }
-
+    public void mouseDragged(MouseEvent arg0) {this.controleurCourant.mouseDragged(arg0);}
     @Override
     public void mousePressed(MouseEvent arg0) {
         this.controleurCourant.mousePressed(arg0);
@@ -49,15 +39,20 @@ public class ControleurGeneral implements MouseListener, MouseMotionListener {
     public void mouseReleased(MouseEvent arg0) {
         this.controleurCourant.mouseReleased(arg0);
     }
-
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseMoved(MouseEvent e) {}
+    @Override
+    public void mouseClicked(MouseEvent arg0) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
 
+    public CadreAngryBalls getCadre() {
+        return cadre;
     }
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public Billard getBillard(){
+        return CadreAngryBalls.billard;
     }
-
 }

@@ -1,9 +1,11 @@
 package decorateur.decorateur.state;
 
-import mesmaths.geometrie.base.Vecteur;
+import modele.Bille;
+import vues.Billard;
 import vues.CadreAngryBalls;
 
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 public class BilleAttrape extends ControleurEtat{
 
@@ -13,33 +15,43 @@ public class BilleAttrape extends ControleurEtat{
     public static int billeCourante = 0;
     public static double posSouris1X = -1;
     public static double posSouris1Y = -1;
-
+    CadreAngryBalls cadre;
+    Billard billard;
 
     public BilleAttrape(ControleurGeneral controleurGeneral, ControleurEtat suivant, ControleurEtat retour) {
         super(controleurGeneral, controleurGeneral.billeAttrape);
         this.retour = retour;
         this.suivants = new ControleurEtat[1];
         this.suivants[0]=suivant;
+        cadre = controleurGeneral.getCadre();
+        billard = controleurGeneral.getBillard();
     }
 
+
+    public static boolean clickPilotable(Vector<Bille> billes, MouseEvent e){
+        boolean res = false;
+        int compteur = 0;
+        for (Bille bille : billes) {
+            boolean testX = e.getX()>bille.getPosition().x-bille.getRayon()&&e.getX()<bille.getPosition().x+bille.getRayon();
+            boolean testY = e.getY() > bille.getPosition().y - bille.getRayon() && e.getY()<bille.getPosition().y+bille.getRayon();
+            if(bille.estPilotable()){
+                if(testX&&testY) {
+                    billeCourante = compteur;
+                    res = true;
+                }
+            }
+            compteur++;
+
+        }
+        return res;
+    }
     @Override
     public void mousePressed(MouseEvent e){
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
-      //  System.out.println("rel: "+posSouris1X+"-"+posSouris1Y);
-
-        for (int i = 0; i < CadreAngryBalls.billard.billes.size(); i++){
-            if (e.getX() > CadreAngryBalls.billard.billes.get(i).getPosition().x - CadreAngryBalls.billard.billes.get(i).getRayon()
-                    && e.getX() < CadreAngryBalls.billard.billes.get(i).getPosition().x + CadreAngryBalls.billard.billes.get(i).getRayon()) {
-                if (e.getY() > CadreAngryBalls.billard.billes.get(i).getPosition().y - CadreAngryBalls.billard.billes.get(i).getRayon()
-                        && e.getY() < CadreAngryBalls.billard.billes.get(i).getPosition().y + CadreAngryBalls.billard.billes.get(i).getRayon()) {
-                    if (CadreAngryBalls.billard.billes.get(i).estPilotable()) {
-                        billeCourante = i;
-                        estPress = true;
-                        System.out.println("La bille " + CadreAngryBalls.billard.billes.get(i).getCouleur() + " a été clické!");
-                    }
-                }
-            }
+        if(clickPilotable(billard.billes,e)){
+            estPress = true;
+            System.out.println("La bille " + billeCourante+ " a été clické!");
         }
         this.controleurGeneral.setControleur(suivants[0]);
     }
