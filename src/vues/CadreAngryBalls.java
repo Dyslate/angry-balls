@@ -46,6 +46,8 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 			int choixHurlementInitial) throws HeadlessException {
 		super(titre);
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
+
+		//Si on enlève ça y a un probleme pour quitter la partie!
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);
 
 		this.haut = new Panel();
