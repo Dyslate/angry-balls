@@ -149,19 +149,6 @@ public class testDecorateur {
 
         System.out.println("billes = " + billes);
 
-//-------------------- creation de l'objet responsable de l'animation (c'est un thread separe) -----------------------
-
-        AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
-
-//----------------------- mise en place des ecouteurs de boutons qui permettent de contreler (un peu...) l'application -----------------
-
-        EcouteurBoutonLancer ecouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
-        EcouteurBoutonArreter ecouteurBoutonArreter = new EcouteurBoutonArreter(animationBilles);
-
-//------------------------- activation des ecouteurs des boutons et ea tourne tout seul ------------------------------
-
-        cadre.lancerBilles.addActionListener(ecouteurBoutonLancer); // pourrait etre remplace par Observable - Observer
-        cadre.arreterBilles.addActionListener(ecouteurBoutonArreter); // pourrait etre remplace par Observable -
 
         // Observer
 

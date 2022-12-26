@@ -49,7 +49,7 @@ public class ControleurGeneral implements MouseListener, MouseMotionListener {
     public void mouseExited(MouseEvent e) {}
 
     public CadreAngryBalls getCadre() {
-        return cadre;
+        return this.cadre;
     }
 
     public Billard getBillard(){
