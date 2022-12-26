@@ -106,8 +106,8 @@ public class TestAngryBalls {
 
 //------------------------- activation des ecouteurs des boutons et ea tourne tout seul ------------------------------
 
-		cadre.lancerBilles.addActionListener(ecouteurBoutonLancer); // pourrait etre remplace par Observable - Observer
-		cadre.arreterBilles.addActionListener(ecouteurBoutonArreter); // pourrait etre remplace par Observable -
+	//	cadre.lancerBilles.addActionListener(ecouteurBoutonLancer); // pourrait etre remplace par Observable - Observer
+//		cadre.arreterBilles.addActionListener(ecouteurBoutonArreter); // pourrait etre remplace par Observable -
 																		// Observer
 
 	}

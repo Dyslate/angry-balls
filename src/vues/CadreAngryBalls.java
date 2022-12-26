@@ -32,14 +32,14 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 
 	public static Billard billard;
-	public Button lancerBilles, arreterBilles;
-	Panel haut, centre, bas, ligneBoutonsLancerArret;
+	//public Button lancerBilles, arreterBilles;
+	public Panel haut, centre, bas, ligneBoutonsLancerArret;
 	PanneauChoixHurlement ligneBoutonsChoixHurlement;
 
 	EcouteurTerminaison ecouteurTerminaison;
 
 
-	private AnimationBilles animationBilles;
+	private final AnimationBilles animationBilles;
 
 
 	public CadreAngryBalls(String titre, String message, Vector<Bille> billes, SonLong[] hurlements,
@@ -62,14 +62,12 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		this.add(this.bas, BorderLayout.SOUTH);
 
 
+		//Ajout de observer/obsersable
 		Bouton boutonLancer = new BoutonLancer("Lancer les billes");
 		bas.add(boutonLancer);
-
 		Bouton boutonArreter = new BoutonArreter("Arrêter les billes");
 		bas.add(boutonArreter);
-
 		animationBilles = new AnimationBilles(billes, this);
-
 		//Lambda expression
 		boutonLancer.ajoutObservateur(this::onClickLance);
 		boutonArreter.ajoutObservateur(this::onClickArrete);
@@ -149,16 +147,11 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	}
 
-
-	public Billard getBillard() {
-		return billard;
-	}
-
-	private void onClickArrete(ObservableBouton observable, Object arg) {
+	public void onClickArrete(ObservableBouton observable, Object arg) {
 		animationBilles.arreterAnimation();
 	}
 
-	private void onClickLance(ObservableBouton observable, Object arg) {
+	public void onClickLance(ObservableBouton observable, Object arg) {
 		animationBilles.lancerAnimation();
 	}
 }

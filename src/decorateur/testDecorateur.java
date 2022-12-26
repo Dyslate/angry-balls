@@ -3,9 +3,6 @@ package decorateur;
 import java.io.File;
 import java.util.Vector;
 
-import base.AnimationBilles;
-import base.EcouteurBoutonArreter;
-import base.EcouteurBoutonLancer;
 import base.OutilsConfigurationBilleHurlante;
 import decorateur.decorateur.DecorateurBilleDVD;
 import decorateur.bille.BilleDynamique;
@@ -17,6 +14,7 @@ import modele.Bille;
 import modele.Couleur;
 import musique.SonLong;
 import vues.CadreAngryBalls;
+
 
 /**
  * Gestion d'une liste de billes en mouvement ayant toutes un comportement
@@ -30,6 +28,7 @@ public class testDecorateur {
      * @param args
      */
     public static void main(String[] args) {
+
 //---------------------- gestion des bruitages : parametrage du chemin du dossier contenant les fichiers audio --------------------------
 
         File file = new File(""); // le oe la JVM est lancee : racine du projet
@@ -55,8 +54,8 @@ public class testDecorateur {
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes, hurlements, choixHurlementInitial);
 
-        //Initialiser le controlleur générale, et je lui donne dans son constructeur le cadre.
-        ControleurGeneral controleurGeneral = new ControleurGeneral(cadre);
+        //Initialiser le controlleur générale
+        new ControleurGeneral(cadre);
 
 
 
@@ -132,26 +131,9 @@ public class testDecorateur {
         billes.add(b9);
        // System.out.println(billes);
         cadre.createBufferStrategy(2);
-        /*
-        billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
-        billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
-        billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
-        billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
 
-        BilleHurlanteMvtNewtonArret billeNoire; // cas particulier de la bille qui hurle
-
-        billes.add(billeNoire = new BilleHurlanteMvtNewtonArret(p4, rayon, v4, Color.black,
-                hurlements[choixHurlementInitial], cadre));
-
-        cadre.addChoixHurlementListener(billeNoire); // e present on peut changer le son de la bille qui hurle
-*/
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billes);
-
-
-        // Observer
-
     }
-
 }
