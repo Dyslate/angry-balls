@@ -3,7 +3,8 @@ package Bouton;
 import observateur.ObservableBouton;
 import observateur.ObservateurBouton;
 
-import java.awt.*;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 public abstract  class Bouton extends Button implements ObservableBouton {
@@ -12,7 +13,7 @@ public abstract  class Bouton extends Button implements ObservableBouton {
 
     protected Bouton(String label){
         this.setLabel(label);
-        this.addActionListener((actionEvent)->onClick());
+        this.addActionListener(this::Appuye);
     }
 
     protected void onClick(){
@@ -24,5 +25,9 @@ public abstract  class Bouton extends Button implements ObservableBouton {
     @Override
     public void ajoutObservateur(ObservateurBouton observateur){
         observateurs.add(observateur);
+    }
+
+    private void Appuye(ActionEvent actionEvent) {
+        onClick();
     }
 }

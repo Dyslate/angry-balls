@@ -71,7 +71,7 @@ public class testDecorateur {
         double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, p5, p6,  v0, v1, v2, v3, v4, v5, v6; // les positions des centres des billes et les vecteurs vitesse
+        Vecteur p0, p1, p2, p3, p4, p5, p6, p7, v0, v1, v2, v3, v4, v5, v6, v7; // les positions des centres des billes et les vecteurs vitesse
         // au demarrage.
         // Elles vont etre choisies aleatoirement
 
@@ -84,6 +84,7 @@ public class testDecorateur {
         p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p5 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p6 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p7 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
 
@@ -94,6 +95,8 @@ public class testDecorateur {
         v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v5 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v6 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v7 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+
 
 //--------------- ici commence la partie à changer ---------------------------------
 
@@ -106,7 +109,7 @@ public class testDecorateur {
         DecorateurBille b8 = new DecorateurBilleNewton(new DecorateurBilleArret(new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve)));
 
         DecorateurBille b9 = new DecorateurPilote((new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange)));
-
+        DecorateurBille b10 = new DecorateurLancePierre((new BilleDynamique(p7, rayon, v7, new Vecteur(0, 0.0025), Couleur.noir)));
 
         //Bille passe muraille
         //billes.add(b3);
@@ -129,7 +132,11 @@ public class testDecorateur {
 
         //Test Bille piloté
         billes.add(b9);
-       // System.out.println(billes);
+
+        //Test Bille LancePierre
+        billes.add(b10);
+
+        // System.out.println(billes);
         cadre.createBufferStrategy(2);
 
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
