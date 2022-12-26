@@ -15,10 +15,14 @@ import modele.Bille;
  * 
  */
 public class Billard extends Canvas  {
+
+
 	public Vector<Bille> billes;
 	public Billard(Vector<Bille> billes) {
 		this.billes = billes;
 	}
+
+
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -15,6 +15,7 @@ public class BilleAttrape extends ControleurEtat{
     public static int billeCourante = 0;
     public static double posSouris1X = -1;
     public static double posSouris1Y = -1;
+    public static double masse = -1;
     CadreAngryBalls cadre;
     Billard billard;
 
@@ -30,18 +31,18 @@ public class BilleAttrape extends ControleurEtat{
 
     public static boolean clickPilotable(Vector<Bille> billes, MouseEvent e){
         boolean res = false;
-        int compteur = 0;
         for (Bille bille : billes) {
             boolean testX = e.getX()>bille.getPosition().x-bille.getRayon()&&e.getX()<bille.getPosition().x+bille.getRayon();
             boolean testY = e.getY() > bille.getPosition().y - bille.getRayon() && e.getY()<bille.getPosition().y+bille.getRayon();
             if(bille.estPilotable()){
                 if(testX&&testY) {
-                    billeCourante = compteur;
+                    billeCourante = bille.getClef();
+                    masse = bille.masse();
+                    System.out.println("compteur:"+billeCourante);
+                    System.out.println("clef:"+bille.getClef());
                     res = true;
                 }
             }
-            compteur++;
-
         }
         return res;
     }

@@ -30,8 +30,8 @@ public class BilleRelache extends ControleurEtat {
         System.out.println("released");
         posSouris2X = arg0.getX();
         posSouris2Y = arg0.getY();
-        vitesseSouris = new Vecteur((posSouris2X-BilleAttrape.posSouris1X)/(0.5*billard.billes.get(BilleAttrape.billeCourante).masse()),
-                (posSouris2Y-BilleAttrape.posSouris1Y)/(0.5*billard.billes.get(BilleAttrape.billeCourante).masse()));
+        vitesseSouris = new Vecteur((posSouris2X-BilleAttrape.posSouris1X)/(0.5*BilleAttrape.masse),
+                (posSouris2Y-BilleAttrape.posSouris1Y)/(0.5*BilleAttrape.masse));
         BilleAttrape.estRelache = true;
         this.controleurGeneral.setControleur(this.retour);
     }

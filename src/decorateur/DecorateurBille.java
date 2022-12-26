@@ -9,6 +9,8 @@ import modele.Couleur;
 import modele.OutilsBille;
 
 import java.awt.*;
+import java.awt.font.GlyphVector;
+import java.awt.geom.AffineTransform;
 import java.util.Vector;
 
 public abstract class DecorateurBille extends Bille {
@@ -76,6 +78,10 @@ public abstract class DecorateurBille extends Bille {
         g.fillOval(xMin, yMin, width, height);
         g.drawOval(xMin,yMin,width,height);
     }
+
+
+
+
     @Override
     public String toString(){
         return "position = " + getPosition() + " rayon = " + getRayon() + " vitesse = " + getVitesse() + " acceleration = "

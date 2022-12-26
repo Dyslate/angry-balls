@@ -20,7 +20,7 @@ public class DecorateurLancePierre extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-        if(BilleAttrape.estPress&BilleAttrape.estRelache){
+        if(BilleAttrape.estPress&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
             this.bille.getAcceleration().set(BilleRelache.vitesseSouris);
             System.out.println(this.bille.getAcceleration());
             // contribution du champ de pesanteur (par exemple)
