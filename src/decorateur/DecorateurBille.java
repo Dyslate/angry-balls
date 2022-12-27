@@ -18,9 +18,13 @@ public abstract class DecorateurBille extends Bille {
 
     protected Bille bille;
 
+
     public DecorateurBille(Bille b) {
         this.bille = b;
     }
+
+    @Override
+    public void enleverInscrit() {}
 
     @Override
     public Vecteur getPosition(){return this.bille.getPosition();}

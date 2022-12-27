@@ -1,5 +1,6 @@
 package decorateur;
 
+import java.awt.*;
 import java.io.File;
 import java.util.Vector;
 
@@ -123,21 +124,21 @@ public class testDecorateur {
         BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
 
 
-     /*  DecorateurBille b1 = new DecorateurPasseMurail(bd1);
+       DecorateurBille b1 = new DecorateurPasseMurail(bd1);
         DecorateurBille b2 = new DecorateurPilote(new DecorateurBilleDVD(bd2));
         DecorateurBille b3 = new DecorateurSon(bd3,hurlements[choixHurlementInitial], cadre);
         DecorateurBille b4 = new DecorateurPesanteur(bd4,new Vecteur(0,0.001));
         DecorateurBille b5 = new DecorateurFrottement(new DecorateurPesanteur(bd5,new Vecteur(0,0.025)));
         DecorateurBille b6 = new DecorateurBilleNewton(new DecorateurBilleArret(bd6));
 
-      */
+
         DecorateurBille b7 = new DecorateurPilote(new DecorateurPoissonGlobe(bd7));
         DecorateurBille b8 = new DecorateurLancePierre(bd8);
 
         DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd9));
         DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
 
-/*
+
         //Bille passe muraille
         billes.add(b1);
 
@@ -156,7 +157,7 @@ public class testDecorateur {
 
         // Bille Newton avec arrêt
         billes.add(b6);
-*/
+
         //Test Bille piloté
         billes.add(b7);
 
@@ -173,5 +174,15 @@ public class testDecorateur {
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billes);
+
+        List list = new List();
+
+        for (Bille bille : billes) {
+            list.add(bille.toString());
+        }
+
+
+
+        cadre.droite.add(list);
     }
 }

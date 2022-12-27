@@ -3,6 +3,7 @@ package vues;
 import java.awt.*;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferStrategy;
+import java.util.Arrays;
 import java.util.Vector;
 
 import Bouton.Bouton;
@@ -33,7 +34,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	public static Billard billard;
 	//public Button lancerBilles, arreterBilles;
-	public Panel haut, centre, bas, ligneBoutonsLancerArret;
+	public Panel haut, centre, bas, droite, ligneBoutonsLancerArret;
 	PanneauChoixHurlement ligneBoutonsChoixHurlement;
 
 	EcouteurTerminaison ecouteurTerminaison;
@@ -61,6 +62,10 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		this.bas.setBackground(Color.LIGHT_GRAY);
 		this.add(this.bas, BorderLayout.SOUTH);
 
+		this.droite = new Panel();
+		this.droite.setBackground(Color.LIGHT_GRAY);
+		this.add(this.droite, BorderLayout.EAST);
+
 
 		//Ajout de observer/obsersable
 		Bouton boutonLancer = new BoutonLancer("Lancer les billes");
@@ -78,6 +83,8 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		this.haut.add(this.presentation);
 
 		billard = new Billard(billes);
+
+
 		this.add(billard);
 
 //------------------- placement des composants du bas du cadre -------------------------------
