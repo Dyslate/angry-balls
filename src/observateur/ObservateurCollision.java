@@ -34,24 +34,27 @@ public class ObservateurCollision {
         return (nG1G2_2 >= r2) ? false : true;
     }
 
-    public Bille quiEntrechoque(Bille billeCourante) {
-        Vector<Bille> collisions = new Vector<>();
-        collisions.add(billeCourante);
-        for (Bille billeObservee : observe) {
-            if (billeCourante.getClef() == billeObservee.getClef())
-                continue;
+    public boolean quiEntrechoque(Bille billeCourante, Bille billeObservee) {
             if ((entrechoc(billeCourante, billeObservee)))
-                return billeObservee;
-        }
-        return null;
+                return true;
+            else
+                return false;
     }
 
-    public boolean gestionCollisionMultiple(Bille billeCourante) {
-        Bille b = quiEntrechoque(billeCourante);
-        if (b != null)
-            OutilsBille.gestionCollisionBilleBille(b, observe);
-        return OutilsBille.gestionCollisionBilleBille(billeCourante, observe);
-
+    public boolean gestionCollisionMultiple(Bille billeCourante, Vector<Bille> billes) {
+        for (int i = 0; i < billes.size(); i++) {
+            if (billeCourante.getClef() == billes.get(i).getClef()) {
+                continue;
+            } else if (quiEntrechoque(billeCourante, billes.get(i))) {
+                    System.out.println("///////////////");
+                    System.out.println(billes.get(i).getCouleur() + " - " + billes.get(i));
+                    System.out.println(billeCourante.getCouleur() + " - " + billeCourante);
+                    System.out.println("///////////////");
+                    billes.get(i).collisionCustom(observe);
+                    return billeCourante.collisionCustom(observe);
+            }
+        }
+        return false;
     }
 
 }

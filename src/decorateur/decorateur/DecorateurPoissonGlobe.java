@@ -20,21 +20,28 @@ public class DecorateurPoissonGlobe extends DecorateurBille {
 
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-        boolean collision = super.gestionCollisionBilleBille(billes);
+        gonfle();
+        return super.gestionCollisionBilleBille(billes);
+    }
 
-        if (collision || gonfle) {
-            if (this.bille.getRayon() < 3*vraiRayon) {
-                if (!gonfle)
-                    gonfle = true;
-                modifTaille(this.bille, 1.3);
-            } else
-                gonfle = false;
+    @Override
+    public boolean collisionCustom(Vector<Bille> billes) {
+        this.gonfle = true;
+        return true;
+    }
+
+    public void gonfle() {
+        if (this.gonfle) {
+            if (this.getRayon() < 3* vraiRayon) {
+                modifTaille(this.bille, 1.4);
+            } else {
+                this.gonfle = false;
+            }
         } else {
-            if (this.bille.getRayon() > vraiRayon)
-                modifTaille(this.bille, 0.95);
+            if (this.getRayon() > vraiRayon) {
+                modifTaille(this.bille, 0.90);
+            }
         }
-
-        return collision;
     }
 
     public void modifTaille(Bille b, double pourcen) {

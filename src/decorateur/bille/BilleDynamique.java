@@ -108,7 +108,7 @@ public class BilleDynamique extends Bille {
         if (inscrit == null) {
             return super.gestionCollisionBilleBille(billes);
         } else {
-            return this.inscrit.gestionCollisionMultiple(this);
+            return this.inscrit.gestionCollisionMultiple(this, billes);
         }
     }
 
