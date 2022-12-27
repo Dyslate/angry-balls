@@ -43,12 +43,15 @@ public class ObservateurCollision {
             if ((entrechoc(billeCourante, billeObservee)))
                 return billeObservee;
         }
-        return billeCourante;
+        return null;
     }
 
     public boolean gestionCollisionMultiple(Bille billeCourante) {
-        OutilsBille.gestionCollisionBilleBille(quiEntrechoque(billeCourante), observe);
-        OutilsBille.gestionCollisionBilleBille(billeCourante, observe);
+        Bille b = quiEntrechoque(billeCourante);
+        if (b != null)
+            OutilsBille.gestionCollisionBilleBille(b, observe);
+        return OutilsBille.gestionCollisionBilleBille(billeCourante, observe);
+
     }
 
 }
