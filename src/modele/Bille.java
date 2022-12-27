@@ -44,6 +44,9 @@ public abstract class Bille implements InscriptionCollision {
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes){
 		return OutilsBille.gestionCollisionBilleBille(this,billes);
 	}
+	public boolean collisionCustom(Vector<Bille> billes) {
+		return OutilsBille.gestionCollisionBilleBille(this, billes);
+	}
 
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 			double hauteur);
