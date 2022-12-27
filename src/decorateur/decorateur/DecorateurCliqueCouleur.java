@@ -2,15 +2,13 @@ package decorateur.decorateur;
 
 import decorateur.DecorateurBille;
 import decorateur.decorateur.state.BilleAttrape;
-import decorateur.decorateur.state.BilleRelache;
-import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
 
 import java.util.Vector;
 
-public class DecorateurClickCouleur extends DecorateurBille {
-    public DecorateurClickCouleur(Bille b) {
+public class DecorateurCliqueCouleur extends DecorateurBille {
+    public DecorateurCliqueCouleur(Bille b) {
         super(b);
     }
     @Override

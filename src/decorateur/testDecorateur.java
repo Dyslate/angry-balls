@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Vector;
 
 import base.OutilsConfigurationBilleHurlante;
-import decorateur.decorateur.DecorateurBilleDVD;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
 import decorateur.decorateur.DecorateurPilote;
@@ -14,7 +13,6 @@ import modele.Bille;
 import modele.Couleur;
 import musique.SonLong;
 import observateur.ObservateurCollision;
-import observateur.ObservateurSonCollision;
 import vues.CadreAngryBalls;
 
 
@@ -111,24 +109,21 @@ public class testDecorateur {
         ObservateurCollision observateur = new ObservateurCollision();
 
         //Création des billes dynamiques
-/*
-        BilleDynamique bd1 = new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge, observateur);
-        BilleDynamique bd2 = new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune, observateur);
-        BilleDynamique bd3 = new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir, observateur);
-        BilleDynamique bd4 = new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu, observateur);
-        BilleDynamique bd5 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose, observateur);
-        BilleDynamique bd6 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
-
- */
-        BilleDynamique bd7 = new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange, observateur);
+        BilleDynamique bd1 = new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge);
+        BilleDynamique bd2 = new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.jaune);
+        BilleDynamique bd3 = new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir);
+        BilleDynamique bd4 = new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu);
+        BilleDynamique bd5 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose);
+        BilleDynamique bd6 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve);
+        BilleDynamique bd7 = new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange);
 
 
         BilleDynamique bd8 = new BilleDynamique(p7, rayon, v7, new Vecteur(0, 0.0025), Couleur.noir, observateur);
-     //   BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog, observateur);
+        BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog);
         BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
 
 
-     /*   DecorateurBille b1 = new DecorateurPasseMurail(bd1);
+     /*  DecorateurBille b1 = new DecorateurPasseMurail(bd1);
         DecorateurBille b2 = new DecorateurPilote(new DecorateurBilleDVD(bd2));
         DecorateurBille b3 = new DecorateurSon(bd3,hurlements[choixHurlementInitial], cadre);
         DecorateurBille b4 = new DecorateurPesanteur(bd4,new Vecteur(0,0.001));
@@ -140,7 +135,7 @@ public class testDecorateur {
         DecorateurBille b8 = new DecorateurLancePierre(bd8);
 
         //    DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurBilleDVD(bd9));
-        DecorateurBille b10 = new DecorateurClickCouleur(bd10);
+        DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
 
 /*
         //Bille passe muraille
