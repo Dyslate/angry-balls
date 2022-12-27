@@ -7,6 +7,7 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
 import modele.OutilsBille;
+import observateur.ObservateurCollision;
 
 import java.awt.*;
 import java.awt.font.GlyphVector;
@@ -30,6 +31,7 @@ public abstract class DecorateurBille extends Bille {
     public Couleur getCouleur(){
         return this.bille.getCouleur();
     }
+    public void setCouleur(Couleur coul) {this.bille.setCouleur(coul);}
     @Override
     public double getRayon(){return this.bille.getRayon();}
 

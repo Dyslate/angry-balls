@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public abstract  class Bouton extends Button implements ObservableBouton {
 
-    protected ArrayList<ObservateurBouton> observateurs = new ArrayList<>();
+    protected ArrayList<ObservateurBouton> observe = new ArrayList<>();
 
     protected Bouton(String label){
         this.setLabel(label);
@@ -17,14 +17,14 @@ public abstract  class Bouton extends Button implements ObservableBouton {
     }
 
     protected void onClick(){
-        for(ObservateurBouton ob : observateurs){
+        for(ObservateurBouton ob : observe){
             ob.boutonAppuye(this,null);
         }
     }
 
     @Override
     public void ajoutObservateur(ObservateurBouton observateur){
-        observateurs.add(observateur);
+        observe.add(observateur);
     }
 
     private void Appuye(ActionEvent actionEvent) {

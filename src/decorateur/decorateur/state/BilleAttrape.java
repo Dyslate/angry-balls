@@ -29,7 +29,7 @@ public class BilleAttrape extends ControleurEtat{
     }
 
 
-    public static boolean clickPilotable(Vector<Bille> billes, MouseEvent e){
+    public static boolean CliquePilotable(Vector<Bille> billes, MouseEvent e){
         boolean res = false;
         for (Bille bille : billes) {
             boolean testX = e.getX()>bille.getPosition().x-bille.getRayon()&&e.getX()<bille.getPosition().x+bille.getRayon();
@@ -50,9 +50,9 @@ public class BilleAttrape extends ControleurEtat{
     public void mousePressed(MouseEvent e){
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
-        if(clickPilotable(billard.billes,e)){
+        if(CliquePilotable(billard.billes,e)){
             estPress = true;
-            System.out.println("La bille " + billeCourante+ " a été clické!");
+            System.out.println("La bille " + billeCourante+ " a été cliquée!");
         }
         this.controleurGeneral.setControleur(suivants[0]);
     }

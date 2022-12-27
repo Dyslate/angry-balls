@@ -6,6 +6,8 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
 import modele.OutilsBille;
+import observateur.ObservateurCollision;
+
 import java.awt.*;
 import java.util.Vector;
 public class BilleDynamique extends Bille {
@@ -20,6 +22,8 @@ public class BilleDynamique extends Bille {
     private static int prochaineClef = 0;
     public static double ro = 1; // masse volumique
 
+    public ObservateurCollision inscrit;
+
 
     public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Couleur couleur) {
         this.position=position;
@@ -27,6 +31,17 @@ public class BilleDynamique extends Bille {
         this.vitesse=vitesse;
         this.couleur=couleur;
         this.clef = prochaineClef++;
+    }
+
+    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur, ObservateurCollision obs) {
+        this.position=position;
+        this.rayon=rayon;
+        this.vitesse=vitesse;
+        this.couleur=couleur;
+        this.acceleration = acceleration;
+        this.clef = prochaineClef++;
+        this.inscription(obs);
+        this.inscrit = obs;
     }
 
     public BilleDynamique() {
@@ -90,12 +105,18 @@ public class BilleDynamique extends Bille {
 
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-        return super.gestionCollisionBilleBille(billes);
+        if (inscrit == null) {
+            return super.gestionCollisionBilleBille(billes);
+        } else {
+            return this.inscrit.gestionCollisionMultiple(this);
+        }
     }
 
     public Couleur getCouleur() {
         return couleur;
     }
+    @Override
+    public void setCouleur(Couleur coul) {this.couleur = coul;}
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur) {
         Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
