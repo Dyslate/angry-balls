@@ -131,8 +131,8 @@ public class BilleDynamique extends Bille {
     		width = height = 2 * (int) Math.round(getRayon());
     		g.setColor(couleur.transformeAWT());
     		g.fillOval(xMin, yMin, width, height);
-    		g.setColor(Color.CYAN);
-    		g.drawOval(xMin,yMin,width,height);
+
+
     }
 
     @Override

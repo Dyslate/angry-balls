@@ -1,5 +1,6 @@
 package decorateur.decorateur.state;
 
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import vues.Billard;
 import vues.CadreAngryBalls;
@@ -26,6 +27,9 @@ public class BilleAttrape extends ControleurEtat{
         this.suivants[0]=suivant;
         cadre = controleurGeneral.getCadre();
         billard = controleurGeneral.getBillard();
+
+        estRelache=false;
+        estPress=false;
     }
 
 
@@ -48,6 +52,8 @@ public class BilleAttrape extends ControleurEtat{
     }
     @Override
     public void mousePressed(MouseEvent e){
+        BilleRelache.vitesseSouris.x=-1;
+        BilleRelache.vitesseSouris.y=-1;
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
         if(CliquePilotable(billard.billes,e)){

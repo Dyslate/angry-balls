@@ -54,4 +54,5 @@ public abstract class Bille implements InscriptionCollision {
 	public abstract String toString();
 
 	public abstract boolean estPilotable();
+
 }

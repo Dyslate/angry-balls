@@ -72,13 +72,9 @@ public abstract class DecorateurBille extends Bille {
         yMin = (int) Math.round(getPosition().y - getRayon());
         width = height = 2 * (int) Math.round(getRayon());
         g.setColor(bille.getCouleur().transformeAWT());
-    /*    System.out.println("g.getColor() "+g.getColor());
-        System.out.println("bille.couleur "+bille.couleur);
-        System.out.println("bille.couleur toString "+bille.couleur.toString());
-*/
-
         g.fillOval(xMin, yMin, width, height);
         g.drawOval(xMin,yMin,width,height);
+
     }
 
 

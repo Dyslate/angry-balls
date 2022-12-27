@@ -5,11 +5,12 @@ import decorateur.decorateur.state.BilleAttrape;
 import decorateur.decorateur.state.BilleRelache;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.Couleur;
 
 import java.util.Vector;
 
-public class DecorateurLancePierre extends DecorateurBille {
-    public DecorateurLancePierre(Bille b) {
+public class DecorateurClickCouleur extends DecorateurBille {
+    public DecorateurClickCouleur(Bille b) {
         super(b);
     }
     @Override
@@ -20,10 +21,8 @@ public class DecorateurLancePierre extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-        if(BilleAttrape.estPress&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
-            this.bille.getAcceleration().set(new Vecteur(-BilleRelache.vitesseSouris.x,-BilleRelache.vitesseSouris.y));
-            System.out.println(this.bille.getAcceleration());
-            System.out.println("modification du vecteur acceleration de la bille");
+        if(BilleAttrape.estPress&&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante) {
+            bille.setCouleur(Couleur.getRandomCouleur());
             BilleAttrape.estPress=false;
             BilleAttrape.estRelache=false;
         }
