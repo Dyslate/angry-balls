@@ -115,11 +115,11 @@ public class testDecorateur {
         BilleDynamique bd4 = new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu);
         BilleDynamique bd5 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose);
         BilleDynamique bd6 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve);
-        BilleDynamique bd7 = new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange);
+        BilleDynamique bd7 = new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange, observateur);
 
 
         BilleDynamique bd8 = new BilleDynamique(p7, rayon, v7, new Vecteur(0, 0.0025), Couleur.noir, observateur);
-        BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog);
+        BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog, observateur);
         BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
 
 
@@ -131,10 +131,10 @@ public class testDecorateur {
         DecorateurBille b6 = new DecorateurBilleNewton(new DecorateurBilleArret(bd6));
 
       */
-        DecorateurBille b7 = new DecorateurPilote(bd7);
+        DecorateurBille b7 = new DecorateurPilote(new DecorateurPoissonGlobe(bd7));
         DecorateurBille b8 = new DecorateurLancePierre(bd8);
 
-        //    DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurBilleDVD(bd9));
+        DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd9));
         DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
 
 /*
@@ -164,7 +164,7 @@ public class testDecorateur {
         billes.add(b8);
 
         //Test bille Pufferfish
-     //   billes.add(b9);
+        billes.add(b9);
 
         billes.add(b10);
         // System.out.println(billes);

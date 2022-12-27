@@ -36,6 +36,7 @@ public abstract class Bille implements InscriptionCollision {
 	public abstract Vecteur getVitesse();
 	public abstract Vecteur getAcceleration();
 	public abstract int getClef();
+	public abstract void enleverInscrit();
 	public abstract double masse();
 	public void deplacer(double deltaT) {
 		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);

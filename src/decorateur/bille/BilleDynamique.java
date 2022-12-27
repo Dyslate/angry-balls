@@ -97,8 +97,10 @@ public class BilleDynamique extends Bille {
     public double masse() {
         return ro * Geop.volumeSphère(rayon);
     }
-
-
+@Override
+    public void enleverInscrit() {
+        this.inscrit = null;
+    }
     public void gestionAcceleration(Vector<Bille> billes) {
         this.getAcceleration().set(Vecteur.VECTEURNUL);
     }
