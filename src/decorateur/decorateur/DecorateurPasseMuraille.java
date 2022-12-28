@@ -3,8 +3,8 @@ package decorateur.decorateur;
 import decorateur.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import modele.Bille;
-public class DecorateurPasseMurail extends DecorateurBille {
-    public DecorateurPasseMurail(Bille b) {
+public class DecorateurPasseMuraille extends DecorateurBille {
+    public DecorateurPasseMuraille(Bille b) {
         super(b);
     }
     @Override

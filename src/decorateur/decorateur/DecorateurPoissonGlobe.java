@@ -26,7 +26,8 @@ public class DecorateurPoissonGlobe extends DecorateurBille {
 
     @Override
     public boolean collisionCustom(Vector<Bille> billes) {
-        this.gonfle = true;
+        if (!gonfle)
+            this.gonfle = true;
         return true;
     }
 

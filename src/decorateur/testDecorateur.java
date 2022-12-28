@@ -124,7 +124,7 @@ public class testDecorateur {
         BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
 
 
-       DecorateurBille b1 = new DecorateurPasseMurail(bd1);
+       DecorateurBille b1 = new DecorateurPasseMuraille(bd1);
         DecorateurBille b2 = new DecorateurFantome(new DecorateurBilleDVD(bd2));
         DecorateurBille b3 = new DecorateurSon(bd3,hurlements[choixHurlementInitial], cadre);
         DecorateurBille b4 = new DecorateurPesanteur(bd4,new Vecteur(0,0.001));
@@ -165,7 +165,7 @@ public class testDecorateur {
         billes.add(b8);
 
         //Test bille Pufferfish
-        //billes.add(b9);
+        billes.add(b9);
 
         //billes.add(b10);
 
