@@ -8,6 +8,7 @@ import java.util.Vector;
 public class ObservateurCollision {
 
     protected Vector<Bille> observe = new Vector<>();
+    private Bille billeCouranteLocale = null;
 
   public void inscription(Vector<Bille> billes) {
       for (int i = 0; i < billes.size(); i++) {
@@ -46,24 +47,22 @@ public class ObservateurCollision {
     }
 
     public boolean gestionCollisionMultiple(Bille billeCourante) {
-      Bille billeCouranteLocale = null;
-      for (int j = 0; j < observe.size(); j++) {
-          if (billeCourante.getClef() == observe.get(j).getClef())
-              billeCouranteLocale = observe.get(j);
-      }
         for (int i = 0; i < observe.size(); i++) {
             if (observe.get(i) == null || billeCourante.getClef() == observe.get(i).getClef()) {
                 continue;
             } else if (quiEntrechoque(billeCourante, observe.get(i))) {
-                System.out.println("///////////////");
-                System.out.println(observe.get(i).getCouleur() + " - " + observe.get(i));
-                System.out.println(billeCourante.getCouleur() + " - " + billeCourante);
-                System.out.println("///////////////");
                     observe.get(i).collisionCustom(observe);
                     return billeCouranteLocale.collisionCustom(observe);
             }
         }
         return false;
+    }
+
+    private void getBilleCouranteLocale(Bille billeCourante) {
+        for (int j = 0; j < observe.size(); j++) {
+            if (billeCourante.getClef() == observe.get(j).getClef())
+                billeCouranteLocale = observe.get(j);
+        }
     }
 
 }
