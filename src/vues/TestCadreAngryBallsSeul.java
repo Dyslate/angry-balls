@@ -29,9 +29,9 @@ public class TestCadreAngryBallsSeul {
 
 		Vector<Bille> billes = new Vector<Bille>();
 		int choixHurlementInitial = 0;
-		CadreAngryBalls cadre = new CadreAngryBalls("angry balls", "animation de billes marrantes", billes, hurlements,
-				choixHurlementInitial);
-		cadre.montrer();
+	//	CadreAngryBalls cadre = new CadreAngryBalls("angry balls", "animation de billes marrantes", billes, hurlements,
+	//			choixHurlementInitial);
+	//	cadre.montrer();
 	}
 
 }

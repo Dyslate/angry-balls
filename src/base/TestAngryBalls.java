@@ -7,6 +7,7 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import musique.SonLong;
 import vues.CadreAngryBalls;
+import vues.Scenario;
 
 /**
  * Gestion d'une liste de billes en mouvement ayant toutes un comportement
@@ -34,6 +35,15 @@ public class TestAngryBalls {
 
 		SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
 
+
+		Scenario scenario1 = new Scenario("Scenario1");
+		Scenario scenario2 = new Scenario("Scenario2");
+		Scenario[] scenarios = new Scenario[2];
+		scenarios[0]=scenario1;
+		scenarios[1]=scenario2;
+
+
+
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
 		Vector<Bille> billes = new Vector<Bille>();
@@ -41,9 +51,10 @@ public class TestAngryBalls {
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
 		int choixHurlementInitial = 0;
+		int choixScenarioInitial = 1;
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
-				billes, hurlements, choixHurlementInitial);
+				billes, hurlements, choixHurlementInitial, scenarios, choixScenarioInitial);
 
 		cadre.montrer(); // on rend visible la vue
 

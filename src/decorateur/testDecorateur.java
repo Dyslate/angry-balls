@@ -17,6 +17,7 @@ import musique.SonLong;
 import observateur.ObservateurCollisionBille;
 import observateur.ObservateurSonCollision;
 import vues.CadreAngryBalls;
+import vues.Scenario;
 
 
 /**
@@ -45,6 +46,15 @@ public class testDecorateur {
                 "config_audio_bille_hurlante.txt");
 
         SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
+//------------------Chargement des différents scénarios----------------------------------------------
+
+        Scenario scenario1 = new Scenario("Scenario1");
+        Scenario scenario2 = new Scenario("Scenario2");
+
+        Scenario[] scenarios=new Scenario[2];
+        scenarios[0]=scenario1;
+        scenarios[1]=scenario2;
+
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
@@ -55,7 +65,7 @@ public class testDecorateur {
         int choixHurlementInitial = 2;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
-                billes, hurlements, choixHurlementInitial);
+                billes, hurlements, choixHurlementInitial, scenarios,0);
 
         //Initialiser le controlleur générale
         new ControleurGeneral(cadre);
@@ -185,18 +195,10 @@ public class testDecorateur {
         // System.out.println(billes);
         cadre.createBufferStrategy(2);
 
+        cadre.addChoixScenarioListener(scenario1);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billes);
 
-        List list = new List();
-
-        for (Bille bille : billes) {
-            list.add(bille.toString());
-        }
-
-
-
-        cadre.droite.add(list);
     }
 }

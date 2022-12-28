@@ -41,8 +41,6 @@ public class BilleAttrape extends ControleurEtat{
                 if(testX&&testY) {
                     billeCourante = bille.getClef();
                     masse = bille.masse();
-                    System.out.println("compteur:"+billeCourante);
-                    System.out.println("clef:"+bille.getClef());
                     res = true;
                 }
             }
@@ -51,9 +49,6 @@ public class BilleAttrape extends ControleurEtat{
     }
     @Override
     public void mousePressed(MouseEvent e){
-        System.out.println("press: "+BilleAttrape.estPress);
-        System.out.println("relache: "+BilleAttrape.estRelache);
-
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
         if(CliquePilotable(billard.billes,e)){
@@ -63,8 +58,7 @@ public class BilleAttrape extends ControleurEtat{
         this.controleurGeneral.setControleur(suivants[0]);
     }
 
-
-        @Override
+    @Override
     public void init() {
         super.init();
     }

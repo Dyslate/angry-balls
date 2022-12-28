@@ -37,6 +37,9 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	public Panel haut, centre, bas, droite, ligneBoutonsLancerArret;
 	PanneauChoixHurlement ligneBoutonsChoixHurlement;
 
+	PanneauChoixScenario ligneBoutonsChoixScenario;
+
+
 	EcouteurTerminaison ecouteurTerminaison;
 
 
@@ -44,7 +47,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 
 	public CadreAngryBalls(String titre, String message, Vector<Bille> billes, SonLong[] hurlements,
-			int choixHurlementInitial) throws HeadlessException {
+			int choixHurlementInitial, Scenario[] scenarios, int choixScenarioInitial) throws HeadlessException {
 		super(titre);
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 
@@ -90,7 +93,6 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 //------------------- placement des composants du bas du cadre -------------------------------
 
 		int nombreLignes = 2, nombreColonnes = 1;
-
 		this.bas.setLayout(new GridLayout(nombreLignes, nombreColonnes));
 
 //---------------- placement des boutons lancer - arreter ------------------------------------
@@ -110,6 +112,11 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		//Ici il faut mettre l'observeur de sons!
 		this.ligneBoutonsChoixHurlement = new PanneauChoixHurlement(hurlements, choixHurlementInitial);
 		this.bas.add(this.ligneBoutonsChoixHurlement);
+
+
+		//Ici on mets les sons!
+		this.ligneBoutonsChoixScenario = new PanneauChoixScenario(scenarios,choixScenarioInitial);
+		this.droite.add(this.ligneBoutonsChoixScenario);
 
 	}
 
@@ -147,11 +154,14 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	}
 
 	public void addChoixHurlementListener(ItemListener ecouteurChoixHurlant) {
-		int i;
-
-		for (i = 0; i < this.ligneBoutonsChoixHurlement.boutons.length; ++i)
+		for (int i = 0; i < this.ligneBoutonsChoixHurlement.boutons.length; ++i)
 			this.ligneBoutonsChoixHurlement.boutons[i].addItemListener(ecouteurChoixHurlant);
+	}
 
+	public void addChoixScenarioListener(ItemListener ecouteurChoixScenario){
+		for(int i = 0;i<this.ligneBoutonsChoixScenario.boutons.length;i++){
+			this.ligneBoutonsChoixScenario.boutons[i].addItemListener(ecouteurChoixScenario);
+		}
 	}
 
 	public void onClickArrete(ObservableBouton observable, Object arg) {
