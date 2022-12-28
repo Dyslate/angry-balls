@@ -12,8 +12,9 @@ public class ObservateurCollision {
 
   public void inscription(Vector<Bille> billes) {
       for (int i = 0; i < billes.size(); i++) {
-          if (billes.get(i).inscrit())
+          if (billes.get(i).inscrit()) {
               this.observe.add(billes.get(i));
+          }
           System.out.println(billes.get(i));
       }
   }
@@ -47,6 +48,7 @@ public class ObservateurCollision {
     }
 
     public boolean gestionCollisionMultiple(Bille billeCourante) {
+        getBilleCouranteLocale(billeCourante);
         for (int i = 0; i < observe.size(); i++) {
             if (observe.get(i) == null || billeCourante.getClef() == observe.get(i).getClef()) {
                 continue;
