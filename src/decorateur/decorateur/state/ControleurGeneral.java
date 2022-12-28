@@ -7,8 +7,6 @@ import java.awt.event.*;
 
 
 public class ControleurGeneral implements MouseListener, MouseMotionListener {
-
-
     CadreAngryBalls cadre;
     public ControleurEtat billeAttrape, billeRelache, controleurCourant;
     public ControleurGeneral(CadreAngryBalls cadre) {

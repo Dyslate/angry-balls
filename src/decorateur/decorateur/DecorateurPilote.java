@@ -20,7 +20,7 @@ public class DecorateurPilote extends DecorateurBille {
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-       // super.gestionAcceleration(billes);
+        super.gestionAcceleration(billes);
             if(BilleAttrape.estPress&&!BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
                 Vecteur temporaire = new Vecteur(BilleRelache.posX,BilleRelache.posY);
                 bille.getPosition().set(temporaire);

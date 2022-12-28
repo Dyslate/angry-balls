@@ -10,14 +10,15 @@ import java.awt.event.MouseEvent;
 public class BilleRelache extends ControleurEtat {
 
     //Position drag/drop
-    public static double posX;
-    public static double posY;
+    public static double posX = -1;
+    public static double posY = -1;
 
     //Position souris au relacheemnt
     public static double posSouris2X;
     public static double posSouris2Y;
 
-    public static Vecteur vitesseSouris = new Vecteur(-1,-1);
+
+    public static Vecteur vitesseSouris;
     public CadreAngryBalls cadre;
     public Billard billard;
 
@@ -33,8 +34,6 @@ public class BilleRelache extends ControleurEtat {
     }
     @Override
     public void mouseReleased(MouseEvent arg0) {
-
-        System.out.println("released");
         posSouris2X = arg0.getX();
         posSouris2Y = arg0.getY();
         if(BilleAttrape.estPress){
@@ -42,10 +41,8 @@ public class BilleRelache extends ControleurEtat {
                     (posSouris2Y-BilleAttrape.posSouris1Y)/(0.5*BilleAttrape.masse));
             BilleAttrape.estRelache = true;
         }
-
         this.controleurGeneral.setControleur(this.retour);
     }
-
 
     @Override
     public void mouseDragged(MouseEvent e) {

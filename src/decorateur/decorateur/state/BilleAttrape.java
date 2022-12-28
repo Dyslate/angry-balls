@@ -14,9 +14,9 @@ public class BilleAttrape extends ControleurEtat{
     public static boolean estRelache = false;
 
     public static int billeCourante = 0;
-    public static double posSouris1X = -1;
-    public static double posSouris1Y = -1;
-    public static double masse = -1;
+    public static double posSouris1X;
+    public static double posSouris1Y;
+    public static double masse;
     CadreAngryBalls cadre;
     Billard billard;
 
@@ -27,7 +27,6 @@ public class BilleAttrape extends ControleurEtat{
         this.suivants[0]=suivant;
         cadre = controleurGeneral.getCadre();
         billard = controleurGeneral.getBillard();
-
         estRelache=false;
         estPress=false;
     }
@@ -54,7 +53,6 @@ public class BilleAttrape extends ControleurEtat{
     public void mousePressed(MouseEvent e){
         System.out.println("press: "+BilleAttrape.estPress);
         System.out.println("relache: "+BilleAttrape.estRelache);
-
 
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
