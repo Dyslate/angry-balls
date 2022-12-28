@@ -1,13 +1,10 @@
 package modele;
 
 import java.awt.*;
-import java.util.Observable;
 import java.util.Vector;
 
 import mesmaths.cinematique.Cinematique;
 import mesmaths.geometrie.base.Vecteur;
-import observateur.InscriptionCollision;
-import observateur.ObservateurCollision;
 
 /**
  * Cas general d'une bille de billard
@@ -25,7 +22,7 @@ import observateur.ObservateurCollision;
  * 
  * 
  */
-public abstract class Bille implements InscriptionCollision {
+public abstract class Bille {
 //----------------- classe Bille-------------------------------------
 
 	public abstract Vecteur getPosition();
@@ -36,6 +33,7 @@ public abstract class Bille implements InscriptionCollision {
 	public abstract Vecteur getVitesse();
 	public abstract Vecteur getAcceleration();
 	public abstract int getClef();
+	public abstract boolean inscrit();
 	public abstract void enleverInscrit();
 	public abstract double masse();
 	public void deplacer(double deltaT) {
@@ -51,9 +49,7 @@ public abstract class Bille implements InscriptionCollision {
 
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 			double hauteur);
-	public void inscription(ObservateurCollision obs) {
-		obs.ajouteBille(this);
-	}
+
 	public abstract void dessine(Graphics g);
 	public abstract String toString();
 

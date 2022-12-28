@@ -8,12 +8,16 @@ import java.util.Vector;
 public class DecorateurFantome extends DecorateurBille {
     public DecorateurFantome(Bille b) {
         super(b);
-        this.bille.enleverInscrit();
+    }
+
+    @Override
+    public boolean inscrit() {
+        return false;
     }
 
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-        return super.gestionCollisionBilleBille(billes);
+        return false;
     }
 
 

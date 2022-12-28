@@ -47,6 +47,11 @@ public abstract class DecorateurBille extends Bille {
     public int getClef(){return this.bille.getClef();}
 
     @Override
+    public boolean inscrit() {
+        return this.bille.inscrit();
+    }
+
+    @Override
     public double masse(){return this.bille.masse();}
 
     @Override

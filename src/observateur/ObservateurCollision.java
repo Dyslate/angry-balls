@@ -9,9 +9,13 @@ public class ObservateurCollision {
 
     protected Vector<Bille> observe = new Vector<>();
 
-    public void ajouteBille(Bille b) {
-        this.observe.add(b);
-    }
+  public void inscription(Vector<Bille> billes) {
+      for (int i = 0; i < billes.size(); i++) {
+          if (billes.get(i).inscrit())
+              this.observe.add(billes.get(i));
+          System.out.println(billes.get(i));
+      }
+  }
 
     public static boolean entrechoc(Bille b1, Bille b2) {
         final Vecteur G1 = b1.getPosition();
@@ -41,16 +45,16 @@ public class ObservateurCollision {
                 return false;
     }
 
-    public boolean gestionCollisionMultiple(Bille billeCourante, Vector<Bille> billes) {
-        for (int i = 0; i < billes.size(); i++) {
-            if (billeCourante.getClef() == billes.get(i).getClef()) {
+    public boolean gestionCollisionMultiple(Bille billeCourante) {
+        for (int i = 0; i < observe.size(); i++) {
+            if (observe.get(i) == null || billeCourante.getClef() == observe.get(i).getClef()) {
                 continue;
-            } else if (quiEntrechoque(billeCourante, billes.get(i))) {
-                    System.out.println("///////////////");
-                    System.out.println(billes.get(i).getCouleur() + " - " + billes.get(i));
-                    System.out.println(billeCourante.getCouleur() + " - " + billeCourante);
-                    System.out.println("///////////////");
-                    billes.get(i).collisionCustom(observe);
+            } else if (quiEntrechoque(billeCourante, observe.get(i))) {
+                System.out.println("///////////////");
+                System.out.println(observe.get(i).getCouleur() + " - " + observe.get(i));
+                System.out.println(billeCourante.getCouleur() + " - " + billeCourante);
+                System.out.println("///////////////");
+                    observe.get(i).collisionCustom(observe);
                     return billeCourante.collisionCustom(observe);
             }
         }

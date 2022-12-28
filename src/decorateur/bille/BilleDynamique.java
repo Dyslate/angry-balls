@@ -40,7 +40,6 @@ public class BilleDynamique extends Bille {
         this.couleur=couleur;
         this.acceleration = acceleration;
         this.clef = prochaineClef++;
-        this.inscription(obs);
         this.inscrit = obs;
     }
 
@@ -102,6 +101,11 @@ public class BilleDynamique extends Bille {
     public void enleverInscrit() {
         this.inscrit = null;
     }
+
+    @Override
+    public boolean inscrit() {
+        return this.inscrit != null ? true : false;
+    }
     public void gestionAcceleration(Vector<Bille> billes) {
         this.getAcceleration().set(Vecteur.VECTEURNUL);
     }
@@ -111,7 +115,7 @@ public class BilleDynamique extends Bille {
         if (inscrit == null) {
             return super.gestionCollisionBilleBille(billes);
         } else {
-            return this.inscrit.gestionCollisionMultiple(this, billes);
+            return this.inscrit.gestionCollisionMultiple(this);
         }
     }
 
