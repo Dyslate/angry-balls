@@ -9,8 +9,11 @@ import java.awt.event.MouseEvent;
 
 public class BilleRelache extends ControleurEtat {
 
-    public static double posX = -1;
-    public static double posY = -1;
+    //Position drag/drop
+    public static double posX;
+    public static double posY;
+
+    //Position souris au relacheemnt
     public static double posSouris2X;
     public static double posSouris2Y;
 
@@ -24,9 +27,13 @@ public class BilleRelache extends ControleurEtat {
         this.suivants[0]=successeur;
         cadre = controleurGeneral.getCadre();
         billard =  controleurGeneral.getBillard();
+        if(BilleAttrape.estRelache){
+            BilleAttrape.estRelache=false;
+        }
     }
     @Override
     public void mouseReleased(MouseEvent arg0) {
+
         System.out.println("released");
         posSouris2X = arg0.getX();
         posSouris2Y = arg0.getY();

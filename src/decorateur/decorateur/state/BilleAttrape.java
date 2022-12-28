@@ -52,8 +52,10 @@ public class BilleAttrape extends ControleurEtat{
     }
     @Override
     public void mousePressed(MouseEvent e){
-        BilleRelache.vitesseSouris.x=-1;
-        BilleRelache.vitesseSouris.y=-1;
+        System.out.println("press: "+BilleAttrape.estPress);
+        System.out.println("relache: "+BilleAttrape.estRelache);
+
+
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
         if(CliquePilotable(billard.billes,e)){

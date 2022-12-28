@@ -8,7 +8,7 @@ import java.util.Vector;
 import base.OutilsConfigurationBilleHurlante;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
-import decorateur.decorateur.DecorateurPilote;
+import decorateur.decorateur.DecorateurTeleportation;
 import decorateur.decorateur.state.ControleurGeneral;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
@@ -74,8 +74,8 @@ public class testDecorateur {
         double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, p5, p6, p7, p8, p9,
-                v0, v1, v2, v3, v4, v5, v6, v7, v8, v9; // les positions des centres des billes et les vecteurs vitesse
+        Vecteur p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
+                v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10; // les positions des centres des billes et les vecteurs vitesse
         // au demarrage.
         // Elles vont etre choisies aleatoirement
 
@@ -91,6 +91,7 @@ public class testDecorateur {
         p7 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p8 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
         p9 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p10 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
 
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
@@ -105,6 +106,7 @@ public class testDecorateur {
         v7 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v8 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
         v9 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v10 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 
 //--------------- ici commence la partie à changer ---------------------------------
@@ -124,6 +126,7 @@ public class testDecorateur {
         BilleDynamique bd8 = new BilleDynamique(p7, rayon, v7, new Vecteur(0, 0.0025), Couleur.antiDeuteranope, observateur);
         BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog, observateur);
         BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
+        BilleDynamique bd11 = new BilleDynamique(p10, rayon, v10, new Vecteur(0, 0.0025), Couleur.getRandomCouleur(), observateur);
 
 
        DecorateurBille b1 = new DecorateurPasseMuraille(bd1);
@@ -134,21 +137,22 @@ public class testDecorateur {
         DecorateurBille b6 = new DecorateurBilleNewton(new DecorateurBilleArret(bd6));
 
 
-        DecorateurBille b7 = new DecorateurPilote(new DecorateurPoissonGlobe(bd7));
+        DecorateurBille b7 = new DecorateurTeleportation(new DecorateurPoissonGlobe(bd7));
         DecorateurBille b8 = new DecorateurLancePierre(bd8);
-
-        DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(new DecorateurFrottement(bd9)));
+     //   DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(new DecorateurFrottement(bd9)));
         DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
+        DecorateurBille b11 = new DecorateurPilote(bd11);
+
 
 
         //Bille passe muraille
         //billes.add(b1);
 
         //Bille DVD
-        billes.add(b2);
+   //     billes.add(b2);
 
         //Bille Hurlante
-        cadre.addChoixHurlementListener((ItemListener) b3);
+      //  cadre.addChoixHurlementListener((ItemListener) b3);
         //billes.add(b3);
 
         //Bille rebondissante
@@ -160,16 +164,21 @@ public class testDecorateur {
         // Bille Newton avec arrêt
         //billes.add(b6);
 
-        //Test Bille piloté
+        //Test Bille Teleportation
         billes.add(b7);
 
         //Test Bille LancePierre
         billes.add(b8);
 
-        //Test bille Pufferfish
-        billes.add(b9);
+        //Test bille Couleur
+        billes.add(b10);
 
-        //billes.add(b10);
+
+        //Test bille piloté
+        billes.add(b11);
+
+        //Test bille pufferfish
+        //billes.add(b9);
 
         observateur.inscription(billes);
 
