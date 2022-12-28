@@ -1,17 +1,11 @@
 package decorateur;
 
 
-import mesmaths.cinematique.Cinematique;
-import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
-import modele.OutilsBille;
-import observateur.ObservateurCollision;
 
 import java.awt.*;
-import java.awt.font.GlyphVector;
-import java.awt.geom.AffineTransform;
 import java.util.Vector;
 
 public abstract class DecorateurBille extends Bille {

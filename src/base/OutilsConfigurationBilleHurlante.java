@@ -26,7 +26,7 @@ public class OutilsConfigurationBilleHurlante
 {
 
 /**
- * La seule teche de cette methode est d'ouvrir le fichier de configuration de SonLong de la bile hurlante
+ * La seule teche de cette methode est d'ouvrir le fichier de configuration de SonLong de la bille hurlante
  * cf. methode chargeSons1 juste apres
  * */
 public static Vector<SonLong>  chargeSons(File repertoireBruits, String nomFichierConfigAudio) //throws IOException
@@ -99,7 +99,7 @@ catch (IOException e1)  /* l'entete du fichier contient un probleme */
     return sons;
     }
 
-/* e present on est ser que la lecture des 8 lignes d'entete s'est bien passee. le pointeur de ligne de fichierConfigBilleHurlante pointe sur la 9eme ligne */
+/* e present on est sûr que la lecture des 8 lignes d'entete s'est bien passee. le pointeur de ligne de fichierConfigBilleHurlante pointe sur la 9eme ligne */
 
 for ( /* rien e faire ici*/; ligne != null; ++i)
     {

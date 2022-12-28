@@ -1,12 +1,10 @@
 package decorateur.bille;
-import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
-import modele.OutilsBille;
-import observateur.ObservateurCollision;
+import observateur.ObservateurCollisionBille;
 
 import java.awt.*;
 import java.util.Vector;
@@ -22,7 +20,7 @@ public class BilleDynamique extends Bille {
     private static int prochaineClef = 0;
     public static double ro = 1; // masse volumique
 
-    public ObservateurCollision inscrit;
+    public ObservateurCollisionBille inscrit;
 
 
     public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Couleur couleur) {
@@ -33,7 +31,7 @@ public class BilleDynamique extends Bille {
         this.clef = prochaineClef++;
     }
 
-    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur, ObservateurCollision obs) {
+    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur, ObservateurCollisionBille obs) {
         this.position=position;
         this.rayon=rayon;
         this.vitesse=vitesse;

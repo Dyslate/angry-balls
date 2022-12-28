@@ -5,19 +5,19 @@ import modele.OutilsBille;
 
 import java.util.Vector;
 
-public class ObservateurCollision {
+public abstract class ObservateurCollisions {
 
     protected Vector<Bille> observe = new Vector<>();
-    private Bille billeCouranteLocale = null;
+    protected Bille billeCouranteLocale = null;
 
-  public void inscription(Vector<Bille> billes) {
-      for (int i = 0; i < billes.size(); i++) {
-          if (billes.get(i).inscrit()) {
-              this.observe.add(billes.get(i));
-          }
-          System.out.println(billes.get(i));
-      }
-  }
+    public void inscription(Vector<Bille> billes) {
+        for (int i = 0; i < billes.size(); i++) {
+            if (billes.get(i).inscrit()) {
+                this.observe.add(billes.get(i));
+            }
+            System.out.println(billes.get(i));
+        }
+    }
 
     public static boolean entrechoc(Bille b1, Bille b2) {
         final Vecteur G1 = b1.getPosition();
@@ -37,14 +37,11 @@ public class ObservateurCollision {
         double r = rayon1 + rayon2;
         double r2 = r * r;
 
-        return (nG1G2_2 >= r2) ? false : true;
+        return !(nG1G2_2 >= r2);
     }
 
     public boolean quiEntrechoque(Bille billeCourante, Bille billeObservee) {
-            if ((entrechoc(billeCourante, billeObservee)))
-                return true;
-            else
-                return false;
+        return entrechoc(billeCourante, billeObservee);
     }
 
     public boolean gestionCollisionMultiple(Bille billeCourante) {
@@ -53,14 +50,14 @@ public class ObservateurCollision {
             if (observe.get(i) == null || billeCourante.getClef() == observe.get(i).getClef()) {
                 continue;
             } else if (quiEntrechoque(billeCourante, observe.get(i))) {
-                    observe.get(i).collisionCustom(observe);
-                    return billeCouranteLocale.collisionCustom(observe);
+                observe.get(i).collisionCustom(observe);
+                return billeCouranteLocale.collisionCustom(observe);
             }
         }
         return false;
     }
 
-    private void getBilleCouranteLocale(Bille billeCourante) {
+    protected void getBilleCouranteLocale(Bille billeCourante) {
         for (int j = 0; j < observe.size(); j++) {
             if (billeCourante.getClef() == observe.get(j).getClef())
                 billeCouranteLocale = observe.get(j);

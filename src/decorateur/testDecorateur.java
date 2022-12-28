@@ -1,6 +1,7 @@
 package decorateur;
 
 import java.awt.*;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -13,7 +14,8 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.Couleur;
 import musique.SonLong;
-import observateur.ObservateurCollision;
+import observateur.ObservateurCollisionBille;
+import observateur.ObservateurSonCollision;
 import vues.CadreAngryBalls;
 
 
@@ -107,7 +109,7 @@ public class testDecorateur {
 
 //--------------- ici commence la partie à changer ---------------------------------
         // Création Observateur Collisions
-        ObservateurCollision observateur = new ObservateurCollision();
+        ObservateurCollisionBille observateur = new ObservateurSonCollision(sonsLongs.get(0),cadre);
 
         //Création des billes dynamiques
         BilleDynamique bd1 = new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge, observateur);
@@ -135,7 +137,7 @@ public class testDecorateur {
         DecorateurBille b7 = new DecorateurPilote(new DecorateurPoissonGlobe(bd7));
         DecorateurBille b8 = new DecorateurLancePierre(bd8);
 
-        DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd9));
+        DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(new DecorateurFrottement(bd9)));
         DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
 
 
@@ -146,7 +148,7 @@ public class testDecorateur {
         billes.add(b2);
 
         //Bille Hurlante
-        //cadre.addChoixHurlementListener((ItemListener) b5);
+        cadre.addChoixHurlementListener((ItemListener) b3);
         //billes.add(b3);
 
         //Bille rebondissante

@@ -29,8 +29,7 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
         super.deplacer(deltaT);
         Vecteur p = this.getPosition();
         Vecteur v = this.getVitesse();
-        double xMax;
-        xMax = vueBillard.largeurBillard();
+        double xMax = vueBillard.largeurBillard();
         double n = v.norme();
         double y = Math.exp(-COEFF_VOLUME * n);
         double volume = 1-y;
@@ -42,7 +41,7 @@ public class DecorateurSon extends DecorateurBille implements ItemListener {
         long instant = System.currentTimeMillis();
 
         if(instant - this.dernierInstant >= delai){
-            double coeffPitch = 1;
+            double coeffPitch = 0.5;
             this.sonLong.joue(i++,volume,balance,coeffPitch);
             this.dernierInstant = instant;
         }

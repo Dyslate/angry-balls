@@ -14,7 +14,7 @@ public class DecorateurFrottement extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);
-        this.bille.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(masse(), getVitesse()));
+        this.bille.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(masse()*7, getVitesse()));
     }
 
 }
