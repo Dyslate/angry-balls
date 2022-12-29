@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
-
+import mediateur.MediateurCadreBouton;
 import base.OutilsConfigurationBilleHurlante;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
@@ -69,12 +69,17 @@ public class testDecorateur {
         int choixHurlementInitial = 2;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Application pour test DP Decorateur / DP Observer / DP State",
-                billesS2, hurlements, choixHurlementInitial, scenarios,0);
+                billesS1, hurlements, choixHurlementInitial, scenarios,0);
 
         //Initialiser le controlleur générale
         new ControleurGeneral(cadre);
 
         cadre.montrer(); // on rend visible la vue
+
+//---------------- Mediator pour que cadre et scénarios puissent communiquer -------------------------
+
+        MediateurCadreBouton mediateur = new MediateurCadreBouton(cadre);
+        scenario3.ajoutMediateur(mediateur);
 
 //------------- remplissage de la liste avec 5 billes -------------------------------
 
@@ -121,6 +126,8 @@ public class testDecorateur {
         DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd1s1)));
         DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd2s1));
         DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd3s1)));
+
+        //  cadre.addChoixHurlementListener((ItemListener) b3); -> Pour la bille hurlante
             // Création du Vecteur de billes et ajout dans Scénario 1
 
         billesS1.add(b0s1);
