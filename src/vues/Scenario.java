@@ -54,11 +54,9 @@ public class Scenario implements ItemListener {
         if(e.getItem()=="Scenario1"){
             System.out.println(scenario[0].billesScenario);
             CadreAngryBalls.billard.billes = scenario[0].billesScenario;
-
         } else {
             System.out.println(scenario[1].billesScenario);
             CadreAngryBalls.billard.billes = scenario[1].billesScenario;
-
         }
 
     }
