@@ -46,7 +46,7 @@ public class Scenario implements ItemListener {
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        CadreAngryBalls.billard.billes = this.billesScenario;
-
+        System.out.println(e.getItem());
+        System.out.println(getBillesScenario());
     }
 }

@@ -127,7 +127,7 @@ public class testDecorateur {
         billesS1.add(b2s1);
         billesS1.add(b3s1);
 
-        scenario2.setBillesScenario(billesS1);
+        scenario1.setBillesScenario(billesS1);
             // Inscription à l'observateur
         observateurScenario1.inscription(billesS1);
 
@@ -210,7 +210,6 @@ public class testDecorateur {
 
 
         cadre.addChoixScenarioListener(scenario1);
-        cadre.addChoixScenarioListener(scenario2);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billesS1);
