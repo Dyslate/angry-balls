@@ -22,13 +22,9 @@ public abstract class ObservateurCollisions {
     public static boolean entrechoc(Bille b1, Bille b2) {
         final Vecteur G1 = b1.getPosition();
         double rayon1 = b1.getRayon();
-        Vecteur v1 = b1.getVitesse();
-        double m1 = b1.masse();
 
         final Vecteur G2 = b2.getPosition();
         double rayon2 = b2.getRayon();
-        Vecteur v2 = b2.getVitesse();
-        double m2 = b2.masse();
 
         Vecteur G1G2 = Vecteur.difference(G2, G1);
 

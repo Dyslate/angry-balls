@@ -57,6 +57,17 @@ public class BilleDynamique extends Bille {
         this.vitesse = vitesse;
         this.clef = prochaineClef++;
     }
+
+    public BilleDynamique(Vecteur centre, double rayon, Couleur couleur, ObservateurCollisionBille observateur) {
+        this.position = centre;
+        this.rayon = rayon;
+        this.acceleration = Vecteur.VECTEURNUL;
+        this.couleur = couleur;
+        this.vitesse = Vecteur.VECTEURNUL;
+        this.clef = prochaineClef++;
+        this.inscrit = observateur;
+    }
+
     @Override
     public Vecteur getPosition() {
         return position;
