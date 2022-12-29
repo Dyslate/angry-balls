@@ -6,6 +6,7 @@ import musique.SonLong;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class Scenario implements ItemListener {
@@ -16,13 +17,14 @@ public class Scenario implements ItemListener {
     public Vector<Bille> billesScenario;
 
     private static int prochainID = 0;
+
     public Scenario[] scenario;
 
 
     public Scenario(String nom) {
         this.id = prochainID++;
         this.nomScenario = nom;
-        this.billesScenario = new Vector<Bille>();
+        this.billesScenario = new Vector<>();
     }
 
 
@@ -40,24 +42,22 @@ public class Scenario implements ItemListener {
         return nomScenario;
     }
 
-    public Vector<Bille> getBillesScenario() {
-        return this.billesScenario;
-    }
-
     public void setBillesScenario(Vector<Bille> billes) {
         this.billesScenario = billes;
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        System.out.println(e.getItem());
-        if(e.getItem()=="Scenario1"){
-            System.out.println(scenario[0].billesScenario);
-            CadreAngryBalls.billard.billes = scenario[0].billesScenario;
-        } else {
-            System.out.println(scenario[1].billesScenario);
-            CadreAngryBalls.billard.billes = scenario[1].billesScenario;
+        int i = 0;
+        while (i<scenario.length) {
+            if(e.getItem()==scenario[i].nomScenario){
+                CadreAngryBalls.animationBilles.lancerAnimation();
+                System.out.println(scenario[i].billesScenario);
+                CadreAngryBalls.billard.billes = scenario[i].billesScenario;
+                CadreAngryBalls.animationBilles.setBilles(scenario[i].billesScenario);
+                CadreAngryBalls.animationBilles.arreterAnimation();
+            }
+            i++;
         }
-
     }
 }

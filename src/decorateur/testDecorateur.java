@@ -57,7 +57,7 @@ public class testDecorateur {
         scenarios[0]=scenario1;
         scenarios[1]=scenario2;
 
-        Scenario scenario3 = new Scenario(scenarios);
+        Scenario lesScenarios = new Scenario(scenarios);
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
@@ -67,9 +67,10 @@ public class testDecorateur {
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
         int choixHurlementInitial = 2;
+        int choixScenarioInitial = 0;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Application pour test DP Decorateur / DP Observer / DP State",
-                billesS2, hurlements, choixHurlementInitial, scenarios,0);
+                billesS1, hurlements, choixHurlementInitial, scenarios,choixScenarioInitial);
 
         //Initialiser le controlleur générale
         new ControleurGeneral(cadre);
@@ -174,8 +175,8 @@ public class testDecorateur {
         p14s2 = new Vecteur(xligne5, yligne3);
         p15s2 = new Vecteur(xligne5, yligne1);
 
-            // Création Billes dynamiques pour le Scénario 2
-        BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.99, Couleur.blancCreme, observateurScenario2);
+        // Création Billes dynamiques pour le Scénario 2
+        BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.80, Couleur.blancCreme, observateurScenario2);
         BilleDynamique bd8s2 = new BilleDynamique(p8s2, rayon, Couleur.noir, observateurScenario2);
         BilleDynamique bd1s2 = new BilleDynamique(p1s2, rayon, Couleur.rouge, observateurScenario2);
         BilleDynamique bd2s2 = new BilleDynamique(p6s2, rayon, Couleur.rouge, observateurScenario2);
@@ -191,7 +192,8 @@ public class testDecorateur {
         BilleDynamique bd13s2 = new BilleDynamique(p11s2, rayon, Couleur.jaune, observateurScenario2);
         BilleDynamique bd14s2 = new BilleDynamique(p9s2, rayon, Couleur.jaune, observateurScenario2);
         BilleDynamique bd15s2 = new BilleDynamique(p15s2, rayon, Couleur.jaune, observateurScenario2);
-            // Création des décorateurs pour le Scénario 2
+
+        // Création des décorateurs pour le Scénario 2
         DecorateurBille bBlanche = new DecorateurLancePierre(new DecorateurFrottement(bd0s2));
         DecorateurBille bNoire = new DecorateurFrottement(bd8s2);
         DecorateurBille bRouge1 = new DecorateurFrottement(bd1s2);
@@ -210,7 +212,6 @@ public class testDecorateur {
         DecorateurBille bJaune7 = new DecorateurFrottement(bd15s2);
 
          // Création du Vecteur de billes et ajout dans Scénario 2
-
         billesS2.add(bBlanche);
         billesS2.add(bNoire);
         billesS2.add(bRouge1);billesS2.add(bRouge2);billesS2.add(bRouge3);billesS2.add(bRouge4);
@@ -218,14 +219,14 @@ public class testDecorateur {
         billesS2.add(bJaune1);billesS2.add(bJaune2);billesS2.add(bJaune3);billesS2.add(bJaune4);
         billesS2.add(bJaune5);billesS2.add(bJaune6);billesS2.add(bJaune7);
 
+        //Ajout des billes du scenario2.
         scenario2.setBillesScenario(billesS2);
 
          // Inscription à l'observateur
-
         observateurScenario2.inscription(billesS2);
 
 
-        cadre.addChoixScenarioListener(scenario3);
+        cadre.addChoixScenarioListener(lesScenarios);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billesS1);

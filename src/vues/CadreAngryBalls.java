@@ -43,7 +43,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	EcouteurTerminaison ecouteurTerminaison;
 
 
-	private final AnimationBilles animationBilles;
+	public static AnimationBilles animationBilles;
 
 
 	public CadreAngryBalls(String titre, String message, Vector<Bille> billes, SonLong[] hurlements,

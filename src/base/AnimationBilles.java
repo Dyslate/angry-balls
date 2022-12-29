@@ -31,6 +31,10 @@ public class AnimationBilles implements Runnable {
 		this.thread = null; // est-ce utile ?
 	}
 
+	public void setBilles(Vector<Bille> billes) {
+		this.billes = billes;
+	}
+
 	@Override
 	public void run() {
 		try {
