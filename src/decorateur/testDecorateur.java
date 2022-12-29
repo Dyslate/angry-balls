@@ -44,8 +44,10 @@ public class testDecorateur {
 
         Vector<SonLong> sonsLongs = OutilsConfigurationBilleHurlante.chargeSons(repertoireSon,
                 "config_audio_bille_hurlante.txt");
+        Vector<SonLong> sonBillard = OutilsConfigurationBilleHurlante.chargeSons(repertoireSon, "config_audio_billard.txt");
 
         SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
+        SonLong[] choc = SonLong.toTableau(sonBillard);
 //------------------Chargement des différents scénarios----------------------------------------------
 
         Scenario scenario1 = new Scenario("Scenario1");
@@ -58,13 +60,14 @@ public class testDecorateur {
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
-        Vector<Bille> billesS1 = new Vector<Bille>();
+        Vector<Bille> billesS1 = new Vector<>();
+        Vector<Bille> billesS2 = new Vector<>();
 
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
         int choixHurlementInitial = 2;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
-                "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
+                "Application pour test DP Decorateur / DP Observer / DP State",
                 billesS1, hurlements, choixHurlementInitial, scenarios,0);
 
         //Initialiser le controlleur générale
@@ -116,7 +119,7 @@ public class testDecorateur {
         DecorateurBille b0s1 = new DecorateurLancePierre(new DecorateurFantome(bd0s1));
         DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd2s1)));
         DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd3s1));
-        DecorateurBille b3s1 = new DecorateurPasseMuraille(new DecorateurFrottement(bd4s1));
+        DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd4s1)));
             // Création du Vecteur de billes et ajout dans Scénario 1
 
         billesS1.add(b0s1);
@@ -135,7 +138,7 @@ public class testDecorateur {
          // Création des vecteurs de position pour le scénario 2
         Vecteur p0s2, p1s2, p2s2, p3s2, p4s2, p5s2, p6s2, p7s2, p8s2, p9s2, p10s2,
                 p11s2, p12s2, p13s2, p14s2, p15s2;                          // Position X Scénario Y
-        double differenceBilles = rayon +0.5*rayon;
+        double differenceBilles = rayon + 0.5*rayon;
 
         double xligne1 = xMilieu -100;
         double xligne2 = xligne1 - (differenceBilles);
@@ -192,7 +195,6 @@ public class testDecorateur {
 
          // Création du Vecteur de billes et ajout dans Scénario 2
 
-        Vector<Bille> billesS2 = new Vector<>();
         billesS2.add(bBlanche);
         billesS2.add(bNoire);
         billesS2.add(bRouge1);billesS2.add(bRouge2);billesS2.add(bRouge3);billesS2.add(bRouge4);
@@ -200,7 +202,7 @@ public class testDecorateur {
         billesS2.add(bJaune1);billesS2.add(bJaune2);billesS2.add(bJaune3);billesS2.add(bJaune4);
         billesS2.add(bJaune5);billesS2.add(bJaune6);billesS2.add(bJaune7);
 
-        scenario1.setBillesScenario(billesS2);
+        scenario2.setBillesScenario(billesS2);
 
          // Inscription à l'observateur
 

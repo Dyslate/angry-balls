@@ -36,8 +36,12 @@ public class TestAngryBalls {
 		SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
 
 
-		Scenario scenario1 = new Scenario("Scénario 1", new Vector<Bille>());
-		Scenario scenario2 = new Scenario("Scénario 2", new Vector<Bille>());
+		Scenario scenario1 = new Scenario("Angry Balls",
+				"Application pour tester DP Decorator / Observer / State",
+				new Vector<>());
+		Scenario scenario2 = new Scenario("Billard",
+				"Application pour tester Observer / State",
+				new Vector<>());
 		Scenario[] scenarios = new Scenario[2];
 		scenarios[0]=scenario1;
 		scenarios[1]=scenario2;
