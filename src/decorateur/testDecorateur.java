@@ -58,147 +58,159 @@ public class testDecorateur {
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
-        Vector<Bille> billes = new Vector<Bille>();
+        Vector<Bille> billesS1 = new Vector<Bille>();
 
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
         int choixHurlementInitial = 2;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
-                billes, hurlements, choixHurlementInitial, scenarios,0);
+                billesS1, hurlements, choixHurlementInitial, scenarios,0);
 
         //Initialiser le controlleur générale
         new ControleurGeneral(cadre);
-
-
 
         cadre.montrer(); // on rend visible la vue
 
 //------------- remplissage de la liste avec 5 billes -------------------------------
 
-        double xMax, yMax;
+        double xMax, yMax, xMilieu, yMilieu;
         double vMax = 0.1;
         xMax = cadre.largeurBillard(); // abscisse maximal
+        xMilieu = xMax/2;
         yMax = cadre.hauteurBillard(); // ordonnee maximale
+        yMilieu = yMax/2;
 
         double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais
         // ce n'est pas obligatoire
-
-        Vecteur p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
-                v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10; // les positions des centres des billes et les vecteurs vitesse
-        // au demarrage.
-        // Elles vont etre choisies aleatoirement
-
-//------------------- creation des vecteurs position des billes ---------------------------------
-
-        p0 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p2 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p5 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p6 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p7 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p8 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p9 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-        p10 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-
-
-//------------------- creation des vecteurs vitesse des billes ---------------------------------
-
-        v0 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v2 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v5 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v6 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v7 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v8 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v9 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-        v10 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
-
-
+        double diametre = rayon +0.5*rayon;         // Je sais pas pourquoi pour être honnête
 //--------------- ici commence la partie à changer ---------------------------------
-        // Création Observateur Collisions
-        ObservateurCollisionBille observateur = new ObservateurSonCollision(sonsLongs.get(0),cadre);
+        // Création partie Scénario 1
+            // Création Observateur Collisions
+        ObservateurCollisionBille observateurScenario1 = new ObservateurCollisionBille();
+            // Création des vecteurs de position, d'accélération et de vitesse pour le scénario 1
+        Vecteur p0s1, p1s1, p2s1, p3s1,         // Position X Scénario Y
+                v0s1, v1s1, v2s1, v3s1,         // Vitesse X Scénario Y
+                a0s1, a1s1, a2s1, a3s1;         // Accélération X Scénario Y
 
-        //Création des billes dynamiques
-        BilleDynamique bd1 = new BilleDynamique(p2,rayon,v2,new Vecteur(0,0.0025),Couleur.rouge, observateur);
-        BilleDynamique bd2 = new BilleDynamique(p3,rayon,v3,new Vecteur(0,0.0025),Couleur.noir, observateur);
-        BilleDynamique bd3 = new BilleDynamique(p4,rayon,v4,new Vecteur(0,0.0025),Couleur.noir, observateur);
-        BilleDynamique bd4 = new BilleDynamique(p1,rayon,v1,new Vecteur(0.05,0.0025),Couleur.bleu, observateur);
-        BilleDynamique bd5 = new BilleDynamique(p0,rayon,v0,new Vecteur(0,0.0025),Couleur.rose, observateur);
-        BilleDynamique bd6 = new BilleDynamique(p5, rayon, v5, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
-        BilleDynamique bd7 = new BilleDynamique(p6, rayon, v6, new Vecteur(0, 0.0025), Couleur.orange, observateur);
+        p0s1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p1s1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p2s1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p3s1 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 
+        v0s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v1s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v2s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v3s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
-        BilleDynamique bd8 = new BilleDynamique(p7, rayon, v7, new Vecteur(0, 0.0025), Couleur.antiDeuteranope, observateur);
-        BilleDynamique bd9 = new BilleDynamique(p8, rayon, v8, new Vecteur(0, 0.0025), Couleur.couleurSnoopDog, observateur);
-        BilleDynamique bd10 = new BilleDynamique(p9, rayon, v9, new Vecteur(0, 0.0025), Couleur.mauve, observateur);
-        BilleDynamique bd11 = new BilleDynamique(p10, rayon, v10, new Vecteur(0, 0.0025), Couleur.getRandomCouleur(), observateur);
+        a0s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a1s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a2s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a3s1 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
+            // Création Billes dynamiques pour le Scénario 1
+        BilleDynamique bd0s1 = new BilleDynamique(p0s1, rayon*1.2, v0s1, a0s1, Couleur.rouge);
+        BilleDynamique bd2s1 = new BilleDynamique(p1s1, rayon*2, v1s1, a1s1, Couleur.bleu);
+        BilleDynamique bd3s1 = new BilleDynamique(p2s1, rayon, v2s1, a2s1, Couleur.vert);
+        BilleDynamique bd4s1 = new BilleDynamique(p3s1, rayon*0.8, v3s1, a3s1, Couleur.noir);
+            // Création des décorateurs pour le Scénario 1
+        DecorateurBille b0s1 = new DecorateurFantome(new DecorateurBilleDVD(bd0s1));
+        DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd2s1)));
+        DecorateurBille b2s1 = new DecorateurLancePierre(new DecorateurPesanteur(new DecorateurPoissonGlobe(bd3s1)));
+        DecorateurBille b3s1 = new DecorateurPasseMuraille(new DecorateurFrottement(bd4s1));
+            // Création du Vecteur de billes et ajout dans Scénario 1
 
-       DecorateurBille b1 = new DecorateurPasseMuraille(bd1);
-        DecorateurBille b2 = new DecorateurFantome(new DecorateurBilleDVD(bd2));
-        DecorateurBille b3 = new DecorateurSon(bd3,hurlements[choixHurlementInitial], cadre);
-        DecorateurBille b4 = new DecorateurPesanteur(bd4,new Vecteur(0,0.001));
-        DecorateurBille b5 = new DecorateurFrottement(new DecorateurPesanteur(bd5,new Vecteur(0,0.025)));
-        DecorateurBille b6 = new DecorateurBilleNewton(new DecorateurBilleArret(bd6));
+        billesS1.add(b0s1);
+        billesS1.add(b1s1);
+        billesS1.add(b2s1);
+        billesS1.add(b3s1);
 
-
-        DecorateurBille b7 = new DecorateurTeleportation(new DecorateurPoissonGlobe(bd7));
-        DecorateurBille b8 = new DecorateurLancePierre(bd8);
-     //   DecorateurBille b9 = new DecorateurPoissonGlobe(new DecorateurPesanteur(new DecorateurFrottement(bd9)));
-        DecorateurBille b10 = new DecorateurCliqueCouleur(bd10);
-        DecorateurBille b11 = new DecorateurPilote(bd11);
-
-
-
-        //Bille passe muraille
-        //billes.add(b1);
-
-        //Bille DVD
-   //     billes.add(b2);
-
-        //Bille Hurlante
-      //  cadre.addChoixHurlementListener((ItemListener) b3);
-        //billes.add(b3);
-
-        //Bille rebondissante
-        //billes.add(b4);
-
-        // Bille frottement
-        //billes.add(b5);
-
-        // Bille Newton avec arrêt
-        //billes.add(b6);
-
-        //Test Bille Teleportation
-        billes.add(b7);
-
-        //Test Bille LancePierre
-        billes.add(b8);
-
-        //Test bille Couleur
-        billes.add(b10);
+        scenario2.setBillesScenario(billesS1);
+            // Inscription à l'observateur
+        observateurScenario1.inscription(billesS1);
 
 
-        //Test bille piloté
-        billes.add(b11);
+        // Création partie Scénario 2
+            // Création Observateur Collisions
+        ObservateurCollisionBille observateurScenario2 = new ObservateurSonCollision(sonsLongs.get(0),cadre);
+         // Création des vecteurs de position pour le scénario 2
+        Vecteur p0s2, p1s2, p2s2, p3s2, p4s2, p5s2, p6s2, p7s2, p8s2, p9s2, p10s2,
+                p11s2, p12s2, p13s2, p14s2, p15s2;                          // Position X Scénario Y
+        double xligne1 = xMilieu -100;
+        double xligne2 = xligne1 - (diametre);
+        double xligne3 = xligne2 - (diametre);
+        double xligne4 = xligne3 - (diametre);
+        double xligne5 = xligne4 - (diametre);
 
-        //Test bille pufferfish
-        //billes.add(b9);
+        double yligne5 = yMilieu;
+        double yligne4 = yMilieu - (diametre);
+        double yligne3 = yligne4 - (diametre);
+        double yligne2 = yligne3 - (diametre);
+        double yligne1 = yligne2 - (diametre);
+        double yligne6 = yligne5 + (diametre);
+        double yligne7 = yligne6 + (diametre);
+        double yligne8 = yligne7 + (diametre);
+        double yligne9 = yligne8 + (diametre);
 
-        observateur.inscription(billes);
+        p0s2 = new Vecteur(xMilieu+250, yMilieu);
+        p1s2 = new Vecteur(xligne1, yligne5);
+        p2s2 = new Vecteur(xligne2, yligne6);
+        p3s2 = new Vecteur(xligne3, yligne7);
+        p4s2 = new Vecteur(xligne4, yligne8);
+        p5s2 = new Vecteur(xligne5, yligne9);
+        p6s2 = new Vecteur(xligne2, yligne4);
+        p7s2 = new Vecteur(xligne4, yligne6);
+        p8s2 = new Vecteur(xligne3, yligne5);
+        p9s2 = new Vecteur(xligne5, yligne7);
+        p10s2 = new Vecteur(xligne3, yligne3);
+        p11s2 = new Vecteur(xligne4, yligne4);
+        p12s2 = new Vecteur(xligne5, yligne5);
+        p13s2 = new Vecteur(xligne4, yligne2);
+        p14s2 = new Vecteur(xligne5, yligne3);
+        p15s2 = new Vecteur(xligne5, yligne1);
 
-        // System.out.println(billes);
-        cadre.createBufferStrategy(2);
+            // Création Billes dynamiques pour le Scénario 2
+        BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.99, Couleur.blancCreme);
+        BilleDynamique bNoire = new BilleDynamique(p8s2, rayon, Couleur.noir);
+        BilleDynamique bRouge1 = new BilleDynamique(p1s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge2 = new BilleDynamique(p6s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge3 = new BilleDynamique(p13s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge4 = new BilleDynamique(p3s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge5 = new BilleDynamique(p7s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge6 = new BilleDynamique(p12s2, rayon, Couleur.rouge);
+        BilleDynamique bRouge7 = new BilleDynamique(p5s2, rayon, Couleur.rouge);
+        BilleDynamique bJaune1 = new BilleDynamique(p2s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune2 = new BilleDynamique(p4s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune3 = new BilleDynamique(p10s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune4 = new BilleDynamique(p14s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune5 = new BilleDynamique(p11s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune6 = new BilleDynamique(p9s2, rayon, Couleur.jaune);
+        BilleDynamique bJaune7 = new BilleDynamique(p15s2, rayon, Couleur.jaune);
+            // Création des décorateurs pour le Scénario 2
+        DecorateurBille bBlanche = new DecorateurLancePierre(bd0s2);
+
+         // Création du Vecteur de billes et ajout dans Scénario 2
+
+        Vector<Bille> billesS2 = new Vector<>();
+        billesS2.add(bBlanche);
+        billesS2.add(bNoire);
+        billesS2.add(bRouge1);billesS2.add(bRouge2);billesS2.add(bRouge3);billesS2.add(bRouge4);
+        billesS2.add(bRouge5);billesS2.add(bRouge6);billesS2.add(bRouge7);
+        billesS2.add(bJaune1);billesS2.add(bJaune2);billesS2.add(bJaune3);billesS2.add(bJaune4);
+        billesS2.add(bJaune5);billesS2.add(bJaune6);billesS2.add(bJaune7);
+
+        scenario1.setBillesScenario(billesS2);
+
+         // Inscription à l'observateur
+
+        observateurScenario2.inscription(billesS2);
+
 
         cadre.addChoixScenarioListener(scenario1);
+        cadre.addChoixScenarioListener(scenario2);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
-        System.out.println("billes = " + billes);
+        System.out.println("billes = " + billesS1);
 
     }
 }

@@ -36,8 +36,8 @@ public class TestAngryBalls {
 		SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
 
 
-		Scenario scenario1 = new Scenario("Scenario1");
-		Scenario scenario2 = new Scenario("Scenario2");
+		Scenario scenario1 = new Scenario("Scénario 1", new Vector<Bille>());
+		Scenario scenario2 = new Scenario("Scénario 2", new Vector<Bille>());
 		Scenario[] scenarios = new Scenario[2];
 		scenarios[0]=scenario1;
 		scenarios[1]=scenario2;
@@ -51,7 +51,7 @@ public class TestAngryBalls {
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
 		int choixHurlementInitial = 0;
-		int choixScenarioInitial = 1;
+		int choixScenarioInitial = 0;
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
 				billes, hurlements, choixHurlementInitial, scenarios, choixScenarioInitial);

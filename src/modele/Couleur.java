@@ -14,6 +14,7 @@ public class Couleur {
     // COULEURS PREDEFINIES
     public static Couleur noir = new Couleur(0,0,0,255);
     public static Couleur blanc = new Couleur(255,255,255,255);
+    public static Couleur blancCreme = new Couleur(240, 240, 240, 255);
     public static Couleur vert = new Couleur(0,255,0,255);
     public static Couleur bleu = new Couleur(0,0,255,255);
     public static Couleur rouge = new Couleur(255,0,0,255);

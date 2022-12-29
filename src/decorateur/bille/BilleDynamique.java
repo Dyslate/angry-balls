@@ -22,15 +22,14 @@ public class BilleDynamique extends Bille {
 
     public ObservateurCollisionBille inscrit;
 
-
-    public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Couleur couleur) {
-        this.position=position;
-        this.rayon=rayon;
-        this.vitesse=vitesse;
-        this.couleur=couleur;
+    public BilleDynamique(Vecteur position, double rayon, Couleur couleur) {
+        this.position = position;
+        this.vitesse = Vecteur.VECTEURNUL;
+        this.acceleration = Vecteur.VECTEURNUL;
+        this.rayon = rayon;
+        this.couleur = couleur;
         this.clef = prochaineClef++;
     }
-
     public BilleDynamique(Vecteur position, double rayon, Vecteur vitesse, Vecteur acceleration, Couleur couleur, ObservateurCollisionBille obs) {
         this.position=position;
         this.rayon=rayon;
