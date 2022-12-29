@@ -61,9 +61,9 @@ public class BilleDynamique extends Bille {
     public BilleDynamique(Vecteur centre, double rayon, Couleur couleur, ObservateurCollisionBille observateur) {
         this.position = centre;
         this.rayon = rayon;
-        this.acceleration = Vecteur.VECTEURNUL;
+        this.acceleration = new Vecteur(0,0);
         this.couleur = couleur;
-        this.vitesse = Vecteur.VECTEURNUL;
+        this.vitesse = new Vecteur(0,0);
         this.clef = prochaineClef++;
         this.inscrit = observateur;
     }

@@ -69,7 +69,7 @@ public class testDecorateur {
         int choixHurlementInitial = 2;
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Application pour test DP Decorateur / DP Observer / DP State",
-                billesS1, hurlements, choixHurlementInitial, scenarios,0);
+                billesS2, hurlements, choixHurlementInitial, scenarios,0);
 
         //Initialiser le controlleur générale
         new ControleurGeneral(cadre);
@@ -113,14 +113,14 @@ public class testDecorateur {
 
             // Création Billes dynamiques pour le Scénario 1
         BilleDynamique bd0s1 = new BilleDynamique(p0s1, rayon*1.2, v0s1, a0s1, Couleur.rouge, observateurScenario1);
-        BilleDynamique bd2s1 = new BilleDynamique(p1s1, rayon*2, v1s1, a1s1, Couleur.bleu, observateurScenario1);
-        BilleDynamique bd3s1 = new BilleDynamique(p2s1, rayon, v2s1, a2s1, Couleur.vert, observateurScenario1);
-        BilleDynamique bd4s1 = new BilleDynamique(p3s1, rayon*0.8, v3s1, a3s1, Couleur.noir, observateurScenario1);
+        BilleDynamique bd1s1 = new BilleDynamique(p1s1, rayon*2, v1s1, a1s1, Couleur.bleu, observateurScenario1);
+        BilleDynamique bd2s1 = new BilleDynamique(p2s1, rayon, v2s1, a2s1, Couleur.vert, observateurScenario1);
+        BilleDynamique bd3s1 = new BilleDynamique(p3s1, rayon*0.8, v3s1, a3s1, Couleur.noir, observateurScenario1);
             // Création des décorateurs pour le Scénario 1
         DecorateurBille b0s1 = new DecorateurLancePierre(new DecorateurFantome(bd0s1));
-        DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd2s1)));
-        DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd3s1));
-        DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd4s1)));
+        DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd1s1)));
+        DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd2s1));
+        DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd3s1)));
             // Création du Vecteur de billes et ajout dans Scénario 1
 
         billesS1.add(b0s1);
@@ -176,23 +176,38 @@ public class testDecorateur {
 
             // Création Billes dynamiques pour le Scénario 2
         BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.99, Couleur.blancCreme, observateurScenario2);
-        BilleDynamique bNoire = new BilleDynamique(p8s2, rayon, Couleur.noir, observateurScenario2);
-        BilleDynamique bRouge1 = new BilleDynamique(p1s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge2 = new BilleDynamique(p6s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge3 = new BilleDynamique(p13s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge4 = new BilleDynamique(p3s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge5 = new BilleDynamique(p7s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge6 = new BilleDynamique(p12s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bRouge7 = new BilleDynamique(p5s2, rayon, Couleur.rouge, observateurScenario2);
-        BilleDynamique bJaune1 = new BilleDynamique(p2s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune2 = new BilleDynamique(p4s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune3 = new BilleDynamique(p10s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune4 = new BilleDynamique(p14s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune5 = new BilleDynamique(p11s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune6 = new BilleDynamique(p9s2, rayon, Couleur.jaune, observateurScenario2);
-        BilleDynamique bJaune7 = new BilleDynamique(p15s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd8s2 = new BilleDynamique(p8s2, rayon, Couleur.noir, observateurScenario2);
+        BilleDynamique bd1s2 = new BilleDynamique(p1s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd2s2 = new BilleDynamique(p6s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd3s2 = new BilleDynamique(p13s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd4s2 = new BilleDynamique(p3s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd5s2 = new BilleDynamique(p7s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd6s2 = new BilleDynamique(p12s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd7s2 = new BilleDynamique(p5s2, rayon, Couleur.rouge, observateurScenario2);
+        BilleDynamique bd9s2 = new BilleDynamique(p2s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd10s2 = new BilleDynamique(p4s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd11s2 = new BilleDynamique(p10s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd12s2 = new BilleDynamique(p14s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd13s2 = new BilleDynamique(p11s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd14s2 = new BilleDynamique(p9s2, rayon, Couleur.jaune, observateurScenario2);
+        BilleDynamique bd15s2 = new BilleDynamique(p15s2, rayon, Couleur.jaune, observateurScenario2);
             // Création des décorateurs pour le Scénario 2
-        DecorateurBille bBlanche = new DecorateurLancePierre(bd0s2);
+        DecorateurBille bBlanche = new DecorateurLancePierre(new DecorateurFrottement(bd0s2));
+        DecorateurBille bNoire = new DecorateurFrottement(bd8s2);
+        DecorateurBille bRouge1 = new DecorateurFrottement(bd1s2);
+        DecorateurBille bRouge2 = new DecorateurFrottement(bd2s2);
+        DecorateurBille bRouge3 = new DecorateurFrottement(bd3s2);
+        DecorateurBille bRouge4 = new DecorateurFrottement(bd4s2);
+        DecorateurBille bRouge5 = new DecorateurFrottement(bd5s2);
+        DecorateurBille bRouge6 = new DecorateurFrottement(bd6s2);
+        DecorateurBille bRouge7 = new DecorateurFrottement(bd7s2);
+        DecorateurBille bJaune1 = new DecorateurFrottement(bd9s2);
+        DecorateurBille bJaune2 = new DecorateurFrottement(bd10s2);
+        DecorateurBille bJaune3 = new DecorateurFrottement(bd11s2);
+        DecorateurBille bJaune4 = new DecorateurFrottement(bd12s2);
+        DecorateurBille bJaune5 = new DecorateurFrottement(bd13s2);
+        DecorateurBille bJaune6 = new DecorateurFrottement(bd14s2);
+        DecorateurBille bJaune7 = new DecorateurFrottement(bd15s2);
 
          // Création du Vecteur de billes et ajout dans Scénario 2
 
