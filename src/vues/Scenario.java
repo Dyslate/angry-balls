@@ -19,5 +19,10 @@ public class Scenario implements ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         System.out.println("Le scenario "+e.getItem()+" a ete selectionne");
+        if(e.getItem().equals("Scenario1")){
+            System.out.println(CadreAngryBalls.billard.billes.get(1).getPosition());
+        } else {
+            System.out.println(CadreAngryBalls.billard.billes.get(2).getPosition());
+        }
     }
 }
