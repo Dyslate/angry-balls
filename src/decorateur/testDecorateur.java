@@ -57,6 +57,7 @@ public class testDecorateur {
         scenarios[0]=scenario1;
         scenarios[1]=scenario2;
 
+        Scenario scenario3 = new Scenario(scenarios);
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
 
@@ -209,7 +210,7 @@ public class testDecorateur {
         observateurScenario2.inscription(billesS2);
 
 
-        cadre.addChoixScenarioListener(scenario1);
+        cadre.addChoixScenarioListener(scenario3);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
         System.out.println("billes = " + billesS1);

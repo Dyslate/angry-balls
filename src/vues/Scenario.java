@@ -16,7 +16,7 @@ public class Scenario implements ItemListener {
     public Vector<Bille> billesScenario;
 
     private static int prochainID = 0;
-
+    public Scenario[] scenario;
 
 
     public Scenario(String nom) {
@@ -25,6 +25,10 @@ public class Scenario implements ItemListener {
         this.billesScenario = new Vector<Bille>();
     }
 
+
+    public Scenario(Scenario[] scenarios){
+        this.scenario=scenarios;
+    }
     public Scenario(String nom, String description, Vector<Bille> billes) {
         this.id = prochainID++;
         this.nomScenario = nom;
@@ -47,6 +51,15 @@ public class Scenario implements ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         System.out.println(e.getItem());
-        System.out.println(getBillesScenario());
+        if(e.getItem()=="Scenario1"){
+            System.out.println(scenario[0].billesScenario);
+            CadreAngryBalls.billard.billes = scenario[0].billesScenario;
+
+        } else {
+            System.out.println(scenario[1].billesScenario);
+            CadreAngryBalls.billard.billes = scenario[1].billesScenario;
+
+        }
+
     }
 }
