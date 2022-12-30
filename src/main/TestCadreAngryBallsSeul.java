@@ -1,4 +1,4 @@
-package vues;
+package main;
 
 import java.io.File;
 import java.util.Vector;

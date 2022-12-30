@@ -1,8 +1,12 @@
-package base;
+package main;
 
 import java.io.File;
 import java.util.Vector;
 
+import base.AnimationBilles;
+import base.EcouteurBoutonArreter;
+import base.EcouteurBoutonLancer;
+import base.OutilsConfigurationBilleHurlante;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import musique.SonLong;

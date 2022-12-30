@@ -1,9 +1,11 @@
-package decorateur;
+package main;
 
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
 import base.OutilsConfigurationBilleHurlante;
+import decorateur.DecorateurBille;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
 import decorateur.decorateur.state.ControleurGeneral;
@@ -13,6 +15,7 @@ import modele.Couleur;
 import musique.SonLong;
 import observateur.ObservateurCollisionBille;
 import observateur.ObservateurSonCollision;
+import outilsvues.dessinateurs.DecorateurDessinateur;
 import vues.CadreAngryBalls;
 import vues.Scenario;
 
@@ -23,7 +26,7 @@ import vues.Scenario;
  *
  * Ideal pour mettre en place le DP decorator
  */
-public class testDecorateur {
+public class Main {
 
     /**
      * @param args
@@ -115,10 +118,12 @@ public class testDecorateur {
         BilleDynamique bd2s1 = new BilleDynamique(p2s1, rayon, v2s1, a2s1, Couleur.vert, observateurScenario1);
         BilleDynamique bd3s1 = new BilleDynamique(p3s1, rayon*0.8, v3s1, a3s1, Couleur.noir, observateurScenario1);
             // Création des décorateurs pour le Scénario 1
-        DecorateurBille b0s1 = new DecorateurLancePierre(new DecorateurFantome(bd0s1));
-        DecorateurBille b1s1 = new DecorateurSouris(new DecorateurBilleArret(bd1s1));
+            // Pour bille son   DecorateurBille b0s1 = new DecorateurSon(bd0s1, hurlements[choixHurlementInitial], cadre);
+            //                  cadre.addChoixHurlementListener((ItemListener) b0s1);
+        DecorateurBille b0s1 = new DecorateurCliqueCouleur(new DecorateurFrottement(new DecorateurBilleDVD(bd0s1)));
+        DecorateurBille b1s1 = new DecorateurTeleportation(new DecorateurBilleArret(bd1s1));
         DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd2s1));
-        DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd3s1)));
+        DecorateurBille b3s1 = new DecorateurBilleNewton(new DecorateurBilleArret(new DecorateurCliqueCouleur(bd3s1)));
             // Création du Vecteur de billes et ajout dans Scénario 1
 
         billesS1.add(b0s1);
@@ -133,7 +138,7 @@ public class testDecorateur {
 
         // Création partie Scénario 2
             // Création Observateur Collisions
-        ObservateurCollisionBille observateurScenario2 = new ObservateurSonCollision(sonsLongs.get(0),cadre);
+        ObservateurCollisionBille observateurScenario2 = new ObservateurSonCollision(sonsLongs.get(4),cadre);
          // Création des vecteurs de position pour le scénario 2
         Vecteur p0s2, p1s2, p2s2, p3s2, p4s2, p5s2, p6s2, p7s2, p8s2, p9s2, p10s2,
                 p11s2, p12s2, p13s2, p14s2, p15s2;                          // Position X Scénario Y

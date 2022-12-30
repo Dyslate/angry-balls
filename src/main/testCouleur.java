@@ -1,4 +1,6 @@
-package modele;
+package main;
+
+import modele.Couleur;
 
 import java.awt.*;
 
