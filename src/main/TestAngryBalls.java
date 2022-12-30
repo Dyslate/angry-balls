@@ -87,7 +87,7 @@ public class TestAngryBalls {
 		v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie e changer ---------------------------------
-
+/*
 		billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
 		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
 		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
@@ -99,7 +99,7 @@ public class TestAngryBalls {
 				hurlements[choixHurlementInitial], cadre));
 
 		cadre.addChoixHurlementListener(billeNoire); // e present on peut changer le son de la bille qui hurle
-
+*/
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
 		System.out.println("billes = " + billes);

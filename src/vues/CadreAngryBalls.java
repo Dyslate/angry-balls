@@ -120,7 +120,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	}
 
-	public CadreAngryBalls(String angryBalls, String message, Vector<Bille> billes, SonLong[] hurlements, int choixHurlementInitial) {
+	public CadreAngryBalls(String titre, String message, Vector<Bille> billes, SonLong[] hurlements, int choixHurlementInitial) {
 		super(titre);
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 
