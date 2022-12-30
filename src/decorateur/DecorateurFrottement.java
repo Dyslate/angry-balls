@@ -1,6 +1,5 @@
 package decorateur;
 
-import decorateur.DecorateurBille;
 import mesmaths.mecanique.MecaniquePoint;
 import modele.Bille;
 
@@ -16,5 +15,4 @@ public class DecorateurFrottement extends DecorateurBille {
         super.gestionAcceleration(billes);
         this.bille.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(masse()*0.5, getVitesse()));
     }
-
 }

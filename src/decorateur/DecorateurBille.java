@@ -8,6 +8,9 @@ import modele.Couleur;
 import java.awt.*;
 import java.util.Vector;
 
+/**
+ * Classe abstraite pour implémenter le décorateur à angry-balls.
+ */
 public abstract class DecorateurBille extends Bille {
 
     protected Bille bille;

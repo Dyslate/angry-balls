@@ -8,6 +8,10 @@ import java.util.Vector;
 import static etats.BilleAttrape.*;
 import static etats.BilleRelache.*;
 
+
+/**
+ * Decorateur permettant à une bille d'être controllable via la souris.
+ */
 public class DecorateurPilote extends DecorateurBille {
     public DecorateurPilote(Bille b) {
         super(b);

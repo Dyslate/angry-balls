@@ -9,6 +9,10 @@ import vues.VueBillard;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+
+/**
+ * Decorateur permettant à une bille d'avoir du son.
+ */
 public class DecorateurSon extends DecorateurBille implements ItemListener {
     private static final int DELAI_MIN=10;
     public static final int DELAI_MAX=150;

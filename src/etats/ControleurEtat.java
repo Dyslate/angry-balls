@@ -11,6 +11,11 @@ public abstract class ControleurEtat {
     public ControleurEtat[] suivants;
     CadreAngryBalls cadre;
     Billard billard;
+
+    /**
+     * @param controleurGeneral Controleur d'êtats suite à la mise en place du DP State
+     * @param retour Etat retour
+     */
     public ControleurEtat(ControleurGeneral controleurGeneral, ControleurEtat retour){
         this.controleurGeneral = controleurGeneral;
         this.retour = retour;
@@ -18,6 +23,10 @@ public abstract class ControleurEtat {
         cadre = controleurGeneral.getCadre();
         billard = controleurGeneral.getBillard();
     }
+
+    /**
+     * Ajout d'actionListener au billard permettant de capturer la gestion de la souris et de son déplacement.
+     */
     public void init() {
         billard.addMouseListener(this.controleurGeneral);
         billard.addMouseMotionListener(this.controleurGeneral);

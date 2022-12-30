@@ -1,8 +1,11 @@
 package decorateur;
 
-import decorateur.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import modele.Bille;
+
+/**
+ * Decorateur permettant à une bille de traverser les murs.
+ */
 public class DecorateurPasseMuraille extends DecorateurBille {
     public DecorateurPasseMuraille(Bille b) {
         super(b);

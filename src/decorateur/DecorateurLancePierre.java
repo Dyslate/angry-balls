@@ -8,6 +8,10 @@ import java.util.Vector;
 import static etats.BilleAttrape.*;
 import static etats.BilleRelache.vitesseSouris;
 
+
+/**
+ * Decorateur permettant à une bille de se comporter comme un lance-pierre: on peut "tirer" la bille.
+ */
 public class DecorateurLancePierre extends DecorateurBille {
     public DecorateurLancePierre(Bille b) {
         super(b);

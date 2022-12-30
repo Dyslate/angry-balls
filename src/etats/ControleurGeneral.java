@@ -9,10 +9,19 @@ import java.awt.event.*;
 public class ControleurGeneral implements MouseListener, MouseMotionListener {
     CadreAngryBalls cadre;
     public ControleurEtat billeAttrape, billeRelache, controleurCourant;
+
+    /**
+     *
+     * @param cadre Cadre contenant le billard avec les billes.
+     */
     public ControleurGeneral(CadreAngryBalls cadre) {
         installeControleurs();
         this.cadre = cadre;
     }
+
+    /**
+     * Gestion des différents états possibles.
+     */
     private void installeControleurs(){
         this.billeAttrape = new BilleAttrape(this,null,null);
         this.billeRelache = new BilleRelache(this,this.billeAttrape,this.billeAttrape);
@@ -21,6 +30,7 @@ public class ControleurGeneral implements MouseListener, MouseMotionListener {
         this.controleurCourant = this.billeAttrape;
         this.setControleur(this.controleurCourant);
     }
+
 
     public void setControleur(ControleurEtat controleurEtat){
         this.controleurCourant = controleurEtat;

@@ -30,6 +30,12 @@ public class BilleRelache extends ControleurEtat {
     public CadreAngryBalls cadre;
     public Billard billard;
 
+    /**
+     *
+     * @param controleurGeneral Controleur d'êtats suite à la mise en place du DP State
+     * @param successeur Etat suivant
+     * @param retour Etat retour
+     */
     public BilleRelache(ControleurGeneral controleurGeneral, ControleurEtat successeur, ControleurEtat retour) {
         super(controleurGeneral, retour);
         this.suivants = new ControleurEtat[1];

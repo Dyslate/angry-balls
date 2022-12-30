@@ -1,6 +1,5 @@
 package decorateur;
 
-import decorateur.DecorateurBille;
 import mesmaths.cinematique.Collisions;
 import modele.Bille;
 

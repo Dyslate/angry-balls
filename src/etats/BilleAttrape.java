@@ -27,6 +27,12 @@ public class BilleAttrape extends ControleurEtat{
     CadreAngryBalls cadre;
     Billard billard;
 
+    /**
+     *
+     * @param controleurGeneral Controleur d'êtats suite à la mise en place du DP State
+     * @param suivant Etat suivant
+     * @param retour Etat retour
+     */
     public BilleAttrape(ControleurGeneral controleurGeneral, ControleurEtat suivant, ControleurEtat retour) {
         super(controleurGeneral, controleurGeneral.billeAttrape);
         this.retour = retour;

@@ -5,6 +5,9 @@ import modele.Bille;
 
 import java.util.Vector;
 
+/**
+ * Decorateur permettant à une bille d'agir comme un poisson globe: à l'approche d'une bille elle grossit.
+ */
 public class DecorateurPoissonGlobe extends DecorateurBille {
     private boolean gonfle = false;
     private static double vraiRayon;

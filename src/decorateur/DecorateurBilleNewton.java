@@ -1,11 +1,13 @@
 package decorateur;
 
-import decorateur.DecorateurBille;
 import modele.Bille;
 import modele.OutilsBille;
 
 import java.util.Vector;
 
+/**
+ * Decorateur permettant à une bille de rebondir
+ */
 public class DecorateurBilleNewton extends DecorateurBille {
     public DecorateurBilleNewton(Bille b) {
         super(b);

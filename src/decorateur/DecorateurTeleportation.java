@@ -9,6 +9,9 @@ import static etats.BilleAttrape.*;
 import static etats.BilleRelache.*;
 
 
+/**
+ * Decorateur permettant à la bille de se téléporter via la souris. Au relachement du click de la souris, la bille se positionne à l'endroit voulue.
+ */
 public class DecorateurTeleportation extends DecorateurBille {
     public DecorateurTeleportation(Bille b) {
         super(b);
