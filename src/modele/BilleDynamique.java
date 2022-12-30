@@ -105,11 +105,17 @@ public class BilleDynamique extends Bille {
         return ro * Geop.volumeSphère(rayon);
     }
 
+
+
     @Override
     public void enleverInscrit() {
         this.inscrit = null;
     }
 
+    /**
+     *
+     * @return true si une bille est inscrite pour les collisions.
+     */
     @Override
     public boolean inscrit() {
         return this.inscrit != null ? true : false;
@@ -118,6 +124,12 @@ public class BilleDynamique extends Bille {
         this.getAcceleration().set(Vecteur.VECTEURNUL);
     }
 
+
+    /**
+     *
+     * @param billes un vecteur de billes présentes dans le billard
+     * @return  si la bille est inscrite, gestion de la collision via observer.
+     */
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
         if (inscrit == null) {
@@ -130,6 +142,8 @@ public class BilleDynamique extends Bille {
     public Couleur getCouleur() {
         return couleur;
     }
+
+
     @Override
     public void setCouleur(Couleur coul) {this.couleur = coul;}
     @Override
