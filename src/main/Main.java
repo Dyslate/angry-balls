@@ -48,12 +48,14 @@ public class Main {
         SonLong[] choc = SonLong.toTableau(sonBillard);
 //------------------Chargement des différents scénarios----------------------------------------------
 
-        Scenario scenario1 = new Scenario("Scenario1");
-        Scenario scenario2 = new Scenario("Scenario2");
+        Scenario scenario1 = new Scenario("Initiales");
+        Scenario scenario2 = new Scenario("Billard");
+        Scenario scenario3 = new Scenario("Autres");
 
-        Scenario[] scenarios=new Scenario[2];
+        Scenario[] scenarios=new Scenario[3];
         scenarios[0]=scenario1;
         scenarios[1]=scenario2;
+        scenarios[2]=scenario3;
 
         Scenario lesScenarios = new Scenario(scenarios);
 
@@ -61,6 +63,7 @@ public class Main {
 
         Vector<Bille> billesS1 = new Vector<>();
         Vector<Bille> billesS2 = new Vector<>();
+        Vector<Bille> billesS3 = new Vector<>();
 
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
@@ -238,7 +241,61 @@ public class Main {
          // Inscription à l'observateur
         observateurScenario2.inscription(billesS2);
 
+        // Création partie Scénario 3
+        // Création Observateur Collisions
+        ObservateurCollisionBille observateurScenario3 = new ObservateurCollisionBille();
+        // Création des vecteurs de position, d'accélération et de vitesse pour le scénario 3
+        Vecteur p0s3, p1s3, p2s3, p3s3, p4s3,        // Position X Scénario Y
+                v0s3, v1s3, v2s3, v3s3, v4s3,        // Vitesse X Scénario Y
+                a0s3, a1s3, a2s3, a3s3, a4s3;         // Accélération X Scénario Y
 
+        p0s3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p1s3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p2s3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p3s3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
+        p4s3 = Vecteur.créationAléatoire(0,0, xMax, yMax);
+
+        v0s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v1s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v2s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v3s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        v4s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+
+        a0s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a1s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a2s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a3s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+        a4s3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+
+        // Création Billes dynamiques pour le Scénario 1
+        BilleDynamique bd0s3 = new BilleDynamique(p0s3, rayon*1.2, v0s3, a0s3, Couleur.antiDeuteranope, observateurScenario3);
+        BilleDynamique bd1s3 = new BilleDynamique(p1s3, rayon*2, v1s3, a1s3, Couleur.mauve, observateurScenario3);
+        BilleDynamique bd2s3 = new BilleDynamique(p2s3, rayon, v2s3, a2s3, Couleur.jaune, observateurScenario3);
+        BilleDynamique bd3s3 = new BilleDynamique(p3s3, rayon*0.8, v3s3, a3s3, Couleur.cuisseDeNympheEmue, observateurScenario3);
+        BilleDynamique bd4s3 = new BilleDynamique(p4s3, rayon, v4s3, a4s3, Couleur.couleurSnoopDog, observateurScenario3);
+        // Création des décorateurs pour le Scénario 3
+
+        DecorateurBille b0s3 = new DecorateurCliqueCouleur(new DecorateurFrottement(new DecorateurBilleDVD(bd0s3)));
+        DecorateurBille b1s3 = new DecorateurSouris(new DecorateurBilleArret(bd1s3));
+        DecorateurBille b2s3 = new DecorateurPoissonGlobe(new DecorateurPesanteur(new DecorateurFrottement(bd2s3)));
+        DecorateurBille b3s3 = new DecorateurBilleNewton(new DecorateurBilleArret(new DecorateurFantome(bd3s3)));
+        DecorateurBille b4s3 = new DecorateurBilleNewton(new DecorateurPasseMuraille(new DecorateurFrottement(bd4s3)));
+
+        // Création du Vecteur de billes et ajout dans Scénario 3
+
+        billesS3.add(b0s3);
+        billesS3.add(b1s3);
+        billesS3.add(b2s3);
+        billesS3.add(b3s3);
+        billesS3.add(b4s3);
+
+        scenario3.setBillesScenario(billesS3);
+        // Inscription à l'observateur
+        observateurScenario3.inscription(billesS3);
+
+
+
+        // ajout des listener pour les scénarios
         cadre.addChoixScenarioListener(lesScenarios);
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
