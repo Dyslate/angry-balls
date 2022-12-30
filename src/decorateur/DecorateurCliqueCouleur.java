@@ -1,7 +1,6 @@
-package decorateur.decorateur;
+package decorateur;
 
-import decorateur.DecorateurBille;
-import decorateur.decorateur.state.BilleAttrape;
+import etats.BilleAttrape;
 import modele.Bille;
 import modele.Couleur;
 

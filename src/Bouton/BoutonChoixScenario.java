@@ -1,5 +1,7 @@
-package vues;
+package Bouton;
 
+
+import vues.Scenario;
 
 import java.awt.*;
 

@@ -120,6 +120,73 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	}
 
+	public CadreAngryBalls(String angryBalls, String message, Vector<Bille> billes, SonLong[] hurlements, int choixHurlementInitial) {
+		super(titre);
+		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
+
+		//Si on enlève ça y a un probleme pour quitter la partie!
+		this.ecouteurTerminaison = new EcouteurTerminaison(this);
+
+		this.haut = new Panel();
+		this.haut.setBackground(Color.LIGHT_GRAY);
+		this.add(this.haut, BorderLayout.NORTH);
+
+		this.centre = new Panel();
+		this.add(this.centre, BorderLayout.CENTER);
+
+		this.bas = new Panel();
+		this.bas.setBackground(Color.LIGHT_GRAY);
+		this.add(this.bas, BorderLayout.SOUTH);
+
+		this.droite = new Panel();
+		this.droite.setBackground(Color.LIGHT_GRAY);
+		this.add(this.droite, BorderLayout.EAST);
+
+
+		//Ajout de observer/obsersable
+		Bouton boutonLancer = new BoutonLancer("Lancer les billes");
+		bas.add(boutonLancer);
+		Bouton boutonArreter = new BoutonArreter("Arrêter les billes");
+		bas.add(boutonArreter);
+		animationBilles = new AnimationBilles(billes, this);
+		//Lambda expression
+		boutonLancer.ajoutObservateur(this::onClickLance);
+		boutonArreter.ajoutObservateur(this::onClickArrete);
+
+
+		this.presentation = new TextField(message, 100);
+		this.presentation.setEditable(false);
+		this.haut.add(this.presentation);
+
+		billard = new Billard(billes);
+
+
+		this.add(billard);
+
+//------------------- placement des composants du bas du cadre -------------------------------
+
+		int nombreLignes = 2, nombreColonnes = 1;
+		this.bas.setLayout(new GridLayout(nombreLignes, nombreColonnes));
+
+//---------------- placement des boutons lancer - arreter ------------------------------------
+		//Pu besoin de ça: on a l'observateur et l'observable
+/*
+		this.ligneBoutonsLancerArret = new Panel();
+		this.bas.add(this.ligneBoutonsLancerArret);
+
+		this.lancerBilles = new Button("lancer les billes");
+		this.ligneBoutonsLancerArret.add(this.lancerBilles);
+		this.arreterBilles = new Button("arreter les billes");
+		this.ligneBoutonsLancerArret.add(this.arreterBilles);
+*/
+//---------------- placement de la ligne de boutons de choix des sons pour le hurlement ------
+
+
+		//Ici il faut mettre l'observeur de sons!
+		this.ligneBoutonsChoixHurlement = new PanneauChoixHurlement(hurlements, choixHurlementInitial);
+		this.bas.add(this.ligneBoutonsChoixHurlement);
+	}
+
 	public double largeurBillard() {
 		return billard.getWidth();
 	}

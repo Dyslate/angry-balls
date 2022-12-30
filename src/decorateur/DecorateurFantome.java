@@ -1,4 +1,4 @@
-package decorateur.decorateur;
+package decorateur;
 
 import decorateur.DecorateurBille;
 import modele.Bille;

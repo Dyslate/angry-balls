@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.Panel;
 
 
+import Bouton.BoutonChoixHurlement;
 import musique.SonLong;
 
 /**

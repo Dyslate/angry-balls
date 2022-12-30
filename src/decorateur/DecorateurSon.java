@@ -1,10 +1,9 @@
-package decorateur.decorateur;
+package decorateur;
 
-import decorateur.DecorateurBille;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import musique.SonLong;
-import vues.BoutonChoixHurlement;
+import Bouton.BoutonChoixHurlement;
 import vues.VueBillard;
 
 import java.awt.event.ItemEvent;

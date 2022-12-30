@@ -1,4 +1,4 @@
-package vues;
+package Bouton;
 
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;

@@ -1,4 +1,4 @@
-package decorateur.bille;
+package modele;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;

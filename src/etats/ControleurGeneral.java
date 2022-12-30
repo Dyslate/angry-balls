@@ -1,4 +1,4 @@
-package decorateur.decorateur.state;
+package etats;
 
 import vues.Billard;
 import vues.CadreAngryBalls;

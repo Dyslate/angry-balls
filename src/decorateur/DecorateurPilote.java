@@ -1,13 +1,12 @@
-package decorateur.decorateur;
+package decorateur;
 
-import decorateur.DecorateurBille;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 
 import java.util.Vector;
 
-import static decorateur.decorateur.state.BilleAttrape.*;
-import static decorateur.decorateur.state.BilleRelache.*;
+import static etats.BilleAttrape.*;
+import static etats.BilleRelache.*;
 
 public class DecorateurPilote extends DecorateurBille {
     public DecorateurPilote(Bille b) {

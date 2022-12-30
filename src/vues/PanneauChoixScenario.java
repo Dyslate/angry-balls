@@ -1,5 +1,7 @@
 package vues;
 
+import Bouton.BoutonChoixScenario;
+
 import java.awt.*;
 
 public class PanneauChoixScenario extends Panel {

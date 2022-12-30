@@ -1,6 +1,5 @@
-package decorateur.decorateur.state;
+package etats;
 
-import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import vues.Billard;
 import vues.CadreAngryBalls;

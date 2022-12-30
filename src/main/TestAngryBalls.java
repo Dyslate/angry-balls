@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import java.io.File;
 import java.util.Vector;
 
@@ -40,16 +41,6 @@ public class TestAngryBalls {
 		SonLong[] hurlements = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
 
 
-		Scenario scenario1 = new Scenario("Angry Balls",
-				"Application pour tester DP Decorator / Observer / State",
-				new Vector<>());
-		Scenario scenario2 = new Scenario("Billard",
-				"Application pour tester Observer / State",
-				new Vector<>());
-		Scenario[] scenarios = new Scenario[2];
-		scenarios[0]=scenario1;
-		scenarios[1]=scenario2;
-
 
 
 //------------------- creation de la liste (pour l'instant vide) des billes -----------------------
@@ -59,10 +50,9 @@ public class TestAngryBalls {
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
 		int choixHurlementInitial = 0;
-		int choixScenarioInitial = 0;
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
-				billes, hurlements, choixHurlementInitial, scenarios, choixScenarioInitial);
+				billes, hurlements, choixHurlementInitial);
 
 		cadre.montrer(); // on rend visible la vue
 
@@ -97,7 +87,7 @@ public class TestAngryBalls {
 		v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie e changer ---------------------------------
-/*
+
 		billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
 		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
 		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
@@ -109,7 +99,7 @@ public class TestAngryBalls {
 				hurlements[choixHurlementInitial], cadre));
 
 		cadre.addChoixHurlementListener(billeNoire); // e present on peut changer le son de la bille qui hurle
-*/
+
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
 		System.out.println("billes = " + billes);

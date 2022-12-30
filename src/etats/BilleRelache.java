@@ -1,4 +1,4 @@
-package decorateur.decorateur.state;
+package etats;
 
 import mesmaths.geometrie.base.Vecteur;
 import vues.Billard;
@@ -6,7 +6,7 @@ import vues.CadreAngryBalls;
 
 import java.awt.event.MouseEvent;
 
-import static decorateur.decorateur.state.BilleAttrape.*;
+import static etats.BilleAttrape.*;
 
 public class BilleRelache extends ControleurEtat {
 
