@@ -1,14 +1,11 @@
 package decorateur;
 
-import java.awt.*;
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Vector;
 
 import base.OutilsConfigurationBilleHurlante;
 import decorateur.bille.BilleDynamique;
 import decorateur.decorateur.*;
-import decorateur.decorateur.DecorateurTeleportation;
 import decorateur.decorateur.state.ControleurGeneral;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
@@ -119,7 +116,7 @@ public class testDecorateur {
         BilleDynamique bd3s1 = new BilleDynamique(p3s1, rayon*0.8, v3s1, a3s1, Couleur.noir, observateurScenario1);
             // Création des décorateurs pour le Scénario 1
         DecorateurBille b0s1 = new DecorateurLancePierre(new DecorateurFantome(bd0s1));
-        DecorateurBille b1s1 = new DecorateurPilote(new DecorateurBilleNewton(new DecorateurBilleArret(bd1s1)));
+        DecorateurBille b1s1 = new DecorateurSouris(new DecorateurBilleArret(bd1s1));
         DecorateurBille b2s1 = new DecorateurPoissonGlobe(new DecorateurPesanteur(bd2s1));
         DecorateurBille b3s1 = new DecorateurFantome(new DecorateurPasseMuraille(new DecorateurFrottement(bd3s1)));
             // Création du Vecteur de billes et ajout dans Scénario 1
@@ -176,7 +173,7 @@ public class testDecorateur {
         p15s2 = new Vecteur(xligne5, yligne1);
 
         // Création Billes dynamiques pour le Scénario 2
-        BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.80, Couleur.blancCreme, observateurScenario2);
+        BilleDynamique bd0s2 = new BilleDynamique(p0s2, rayon*0.95, Couleur.blancCreme, observateurScenario2);
         BilleDynamique bd8s2 = new BilleDynamique(p8s2, rayon, Couleur.noir, observateurScenario2);
         BilleDynamique bd1s2 = new BilleDynamique(p1s2, rayon, Couleur.rouge, observateurScenario2);
         BilleDynamique bd2s2 = new BilleDynamique(p6s2, rayon, Couleur.rouge, observateurScenario2);

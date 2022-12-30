@@ -14,13 +14,17 @@ public class BilleRelache extends ControleurEtat {
     public static double posX;
     public static double posY;
 
+    //Position mouvement
+    public static double posXm;
+    public static double posYm;
+
     //Position souris au relachement
     public static double posSouris2X;
     public static double posSouris2Y;
 
 
     //Creation du vecteur vitesse souris: différence entre position click et positionnement relachement.
-    public static Vecteur vitesseSouris;
+    public static Vecteur vitesseSouris = Vecteur.VECTEURNUL;
 
     //Recupération du cadre et du billard.
     public CadreAngryBalls cadre;
@@ -57,4 +61,11 @@ public class BilleRelache extends ControleurEtat {
         posX = e.getX();
         posY = e.getY();
     }
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        posXm = e.getX();
+        posYm = e.getY();
+    }
+
 }
+

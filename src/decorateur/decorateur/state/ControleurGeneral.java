@@ -40,7 +40,7 @@ public class ControleurGeneral implements MouseListener, MouseMotionListener {
     @Override
     public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseMoved(MouseEvent e) {}
+    public void mouseMoved(MouseEvent arg0) {this.controleurCourant.mouseMoved(arg0);}
     @Override
     public void mouseClicked(MouseEvent arg0) {}
     @Override

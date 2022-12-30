@@ -1,6 +1,2 @@
 TODO
-Modifier les billes en "direct"
-Touch pour contrôler une bille spécifique (un decorateur drag and drop ou contrôle total selon la souris)
-Supprimer la dépendance AWT dans le billard
-Virer la dépendance AWT dans BILLE (dessine)
-Ajouter son choc bille via Audacity pour bien timestamp
+Javadoc

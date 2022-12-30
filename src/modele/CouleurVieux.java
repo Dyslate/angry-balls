@@ -1,7 +1,5 @@
 package modele;
 
-import exception.ExceptionCouleur;
-
 import java.awt.*;
 
 public class CouleurVieux {
@@ -10,7 +8,7 @@ public class CouleurVieux {
     public int b;
     public int t;
 
-    public CouleurVieux(int r, int g, int b, int t) throws ExceptionCouleur {
+    public CouleurVieux(int r, int g, int b, int t) {
         if (testCouleur(r) || testCouleur(g) ||  testCouleur(b) || testCouleur(t)) {
             System.err.println("Votre couleur n'est pas une couleur: ["+r+"-"+g+"-"+b+"-"+t+"]" +
                     "\n Les paramètres doivent être compris entre 0 et 255");
