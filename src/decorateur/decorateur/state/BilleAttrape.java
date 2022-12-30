@@ -10,13 +10,21 @@ import java.util.Vector;
 
 public class BilleAttrape extends ControleurEtat{
 
+    //Booleens pour gèrer les différents états (press ou relache)
     public static boolean estPress = false;
     public static boolean estRelache = false;
 
+    //Bille selectionné
     public static int billeCourante = 0;
+
+    //Position souris au moment du click
     public static double posSouris1X;
     public static double posSouris1Y;
+
+    //Recuperation de la masse de la bille
     public static double masse;
+
+    //Recuperation du cadre, et du billard
     CadreAngryBalls cadre;
     Billard billard;
 
@@ -31,7 +39,7 @@ public class BilleAttrape extends ControleurEtat{
         estPress=false;
     }
 
-
+    //Test si la souris est sur la bille clickée, et si la bille est pilotable.
     public static boolean CliquePilotable(Vector<Bille> billes, MouseEvent e){
         boolean res = false;
         for (Bille bille : billes) {
@@ -49,11 +57,11 @@ public class BilleAttrape extends ControleurEtat{
     }
     @Override
     public void mousePressed(MouseEvent e){
+        //Position de la souris au moment du click
         posSouris1X = e.getX();
         posSouris1Y = e.getY();
         if(CliquePilotable(billard.billes,e)){
             estPress = true;
-            System.out.println("La bille " + billeCourante+ " a été cliquée!");
         }
         this.controleurGeneral.setControleur(suivants[0]);
     }

@@ -33,6 +33,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 
 	public static Billard billard;
+	//public Button lancerBilles, arreterBilles;
 	public Panel haut, centre, bas, droite, ligneBoutonsLancerArret;
 	PanneauChoixHurlement ligneBoutonsChoixHurlement;
 
@@ -41,10 +42,8 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	EcouteurTerminaison ecouteurTerminaison;
 
-	BufferStrategy buffer;
 
-
-	private AnimationBilles animationBilles;
+	public static AnimationBilles animationBilles;
 
 
 	public CadreAngryBalls(String titre, String message, Vector<Bille> billes, SonLong[] hurlements,
@@ -115,7 +114,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		this.bas.add(this.ligneBoutonsChoixHurlement);
 
 
-		//Ici on mets les scénarios
+		//Ici on mets les sons!
 		this.ligneBoutonsChoixScenario = new PanneauChoixScenario(scenarios,choixScenarioInitial);
 		this.droite.add(this.ligneBoutonsChoixScenario);
 
@@ -129,15 +128,6 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 		return billard.getHeight();
 	}
 
-	public void changeBillard(Vector<Bille> billes) {
-		miseAJour();
-		billard = new Billard(billes);
-		billard.createBufferStrategy(2);
-		billard.setIgnoreRepaint(true);
-	}
-	public void changeAnimations(Vector<Bille> billes) {
-		this.animationBilles = new AnimationBilles(billes, this);
-	}
 	@Override
 	public void miseAJour() {
 		// BufferStrategy pour l'Active Rendering

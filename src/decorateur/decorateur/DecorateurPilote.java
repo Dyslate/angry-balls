@@ -1,12 +1,13 @@
 package decorateur.decorateur;
 
 import decorateur.DecorateurBille;
-import decorateur.decorateur.state.BilleAttrape;
-import decorateur.decorateur.state.BilleRelache;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 
 import java.util.Vector;
+
+import static decorateur.decorateur.state.BilleAttrape.*;
+import static decorateur.decorateur.state.BilleRelache.*;
 
 public class DecorateurPilote extends DecorateurBille {
     public DecorateurPilote(Bille b) {
@@ -21,13 +22,13 @@ public class DecorateurPilote extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);
-            if(BilleAttrape.estPress&&!BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
-                Vecteur temporaire = new Vecteur(BilleRelache.posX,BilleRelache.posY);
+            if(estPress&&!estRelache&&this.getClef()==billeCourante){
+                Vecteur temporaire = new Vecteur(posX,posY);
                 bille.getPosition().set(temporaire);
             }
-            if(BilleAttrape.estRelache){
-                BilleAttrape.estPress=false;
-                BilleAttrape.estRelache= false;
+            if(estRelache){
+                estPress=false;
+                estRelache= false;
             }
         }
     }
