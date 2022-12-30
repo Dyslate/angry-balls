@@ -2,7 +2,6 @@ package vues;
 
 
 import modele.Bille;
-import musique.SonLong;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -30,12 +29,14 @@ public class Scenario implements ItemListener {
 
     public Scenario(Scenario[] scenarios){
         this.scenario=scenarios;
+
     }
     public Scenario(String nom, String description, Vector<Bille> billes) {
         this.id = prochainID++;
         this.nomScenario = nom;
         this.description = description;
         this.billesScenario = billes;
+
     }
 
     public String getNom() {
@@ -46,11 +47,20 @@ public class Scenario implements ItemListener {
         this.billesScenario = billes;
     }
 
+    public HashMap<Integer, String> creationHashMap(Scenario[] scenarios){
+        HashMap<Integer,String> hmap = new HashMap<>();
+        for (Scenario value : scenarios) {
+            hmap.put(value.id, value.getNom());
+        }
+        return hmap;
+    }
+
     @Override
     public void itemStateChanged(ItemEvent e) {
         int i = 0;
         while (i<scenario.length) {
             if(e.getItem()==scenario[i].nomScenario){
+                System.out.println(scenario[i].id);
                 CadreAngryBalls.animationBilles.lancerAnimation();
                 System.out.println(scenario[i].billesScenario);
                 CadreAngryBalls.billard.billes = scenario[i].billesScenario;

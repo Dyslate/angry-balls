@@ -8,6 +8,9 @@ import modele.Bille;
 
 import java.util.Vector;
 
+import static decorateur.decorateur.state.BilleAttrape.*;
+import static decorateur.decorateur.state.BilleRelache.*;
+
 
 public class DecorateurTeleportation extends DecorateurBille {
     public DecorateurTeleportation(Bille b) {
@@ -21,14 +24,14 @@ public class DecorateurTeleportation extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);
-        if(BilleAttrape.estPress&&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante) {
+        if(estPress&&estRelache&&this.getClef()==billeCourante) {
             Vecteur temporaire = bille.getPosition();
-            if(BilleAttrape.estPress&&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
-                temporaire = new Vecteur(BilleRelache.posX,BilleRelache.posY);
+            if(estPress&&estRelache&&this.getClef()==billeCourante){
+                temporaire = new Vecteur(posX,posY);
             }
             bille.getPosition().set(temporaire);
-            BilleAttrape.estPress = false;
-            BilleAttrape.estRelache = false;
+            estPress = false;
+            estRelache = false;
         }
     }
 }

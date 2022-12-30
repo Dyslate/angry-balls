@@ -1,12 +1,13 @@
 package decorateur.decorateur;
 
 import decorateur.DecorateurBille;
-import decorateur.decorateur.state.BilleAttrape;
-import decorateur.decorateur.state.BilleRelache;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 
 import java.util.Vector;
+
+import static decorateur.decorateur.state.BilleAttrape.*;
+import static decorateur.decorateur.state.BilleRelache.vitesseSouris;
 
 public class DecorateurLancePierre extends DecorateurBille {
     public DecorateurLancePierre(Bille b) {
@@ -20,12 +21,10 @@ public class DecorateurLancePierre extends DecorateurBille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         super.gestionAcceleration(billes);          // remise é zéro du vecteur accélération
-        if(BilleAttrape.estPress&BilleAttrape.estRelache&&this.getClef()==BilleAttrape.billeCourante){
-            this.bille.getAcceleration().set(new Vecteur(-BilleRelache.vitesseSouris.x,-BilleRelache.vitesseSouris.y));
-            System.out.println(this.bille.getAcceleration());
-            System.out.println("modification du vecteur acceleration de la bille");
-            BilleAttrape.estPress=false;
-            BilleAttrape.estRelache=false;
+        if(estPress&&estRelache&&this.getClef()==billeCourante){
+            this.bille.getAcceleration().set(new Vecteur(-vitesseSouris.x,-vitesseSouris.y));
+            estPress=false;
+            estRelache=false;
         }
     }
 }

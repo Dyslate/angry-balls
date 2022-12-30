@@ -1,7 +1,4 @@
 TODO
-DP Observer
-Gestion son collision
-Double buffering pour les images (eviter le clignotement)
 Modifier les billes en "direct"
 Touch pour contrôler une bille spécifique (un decorateur drag and drop ou contrôle total selon la souris)
 Supprimer la dépendance AWT dans le billard

@@ -62,7 +62,6 @@ public class BilleAttrape extends ControleurEtat{
         posSouris1Y = e.getY();
         if(CliquePilotable(billard.billes,e)){
             estPress = true;
-            System.out.println("La bille " + billeCourante+ " a été cliquée!");
         }
         this.controleurGeneral.setControleur(suivants[0]);
     }
